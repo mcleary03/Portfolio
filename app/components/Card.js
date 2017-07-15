@@ -11,11 +11,11 @@ export default class Card extends Component {
       projects.push(
         <div
           key={project.name}
-          className="container col-sm-12 col-md-6 col-lg-4 text-center" >
+          className="card col-sm-12 col-md-6 col-lg-4 text-center" >
           <img
             src={img}
-            style={{height: '30vh'}} />
-          <p style={{fontSize: '8vmin'}}>{name}</p>
+            style={{height: '30vw'}} />
+          <p style={{fontSize: '3vw'}}>{name}</p>
         </div>
       )
     })

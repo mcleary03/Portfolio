@@ -12,7 +12,7 @@ export defualt class ProjectList extends Component {
   render(){
     let projects = this.state.projects
     return (
-      <div className="container">
+      <div id="projectList">
         {projects.map(project =>
           <Card />
         )}
