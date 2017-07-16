@@ -41,4 +41,8 @@ const PROJECTS = [
   },
 ]
 
-ReactDOM.render(<App projects={PROJECTS} />, document.getElementById('app'))
+// Makes sure page is loaded before rendering anything
+document.addEventListener("DOMContentLoaded", () => {
+  const app = document.getElementById("app")
+  ReactDOM.render(<App projects={PROJECTS} />, app)
+})
