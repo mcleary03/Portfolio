@@ -1,22 +1,11 @@
 import React, { Component } from 'react'
+import Card from './Card'
 
-export defualt class ProjectList extends Component {
-  constructor() {
-    super()
-    this.state = {projects: []}
-  }
-  componentWillMount(){
-
-  }
-
-  render(){
-    let projects = this.state.projects
-    return (
-      <div id="projectList">
-        {projects.map(project =>
-          <Card />
-        )}
-      </div>
-    )
-  }
-}
+export default (props) => (
+  <div className="container">
+    <h1 className="text-center">Recent Projects</h1>
+    {props.projects.map( project =>
+      <Card key={project.name} project={project}/>
+    )}
+  </div>
+)

@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import Header from './Header'
-import Card from './Card'
+import ProjectList from './ProjectList'
 
 class App extends Component {
+  constructor() {
+    super()
+  }
   render () {
     return (
       <div>
         <Header />
-        <Card projects={this.props.projects}/>
+        <ProjectList projects={this.props.projects} />
       </div>
     )
   }
