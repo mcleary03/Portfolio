@@ -7,16 +7,16 @@
 .card img {
   height: 30vh;
   margin: 8vh 0;
-  border: 1px solid #222;
+  border: 10px solid rgba(0,0,0,0);
   border-radius: 5%;
 }
 
 .card img:hover {
   cursor: pointer;
-  border: 3px solid #444;
+  border: 0 solid rgba(0,0,0,0);
 }
 
-.card p :hover {
+.card :hover {
   cursor: pointer;
 }
 

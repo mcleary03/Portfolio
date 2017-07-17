@@ -20,7 +20,7 @@ export default class Card extends Component {
       <div className="card col-sm-12 col-md-6 text-center" >
         <img src={this.img}
           onClick={this.click} />
-        <p>{this.name}</p>
+        <p onClick={this.click}>{this.name}</p>
       </div>
     )
   }
