@@ -27,8 +27,8 @@ const PROJECTS = [
     img: 'https://i1.wp.com/blog.kloud51.com/wp-content/uploads/2015/06/ruby-on-rails.jpg?resize=480%2C480&ssl=1'
   },
   {
-    name: 'sdfsthdfj',
-    img: 'https://facebook.github.io/react/img/logo.svg'
+    name: 'JavaScript',
+    img: 'https://cdn.pixabay.com/photo/2015/04/23/17/41/javascript-736400_1280.png'
   },
   {
     name: 'sdfghsdf',
