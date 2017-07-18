@@ -1,19 +1,31 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import ProjectList from './ProjectList'
 
-export default class display extends Component {
-  constructor(props) {
-    super(props)
+class Display extends Component {
+  constructor() {
+    super()
+    // THIS STATE SHOULD NOT NEED TO BE SET HERE!!!!
+    this.state = {
+      display: 'projects'
+    }
   }
 
   render() {
     return (
       <div id="display" className="container">
-        <ProjectList projects={PROJECTS} />
+        <ProjectList projects={eval(this.state.display.toUpperCase())} />
       </div>
     )
   }
 }
+
+// THIS IS WRONG!!!!!!
+const mapStateToProps = (state) => ({
+  display: state.display
+});
+// NEED TO FIX THIS!!!!
+export default connect(mapStateToProps)(Display);
 
 const PROJECTS = [
   {

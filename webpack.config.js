@@ -1,6 +1,6 @@
 module.exports = {
   // where the root component is, so the compiler can find all the jsx
-  entry: "./app/components/App.jsx",
+  entry: "./app/components/Root.jsx",
   // where to put everything once compiled
   output: {
     filename: "bundle.js",

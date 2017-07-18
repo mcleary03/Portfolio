@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
-import display from './display'
+import displayReducer from './displayReducer'
 
-export default const reducers = combineReducers({
-  display,
+const reducers = combineReducers({
+  displayReducer,
 })
+
+export default reducers

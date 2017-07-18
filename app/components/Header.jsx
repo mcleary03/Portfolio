@@ -1,5 +1,9 @@
 import React from 'react'
 
+   /////////////////////////////
+  // COLLAPSE FEATURE BROKEN //
+ /////////////////////////////
+
 export default () => (
   <nav className="navbar navbar-inverse bg-inverse navbar-fixed-top">
     <div className="container-fluid">
