@@ -1,6 +1,6 @@
 import merge from 'lodash/merge'
 
-const displayReducer = (state = {display: 'projects'}, action) => {
+const displayReducer = (state, action) => {
   Object.freeze(state)
   switch(action.type) {
     case 'CHANGE_DISPLAY' :

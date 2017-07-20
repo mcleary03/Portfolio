@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import App from './App'
-// import reducers from '../reducers'
-import displayReducer from '../reducers/displayReducer'
+import reducers from '../reducers'
 
 const Root = ({ store }) => (
   <Provider store={store}>
@@ -13,7 +12,7 @@ const Root = ({ store }) => (
 );
 
 document.addEventListener("DOMContentLoaded", () => {
-  const store = createStore(displayReducer)
-  const app = document.getElementById("root")
+  const store = createStore(reducers)
+  const root = document.getElementById("root")
   ReactDOM.render(<Root store={store} />, root)
 })

@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class Card extends Component {
   constructor(props) {
     super(props)
-
+console.log()
     this.click = this.click.bind(this)
     this.name = this.props.project.name
     this.img = this.props.project.img

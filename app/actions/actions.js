@@ -1,12 +1,13 @@
-const displayAbout = {
-  type: 'CHANGE_DISPLAY',
-  display: 'about'
+export const changeDisplay = (display) => {
+  return ({
+    type: 'CHANGE_DISPLAY',
+    display
+  })
 }
-const displayProjects = {
-  type: 'CHANGE_DISPLAY',
-  display: 'projects'
-}
-const displayContact = {
-  type: 'CHANGE_DISPLAY',
-  display: 'contact'
+
+export const setProjects = (projects) => {
+  return ({
+    type: 'SET_PROJECT_LIST',
+    projects: projects
+  })
 }
