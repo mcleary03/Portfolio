@@ -1,19 +1,29 @@
+import React from 'react'
 import merge from 'lodash/merge'
+import About from '../components/About'
+import Projects from '../components/Projects'
 
-const displayReducer = (state, action) => {
+const displayReducer = (state = {display: <About/>}, action) => {
   Object.freeze(state)
   switch(action.type) {
-    case 'CHANGE_DISPLAY' :
+    case 'SET_DISPLAY' :
       let newState = merge({}, state)
-      newState.display = action.display
-      console.log(newState)
+      newState.display = newDisplay(action)
       return newState
     default :
       return state
   }
 }
 
-export default displayReducer
+const newDisplay = (action) => {
+  switch(action.display) {
+    case 'About' :
+      return <About/>
+    case 'Projects' :
+      return <Projects/>
+    default :
+      return <Projects/>
+  }
+}
 
-// NEED TO FIX THIS TO ACTUALLY RETURN SOMETHING THAT CAN
-//  CHANGE THE DISPLAY, NOT JUST THE LIST OF PROJECTS
+export default displayReducer

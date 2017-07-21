@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import ProjectList from './ProjectList'
+import Projects from './Projects'
+import About from './About'
 
 export default class Display extends Component {
   constructor() {
@@ -10,20 +10,8 @@ export default class Display extends Component {
   render() {
     return (
       <div id="display" className="container">
-        <ProjectList />
+        {this.props.display}
       </div>
     )
   }
 }
-
-// THIS IS WRONG!!!!!!
-// const mapStateToProps = state => ({
-//   display: state.display
-// });
-//
-// const mapDispatchToProps = dispatch => ({
-// 	changeDisplay: display => dispatch(changeDisplay(display)),
-// })
-
-// NEED TO FIX THIS!!!!
-// export default connect(mapStateToProps)(Display);

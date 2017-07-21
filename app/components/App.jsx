@@ -1,17 +1,26 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import displayReducer from '../reducers'
 import Header from './Header'
 import Display from './Display'
 
-export default class App extends Component {
+class App extends Component {
   constructor() {
     super()
   }
+
   render () {
     return (
       <div>
         <Header />
-        <Display />
+        <Display display={this.props.display} />
       </div>
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {display: state.displayReducer.display}
+}
+
+export default connect(mapStateToProps)(App);

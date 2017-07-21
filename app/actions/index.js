@@ -1,7 +1,7 @@
-export const changeDisplay = (display) => {
+export const setDisplay = (display) => {
   return ({
-    type: 'CHANGE_DISPLAY',
-    display
+    type: 'SET_DISPLAY',
+    display: display
   })
 }
 

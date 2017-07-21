@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
-import { dispatch } from 'redux'
-import changeDisplay from '../actions/actions'
+import { connect } from 'react-redux'
+import displayReducer from '../reducers'
+import { setDisplay } from '../actions'
 
-   /////////////////////////////
-  // COLLAPSE FEATURE BROKEN //
- /////////////////////////////
+   ////////////////////////////
+  // COLLAPSED MENU  BROKEN //
+ ////////////////////////////
 
-export default class Display extends Component {
+class Header extends Component {
   constructor() {
     super()
 
@@ -15,9 +16,7 @@ export default class Display extends Component {
 
   click(event) {
     event.preventDefault()
-    console.log(this.context.store)
-    console.log(event.target.innerHTML)
-    context.store.dispatch(changeDisplay(event.target.innerHTML))
+    this.props.setDisplay(event.target.textContent)
   }
 
   render() {
@@ -35,17 +34,17 @@ export default class Display extends Component {
 
           <div id="Navbar" className="collapse navbar-collapse">
             <ul className="nav navbar-nav nav-pills">
-              <li><a href="#top" className="">
-                <strong>About </strong>
+              <li><a className="nav-item" onClick={this.click}>
                 <i className="fa fa-user"></i>
+                <strong>About</strong>
               </a></li>
-            <li><a href="#projects" className="nav-item" onClick={this.click}>
-                <strong>Projects </strong>
-                <i className="fa fa-folder-open"></i>
+            <li><a className="nav-item" onClick={this.click}>
+              <i className="fa fa-folder-open"></i>
+                <strong>Projects</strong>
               </a></li>
-              <li><a href="#contact" className="nav-item">
-                <strong>Contact </strong>
+              <li><a className="nav-item" onClick={this.click}>
                 <i className="fa fa-envelope"></i>
+                <strong>Contact</strong>
               </a></li>
             </ul>
           </div>
@@ -54,3 +53,14 @@ export default class Display extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  // CAN I ACCESS PROJECTS THROUGH PROPS FROM STORE INSTEAD?
+  return {display: state.displayReducer.display}
+}
+
+const mapDispatchToProps = dispatch => (
+  { setDisplay: display => dispatch(setDisplay(display)) }
+)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

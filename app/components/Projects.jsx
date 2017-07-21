@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { projectsReducer } from '../reducers'
-import { setProjects } from '../actions/actions'
+import { setProjects } from '../actions'
 import Card from './Card'
 
-class ProjectList extends Component {
+class Projects extends Component {
   constructor() {
     super()
   }
@@ -37,4 +37,4 @@ const mapDispatchToProps = dispatch => ({
 })
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProjectList)
+export default connect(mapStateToProps, mapDispatchToProps)(Projects)
