@@ -1,19 +1,11 @@
 body {
- padding-top: 50px;
- background-image: url(../images/footer_lodyas.png);
- color: #FFF;
+  margin: 50px 0 200px 0;
+  background-image: url(../images/footer_lodyas.png);
+  color: #FFF;
 }
 
 .navbar {
   background-image: url(../images/footer_lodyas.png);
-}
-
-#Navbar li a{
-  color: white;
-}
-
-#Navbar div a {
-  color: white;
 }
 
 #Navbar ul :hover {
@@ -24,9 +16,31 @@ body {
   cursor: pointer;
 }
 
-.card {
-  margin: 15% 0;
+#main-display {
+  margin: 5vh 0;
+  background-color: rgba(20, 20, 20, 0.2);
 }
+
+#Card {
+  vertical-align: middle;
+}
+
+#Card img {
+  height: 25rem;
+  border: 10px solid rgba(0,0,0,0);
+  border-radius: 5%;
+}
+
+#Card :hover {
+  cursor: pointer;
+}
+
+#Card img:hover {
+  cursor: pointer;
+  border: 4px solid rgba(180,180,255,0.7);
+}
+
+
 
 .about {
   height: 100vh;
@@ -35,20 +49,5 @@ body {
 
 .about img {
   /*border: 3px solid rgba(220,220,240,0.5);*/
-  border: 3px solid #2B90AE;
-}
-
-.card img {
-  height: 25rem;
-  border: 10px solid rgba(0,0,0,0);
-  border-radius: 5%;
-}
-
-.card :hover {
-  cursor: pointer;
-}
-
-.card img:hover {
-  cursor: pointer;
-  border: 4px solid rgba(180,180,255,0.7);
+  border: 3px double #2B90AE;
 }

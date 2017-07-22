@@ -32,17 +32,17 @@ class Header extends Component {
             </button>
           </div>
 
-          <div id="Navbar" className="collapse navbar-collapse" onClick={this.click}>
-            <ul className="nav navbar-nav nav-pills nav-fill">
-              <li className="nav-item"><a>
+          <div id="Navbar" className="collapse navbar-collapse flex">
+            <ul className="nav navbar-nav nav-pills nav-justify" onClick={this.click}>
+              <li className="nav nav-item"><a className='nav-link '>
                 <i className="fa fa-question"></i>
                 <strong>About</strong>
               </a></li>
-              <li className="nav-item"><a>
+            <li className="nav-item"><a className='nav-link '>
                 <i className="fa fa-folder-open"></i>
                 <strong>Projects</strong>
               </a></li>
-              <li className="nav-item"><a>
+              <li className="nav-item"><a className='nav-link '>
                 <i className="fa fa-envelope"></i>
                 <strong>Contact</strong>
               </a></li>

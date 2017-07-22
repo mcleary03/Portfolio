@@ -11,7 +11,7 @@ export default class About extends Component {
     return (
       <div className='about row text-center'>
         <div className='col-md-6 col-sm-12'>
-          <h1>Michael Cleary</h1>
+          <h1 className='text-primary'>Michael Cleary</h1>
           <h2 className='text-info'>Full-Stack Developer</h2>
           <img className='img-circle' src='../app/images/profile_pic.png'/>
         </div>

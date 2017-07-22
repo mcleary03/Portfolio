@@ -7,6 +7,9 @@ import Card from './Card'
 class Projects extends Component {
   constructor() {
     super()
+
+    this.listIndex = 0
+    this.changeProject = this.changeProject.bind(this)
   }
 
   renderList() {
@@ -17,11 +20,25 @@ class Projects extends Component {
     )
   }
 
+  changeProject(event) {
+    let length = this.props.projects.length
+    if (event.target.id === 'next') {
+      this.listIndex = (this.listIndex + 1) % length
+    } else {
+      this.listIndex = this.listIndex > 0 ? this.listIndex - 1 : length - 1
+    }
+    console.log(this.listIndex)
+    this.forceUpdate()
+  }
+
   render() {
+    console.log(this.renderList())
     return (
-      <div className="container">
-        <h1 className="text-center">Recent Projects</h1>
-        {this.renderList()}
+      <div className=''>
+        <button id='prev' onClick={this.changeProject}>PREV</button>
+        <button id='next' onClick={this.changeProject}>NEXT</button>
+        <h1 className='text-center'>Recent Projects</h1>
+        {this.renderList()[this.listIndex]}
       </div>
     )
   }

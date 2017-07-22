@@ -11,14 +11,14 @@ class Skills extends Component {
   renderList() {
     return (
       this.props.skills.map( skill =>
-        <li key={skill} className='col-md-6 text-info'>{skill}</li>
+        <li key={skill} className='col-xs-6 text-info'>{skill}</li>
       )
     )
   }
 
   render() {
     return (
-      <div className="container col-md-12">
+      <div className="container col-xs-12">
         <ul className="">
           {this.renderList()}
         </ul>
