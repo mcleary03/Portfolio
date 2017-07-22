@@ -21,10 +21,10 @@ class Header extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-inverse navbar-fixed-top">
-        <div className="container-fluid">
+      <nav className="navbar navbar-fixed-top navbar-inverse">
+        <div className="container">
+          <a className="navbar-brand" onClick={this.click}>Michael Cleary</a>
           <div className="navbar-header">
-            <a className="navbar-brand">Michael Cleary</a>
             <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#Navbar">
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
@@ -32,17 +32,17 @@ class Header extends Component {
             </button>
           </div>
 
-          <div id="Navbar" className="collapse navbar-collapse">
-            <ul className="nav navbar-nav nav-pills">
-              <li><a className="nav-item" onClick={this.click}>
-                <i className="fa fa-user"></i>
+          <div id="Navbar" className="collapse navbar-collapse" onClick={this.click}>
+            <ul className="nav navbar-nav nav-pills nav-fill">
+              <li className="nav-item"><a>
+                <i className="fa fa-question"></i>
                 <strong>About</strong>
               </a></li>
-            <li><a className="nav-item" onClick={this.click}>
-              <i className="fa fa-folder-open"></i>
+              <li className="nav-item"><a>
+                <i className="fa fa-folder-open"></i>
                 <strong>Projects</strong>
               </a></li>
-              <li><a className="nav-item" onClick={this.click}>
+              <li className="nav-item"><a>
                 <i className="fa fa-envelope"></i>
                 <strong>Contact</strong>
               </a></li>

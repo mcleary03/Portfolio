@@ -9,8 +9,12 @@ export default class Display extends Component {
 
   render() {
     return (
-      <div id="display" className="container">
-        {this.props.display}
+      <div>
+        <div className='sidebar col-md-2'></div>
+        <div className='col-md-8'>
+          {this.props.display}
+        </div>
+        <div className='sidebar col-md-2'></div>
       </div>
     )
   }

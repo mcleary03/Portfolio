@@ -7,7 +7,14 @@ export const setDisplay = (display) => {
 
 export const setProjects = (projects) => {
   return ({
-    type: 'SET_PROJECT_LIST',
+    type: 'SET_PROJECTS',
     projects: projects
+  })
+}
+
+export const setSkills = (skills) => {
+  return ({
+    type: 'SET_SKILLS',
+    skills: skills
   })
 }

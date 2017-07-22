@@ -12,7 +12,7 @@ const Root = ({ store }) => (
 );
 
 document.addEventListener("DOMContentLoaded", () => {
-  const store = createStore(reducers)
+  const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
   const root = document.getElementById("root")
   ReactDOM.render(<Root store={store} />, root)
 })

@@ -1,10 +1,9 @@
 import merge from 'lodash/merge'
 
-const projectsReducer = (state, action) => {
-  if (state == undefined) return ({projects: PROJECTS})
+const projectsReducer = (state = {projects: PROJECTS}, action) => {
   Object.freeze(state)
   switch(action.type) {
-    case 'SET_PROJECT_LIST' :
+    case 'SET_PROJECTS' :
       let newState = merge({}, state)
       newState.projects = action.projects
       return newState
@@ -12,6 +11,8 @@ const projectsReducer = (state, action) => {
       return state
   }
 }
+
+export default projectsReducer
 
 const PROJECTS = [
   {
@@ -39,6 +40,3 @@ const PROJECTS = [
     img: 'https://i1.wp.com/blog.kloud51.com/wp-content/uploads/2015/06/ruby-on-rails.jpg?resize=480%2C480&ssl=1'
   },
 ]
-
-
-export default projectsReducer

@@ -22,7 +22,7 @@ const newDisplay = (action) => {
     case 'Projects' :
       return <Projects/>
     default :
-      return <Projects/>
+      return <About/>
   }
 }
 
