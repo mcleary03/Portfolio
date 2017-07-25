@@ -1,5 +1,5 @@
 body {
-  margin: 50px 0 200px 0;
+  margin: 50px 0;
   background-image: url(../images/footer_lodyas.png);
   color: #FFF;
 }
@@ -17,7 +17,7 @@ body {
 }
 
 #main-display {
-  margin: 5vh 0;
+  margin: 0;
   background-color: rgba(20, 20, 20, 0.2);
 }
 
@@ -40,8 +40,6 @@ body {
   border: 4px solid rgba(180,180,255,0.7);
 }
 
-
-
 .about {
   height: 100vh;
   background-color: rgba(240,240,240,0.9);
@@ -50,4 +48,9 @@ body {
 .about img {
   /*border: 3px solid rgba(220,220,240,0.5);*/
   border: 3px double #2B90AE;
+}
+
+#VRScene {
+  height: 90vh;
+  width: 100vw;
 }

@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <Display display={this.props.display} />
+        <Display display={this.props.display} vr={true} />
       </div>
     )
   }
