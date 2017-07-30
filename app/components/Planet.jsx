@@ -9,19 +9,20 @@ export default class Planet extends Component {
   }
 
   render() {
-    const { id, radius, material } = this.props
-    const { x, y, z } = this.props.position
+    const { id, radius, src } = this.props.planet
+    const { x, y, z } = this.props.planet.position
 
     return (
-      <Entity position={`${x} ${y} ${z}`}>
+      <Entity position={ `${x} ${y} ${z}` }>
         <Entity
           id={id}
           geometry={{
             primitive: 'sphere',
-            radius: radius}}
-          material={{
-            src: material,
-            shader: 'flat'}} />
+            segmentsWidth: 64,
+            segmentsHeight: 128,
+            radius
+          }}
+          material={{ src }} />
       </Entity>
     )
   }

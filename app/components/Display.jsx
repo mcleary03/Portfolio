@@ -16,12 +16,19 @@ export default class Display extends Component {
   render() {
     console.log('state:')
     console.log(this.props)
-// THIS IS JUST TO TEST A-FRAME COMPONENT
-    if (this.props.vr) {
+
+    if (this.props.vr && this.props.display.type.name == 'AFrame') {
       return (
-          <Scene id='VRScene' embedded>
-            <AFrame />
-          </Scene>
+        <Scene id='VRScene' embedded>
+          <a-assets>
+            <img
+              id="milkyWayTexture"
+              src="https://cdn.glitch.com/342beffd-f89e-4737-b3a9-73216740a52d%2Fmilkywaypan_brunier_2048.jpg?1501293293814"
+              crossOrigin="anonymous"
+            />
+          </a-assets>
+          {this.props.display}
+        </Scene>
       )
     } else {
       return (

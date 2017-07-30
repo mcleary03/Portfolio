@@ -3,7 +3,10 @@ import 'aframe-animation-component';
 import 'babel-polyfill';
 import {Entity, Scene} from 'aframe-react';
 import React, { Component } from 'react';
-import Planet from './AFrameComponents/Planet'
+// import Planet from './Planet'
+import Planets from './Planets'
+import Camera from './Camera'
+import Cursor from './Cursor'
 // import Camera from './components/Camera'
 
 export default class AFrame extends Component {
@@ -23,27 +26,33 @@ export default class AFrame extends Component {
     return `0, 0, ${54.5 + rPlanet + (dSun * 4)}`
   }
 
+          // <Entity position="5 5 60">
+          //   <Entity
+          //     camera="active"
+          //     look-controls
+          //     wasd-controls>
+          //     <Entity
+          //       cursor="fuse: true; fuseTimeout: 1000"
+          //       position="0 0 -1"
+          //       geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+          //       material="color: #57c3f9; shader: flat; transparent: true; opacity: 0.5">
+          //     </Entity>
+          //   </Entity>
+          // </Entity>
+
+          // <Planet
+          //   id="Test"
+          //   position={{x: 0, y: -10, z: 70}}
+          //   radius='3'
+          //   materialSrc='#milkyWayTexture'
+          // />
+
   render () {
     return (
-      <Scene>
-
-        <Entity position="5 5 60">
-          <Entity
-            camera="active"
-            look-controls
-            wasd-controls>
-            <Entity
-              cursor="fuse: true; fuseTimeout: 1000"
-              position="0 0 -1"
-              geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-              material="color: #57c3f9; shader: flat; transparent: true; opacity: 0.5">
-            </Entity>
-          </Entity>
-        </Entity>
-
-        <a-assets>
-          <img id="milkyWayTexture" src="https://upload.wikimedia.org/wikipedia/commons/a/a1/ESO_-_The_Milky_Way_panorama_%28by%29.jpg" />
-        </a-assets>
+      <Entity>
+        <Camera>
+          <Cursor/>
+        </Camera>
 
         <Entity light="type: ambient; color: #222"/>
 
@@ -60,12 +69,10 @@ export default class AFrame extends Component {
               shader: flat"
             position="0 0 0"
             animation="dur: 120000; loop: true; property: rotation; to: 0 360 0; easing: linear">
-            <Entity
-              light="type: point; intensity: 0.7">
-            </Entity>
+            <Entity light="type: point; intensity: 0.7" />
           </Entity>
 
-          <Planet id="Test" position="0, -10, 70" radius='3'  material='..app/images/2k_eris_fictional.jpg' />
+          <Planets />
 
           <Entity
             id="mercury"
@@ -76,8 +83,8 @@ export default class AFrame extends Component {
               segmentsWidth: 70;
               segmentsHeight: 70"
             material="src: https://cdn.glitch.com/342beffd-f89e-4737-b3a9-73216740a52d%2Ftexture_mercury.jpg?1493695081322"
-            position={this.distance(0.19, 0.4)}>
-          </Entity>
+            position={this.distance(0.19, 0.4)}
+          />
 
           <Entity
             id="venus"
@@ -177,27 +184,14 @@ export default class AFrame extends Component {
           id="sky"
           geometry="
           primitive: sphere;
-          radius: 200"
+          radius: 1000"
           material="
           src: #milkyWayTexture;
           shader: flat;
           side: back">
         </Entity>
 
-        <Entity position="0, 0, 600">
-          <Entity
-            id="sky"
-            geometry="
-            primitive: sphere;
-            radius: 200"
-            material="
-            src: #milkyWayTexture;
-            shader: flat;
-            side: back">
-          </Entity>
-        </Entity>
-
-      </Scene>
+      </Entity>
     )
   }
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import merge from 'lodash/merge'
 import About from '../components/About'
+import AFrame from '../components/AFrame'
 import Projects from '../components/Projects'
 
 const displayReducer = (state = {display: <About/>}, action) => {
@@ -21,6 +22,8 @@ const newDisplay = (action) => {
       return <About/>
     case 'Projects' :
       return <Projects/>
+    case 'AFrame' :
+      return <AFrame/>
     default :
       return <About/>
   }

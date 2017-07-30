@@ -18,3 +18,10 @@ export const setSkills = (skills) => {
     skills: skills
   })
 }
+
+export const setPlanets = (planets) => {
+  return ({
+    type: 'SET_PLANETS',
+    planets: planets
+  })
+}
