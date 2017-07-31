@@ -4,7 +4,7 @@ module.exports = {
   // where to put everything once compiled
   output: {
     filename: "bundle.js",
-    path: __dirname
+    path: __dirname + '/'
   },
   module: {
     loaders: [
