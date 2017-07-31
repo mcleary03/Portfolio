@@ -20,20 +20,122 @@ export default planetsReducer
 const PLANETS = [
   {
     id: 'Mercury',
-    radius: 0.9,
-    src: 'https://cdn.glitch.com/342beffd-f89e-4737-b3a9-73216740a52d%2Ftexture_mercury.jpg?1493695081322',
-    position: {x: 0, y: 0, z: 60}
+    radius: 0.19,
+    material: {
+      src: 'https://cdn.glitch.com/342beffd-f89e-4737-b3a9-73216740a52d%2Ftexture_mercury.jpg?1493695081322',
+      shader: 'standard'
+    },
+    position: {x: 0, y: 0, z: 56.3},
+    animation: {
+      dur: 1407600,
+      property: 'rotation',
+      to: '0 360 0',
+      easing: 'linear'
+    }
   },
   {
     id: 'Venus',
-    radius: 0.19,
-    src: 'https://cdn.glitch.com/342beffd-f89e-4737-b3a9-73216740a52d%2Ftexture_mercury.jpg?1493695081322',
-    position: {x: 0, y: 10, z: 60}
+    radius: 0.475,
+    material: {
+      src: 'https://cdn.glitch.com/342beffd-f89e-4737-b3a9-73216740a52d%2Ftexture_venus_atmosphere.jpg?1493695304768',
+      shader: 'standard'
+    },
+    position: {x: 0, y: 0, z: 57.5},
+    animation: {
+      dur: 5832500,
+      property: 'rotation',
+      to: '0 -360 0',
+      easing: 'linear'
+    }
   },
   {
     id: 'Earth',
     radius: 0.5,
-    src: 'https://cdn.glitch.com/342beffd-f89e-4737-b3a9-73216740a52d%2Ftexture_mercury.jpg?1493695081322',
-    position: {x: 0, y: -10, z: 60}
+    material: {
+      src: 'https://cdn.glitch.com/342beffd-f89e-4737-b3a9-73216740a52d%2Ftexture_earth_clouds.jpg?1493695248913',
+      shader: 'standard'
+    },
+    position: {x: 0, y: 0, z: 59},
+    animation: {
+      dur: 23900,
+      property: 'rotation',
+      to: '0 360 0',
+      easing: 'linear'
+    }
+  },
+  {
+    id: 'Mars',
+    radius: 0.265,
+    material: {
+      src: 'https://cdn.glitch.com/342beffd-f89e-4737-b3a9-73216740a52d%2Ftexture_mars.jpg?1493695397580',
+      shader: 'standard'
+    },
+    position: {x: 0, y: 0, z: 60.75},
+    animation: {
+      dur: 24600,
+      property: 'rotation',
+      to: '0 360 0',
+      easing: 'linear'
+    }
+  },
+  {
+    id: 'Jupiter',
+    radius: 5.595,
+    material: {
+      src: 'https://cdn.glitch.com/342beffd-f89e-4737-b3a9-73216740a52d%2Ftexture_jupiter.jpg?1493695529355',
+      shader: 'standard'
+    },
+    position: {x: 0, y: 0, z: 77.9},
+    animation: {
+      dur: 9900,
+      property: 'rotation',
+      to: '0 360 0',
+      easing: 'linear'
+    }
+  },
+  {
+    id: 'Saturn',
+    radius: 4.7,
+    material: {
+      src: 'https://cdn.glitch.com/342beffd-f89e-4737-b3a9-73216740a52d%2Ftexture_saturn.jpg?1493695550676',
+      shader: 'standard'
+    },
+    position: {x: 0, y: 0, z: 97.25},
+    animation: {
+      dur: 10700,
+      property: 'rotation',
+      to: '0 360 0',
+      easing: 'linear'
+    }
+  },
+  {
+    id: 'Uranus',
+    radius: 2.02,
+    material: {
+      src: 'https://cdn.glitch.com/342beffd-f89e-4737-b3a9-73216740a52d%2Ftexture_uranus.jpg?1493695576218',
+      shader: 'standard'
+    },
+    position: {x: 0, y: 0, z: 133.3},
+    animation: {
+      dur: 17200,
+      property: 'rotation',
+      to: '0 -360 0',
+      easing: 'linear'
+    }
+  },
+  {
+    id: 'Neptune',
+    radius: 1.94,
+    material: {
+      src: 'https://cdn.glitch.com/342beffd-f89e-4737-b3a9-73216740a52d%2Ftexture_neptune.jpg?1493695599570',
+      shader: 'standard'
+    },
+    position: {x: 0, y: 0, z: 176.4},
+    animation: {
+      dur: 16100,
+      property: 'rotation',
+      to: '0 360 0',
+      easing: 'linear'
+    }
   }
 ]

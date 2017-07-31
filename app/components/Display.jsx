@@ -19,7 +19,7 @@ export default class Display extends Component {
 
     if (this.props.vr && this.props.display.type.name == 'AFrame') {
       return (
-        <Scene id='VRScene' embedded>
+        <Scene id='VRScene' embedded light="defaultLightsEnabled: false">
           <a-assets>
             <img
               id="milkyWayTexture"
