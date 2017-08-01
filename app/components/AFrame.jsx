@@ -1,5 +1,4 @@
 import 'aframe'
-import 'aframe-gearvr-controls-component'
 import 'aframe-animation-component'
 import 'babel-polyfill';
 import {Entity, Scene} from 'aframe-react'

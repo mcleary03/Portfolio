@@ -7,8 +7,8 @@ export default props => (
     cursor={{fuse: true, fuseTimeout: '500'}}
     geometry={{
       primitive: 'ring',
-      radiusInner: '0.02',
-      radiusOuter: '0.03'}}
+      radiusInner: '0.005',
+      radiusOuter: '0.008'}}
     material={{
       color: '#57C3F9',
       shader: 'flat',
