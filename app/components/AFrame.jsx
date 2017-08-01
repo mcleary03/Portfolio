@@ -5,7 +5,6 @@ import {Entity, Scene} from 'aframe-react';
 import React, { Component } from 'react';
 import Planets from './Planets'
 import Camera from './Camera'
-import Cursor from './Cursor'
 import Sky from './Sky'
 import Sun from './Sun'
 
@@ -28,11 +27,10 @@ export default class AFrame extends Component {
   render () {
     return (
       <Entity>
+        <a-entity gearvr-controls="hand: right"></a-entity>
         <Entity id="solarSystem">
           <Sky/>
-          <Camera>
-            <Cursor/>
-          </Camera>
+          <Camera/>
           <Entity
             light="type: point;
             cast-shadow: true;

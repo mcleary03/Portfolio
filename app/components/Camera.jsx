@@ -1,5 +1,6 @@
 import { Entity } from 'aframe-react';
 import React from 'react';
+import Cursor from './Cursor'
 
 export default props => (
   <Entity
@@ -9,6 +10,8 @@ export default props => (
       camera
       look-controls
       wasd-controls
-    />
+    >
+      <Cursor/>
+    </Entity>
   </Entity>
 )

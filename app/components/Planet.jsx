@@ -1,7 +1,8 @@
-import 'aframe';
+import 'aframe'
 import 'babel-polyfill';
 import React, { Component } from 'react'
 import { Entity, Scene } from 'aframe-react';
+import '../scripts'
 
 export default class Planet extends Component {
   constructor(props) {
@@ -23,6 +24,7 @@ export default class Planet extends Component {
           to,
           easing
         }}
+        change-scale-on-hover={{scale: '2 2 2'}}
       >
         <Entity
           id={id}

@@ -14,7 +14,10 @@ class Planets extends Component {
   renderPlanets() {
     return (
       this.props.planets.map( planet =>
-        <Planet key={planet.id} planet={planet} />
+        <Planet
+          key={planet.id}
+          planet={planet}
+        />
       )
     )
   }

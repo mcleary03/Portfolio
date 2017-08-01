@@ -27,7 +27,7 @@ const PROJECTS = [
   },
   {
     name: 'JavaScript',
-    img: 'https://cdn.pixabay.com/photo/2015/04/23/17/41/javascript-736400_1280.png',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/2000px-Unofficial_JavaScript_logo_2.svg.png',
     description: 'Vanilla JavaScript project with Express for RESTful routing, MongoDB for the database and Passport for authentication.'
   },
   {
@@ -40,6 +40,6 @@ const PROJECTS = [
   },
   {
     name: 'asdfasd',
-    img: 'https://i1.wp.com/blog.kloud51.com/wp-content/uploads/2015/06/ruby-on-rails.jpg?resize=480%2C480&ssl=1'
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/2000px-Unofficial_JavaScript_logo_2.svg.png'
   },
 ]
