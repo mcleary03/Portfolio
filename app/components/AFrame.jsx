@@ -1,8 +1,9 @@
-import 'aframe';
-import 'aframe-animation-component';
+import 'aframe'
+import 'aframe-gearvr-controls-component'
+import 'aframe-animation-component'
 import 'babel-polyfill';
-import {Entity, Scene} from 'aframe-react';
-import React, { Component } from 'react';
+import {Entity, Scene} from 'aframe-react'
+import React, { Component } from 'react'
 import Planets from './Planets'
 import Camera from './Camera'
 import Sky from './Sky'
@@ -27,14 +28,19 @@ export default class AFrame extends Component {
   render () {
     return (
       <Entity>
-        <Entity gearvr-controls="hand: right"/>
+        <Entity
+          gearvr-controls="
+            hand: right;
+            model: true"
+        />
         <Entity id="solarSystem">
           <Sky/>
           <Camera/>
           <Entity
-            light="type: point;
-            cast-shadow: true;
-            distance: 900"
+            light="
+              type: point;
+              cast-shadow: true;
+              distance: 900"
             position='0 0 0'
           />
           <Sun/>

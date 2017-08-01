@@ -13,6 +13,7 @@
   "dependencies": {
     "aframe": "^0.6.1",
     "aframe-animation-component": "^3.2.5",
+    "aframe-gearvr-controls-component": "^0.1.7",
     "aframe-react": "^4.3.0",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
