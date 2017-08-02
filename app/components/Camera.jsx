@@ -11,7 +11,10 @@ export default props => (
       look-controls
       wasd-controls
     >
-      <Entity laser-controls="hand: right"></Entity>
+      <Entity
+        laser-controls="hand: right"
+        position="0.1 -0.6 -0.15"
+      ></Entity>
     </Entity>
   </Entity>
 )
