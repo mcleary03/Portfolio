@@ -10,6 +10,7 @@ export default props => (
       camera
       look-controls
       wasd-controls
+      gearvr-controls="hand: right"
     >
       <Cursor/>
     </Entity>
