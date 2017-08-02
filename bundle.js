@@ -135242,12 +135242,15 @@ exports.default = function (props) {
     {
       position: '-12 10 58',
       rotation: '-20 -127 0' },
-    _react2.default.createElement(_aframeReact.Entity, {
-      camera: true,
-      'look-controls': true,
-      'wasd-controls': true,
-      'gearvr-controls': true
-    })
+    _react2.default.createElement(
+      _aframeReact.Entity,
+      {
+        camera: true,
+        'look-controls': true,
+        'wasd-controls': true
+      },
+      _react2.default.createElement(_aframeReact.Entity, { 'gearvr-controls': true })
+    )
   );
 };
 

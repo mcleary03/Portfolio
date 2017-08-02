@@ -10,8 +10,8 @@ export default props => (
       camera
       look-controls
       wasd-controls
-      gearvr-controls
     >
+      <Entity gearvr-controls></Entity>
     </Entity>
   </Entity>
 )
