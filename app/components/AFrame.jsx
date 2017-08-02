@@ -27,7 +27,7 @@ export default class AFrame extends Component {
   render () {
     return (
       <Entity>
-        <Entity laser-controls="hand: right"/>
+        <Entity gearvr-controls="hand: right"/>
         <Entity id="solarSystem">
           <Sky/>
           <Camera/>
