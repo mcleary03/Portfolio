@@ -135249,7 +135249,7 @@ exports.default = function (props) {
         'look-controls': true,
         'wasd-controls': true
       },
-      _react2.default.createElement(_aframeReact.Entity, { 'gearvr-controls': true })
+      _react2.default.createElement(_aframeReact.Entity, { 'laser-controls': 'hand: right' })
     )
   );
 };

@@ -11,7 +11,7 @@ export default props => (
       look-controls
       wasd-controls
     >
-      <Entity gearvr-controls></Entity>
+      <Entity laser-controls="hand: right"></Entity>
     </Entity>
   </Entity>
 )
