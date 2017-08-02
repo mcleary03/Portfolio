@@ -2,7 +2,7 @@ import 'aframe'
 
 export default AFRAME.registerComponent('change-scale-on-hover', {
   schema: {
-    scale: { default: '2 2 2' }
+    scale: { default: '1 1 1' }
   },
   init: function () {
     const data = this.data

@@ -26,5 +26,6 @@ const sun = {
     property: 'rotation',
     to: '0 360 0',
     easing: 'linear'
-  }
+  },
+  altScale: '1 1 1'
 }

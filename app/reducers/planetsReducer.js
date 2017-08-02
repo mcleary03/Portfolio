@@ -31,7 +31,8 @@ const PLANETS = [
       property: 'rotation',
       to: '0 360 0',
       easing: 'linear'
-    }
+    },
+    altScale: '2 2 2'
   },
   {
     id: 'Venus',
@@ -46,7 +47,8 @@ const PLANETS = [
       property: 'rotation',
       to: '0 -360 0',
       easing: 'linear'
-    }
+    },
+    altScale: '2 2 2'
   },
   {
     id: 'Earth',
@@ -61,7 +63,8 @@ const PLANETS = [
       property: 'rotation',
       to: '0 360 0',
       easing: 'linear'
-    }
+    },
+    altScale: '2 2 2'
   },
   {
     id: 'Mars',
@@ -76,7 +79,8 @@ const PLANETS = [
       property: 'rotation',
       to: '0 360 0',
       easing: 'linear'
-    }
+    },
+    altScale: '2 2 2'
   },
   {
     id: 'Jupiter',
@@ -91,7 +95,8 @@ const PLANETS = [
       property: 'rotation',
       to: '0 360 0',
       easing: 'linear'
-    }
+    },
+    altScale: '2 2 2'
   },
   {
     id: 'Saturn',
@@ -106,7 +111,8 @@ const PLANETS = [
       property: 'rotation',
       to: '0 360 0',
       easing: 'linear'
-    }
+    },
+    altScale: '2 2 2'
   },
   {
     id: 'Uranus',
@@ -121,7 +127,8 @@ const PLANETS = [
       property: 'rotation',
       to: '0 -360 0',
       easing: 'linear'
-    }
+    },
+    altScale: '2 2 2'
   },
   {
     id: 'Neptune',
@@ -136,6 +143,7 @@ const PLANETS = [
       property: 'rotation',
       to: '0 360 0',
       easing: 'linear'
-    }
+    },
+    altScale: '2 2 2'
   }
 ]

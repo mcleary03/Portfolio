@@ -2,6 +2,7 @@ import 'aframe'
 import 'babel-polyfill';
 import React, { Component } from 'react'
 import { Entity, Scene } from 'aframe-react';
+import 'aframe-physics-system'
 import '../scripts'
 
 export default class Planet extends Component {
@@ -10,13 +11,14 @@ export default class Planet extends Component {
   }
 
   render() {
-    const { id, radius, material } = this.props.planet
+    const { id, radius, material, altScale } = this.props.planet
     const { x, y, z } = this.props.planet.position
     const { dur, loop, property, to, easing } = this.props.planet.animation
 
     return (
       <Entity
         position={ `${x} ${y} ${z}` }
+        static-body
         animation={{
           loop: true,
           dur,
@@ -24,7 +26,7 @@ export default class Planet extends Component {
           to,
           easing
         }}
-        change-scale-on-hover={{scale: '2 2 2'}}
+        change-scale-on-hover={{scale: altScale}}
       >
         <Entity
           id={id}
