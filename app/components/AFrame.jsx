@@ -29,7 +29,17 @@ export default class AFrame extends Component {
       <Entity>
         <Entity id="solarSystem">
           <Sky/>
-          <Camera/>
+
+
+          <Entity
+            position={'-12 10 58'}
+            rotation={'-20 -127 0'}>
+            <Entity
+              laser-controls="hand: right"
+              position="0.1 -0.6 -0.15" />
+            <Camera/>
+          </Entity>
+
           <Entity
             light="
               type: point;
