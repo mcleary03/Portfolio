@@ -102187,9 +102187,6 @@ var AFrame = function (_Component) {
       return _react2.default.createElement(
         _aframeReact.Entity,
         null,
-        _react2.default.createElement(_aframeReact.Entity, {
-          'gearvr-controls': ' hand: right; model: true'
-        }),
         _react2.default.createElement(
           _aframeReact.Entity,
           { id: 'solarSystem' },
@@ -135245,15 +135242,12 @@ exports.default = function (props) {
     {
       position: '-12 10 58',
       rotation: '-20 -127 0' },
-    _react2.default.createElement(
-      _aframeReact.Entity,
-      {
-        camera: true,
-        'look-controls': true,
-        'wasd-controls': true
-      },
-      _react2.default.createElement(_Cursor2.default, null)
-    )
+    _react2.default.createElement(_aframeReact.Entity, {
+      camera: true,
+      'look-controls': true,
+      'wasd-controls': true,
+      'gearvr-controls': true
+    })
   );
 };
 

@@ -8,6 +8,7 @@ export default props => (
     rotation={'-20 -127 0'}>
     <Entity
       camera
+      look-controls
       wasd-controls
       gearvr-controls
     >
