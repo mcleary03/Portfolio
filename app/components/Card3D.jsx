@@ -14,7 +14,8 @@ export default class Card3D extends Component {
         <Entity
           geometry='
             primitive: plane;
-            radius: 1'
+            width: 1;
+            height: 1'
           animation='
             dur: 10000;
             property: rotation;
@@ -25,7 +26,7 @@ export default class Card3D extends Component {
             src: https://cdn.glitch.com/342beffd-f89e-4737-b3a9-73216740a52d%2Fprofile_pic.png?1501790286811;
             shader: flat;
             side: double'
-          change-scale-on-hover={{scale: altScale}}
+          change-scale-on-hover='scale: 2 2 2'
         >
 
         </Entity>
