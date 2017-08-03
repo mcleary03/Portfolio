@@ -1,7 +1,7 @@
 import 'aframe'
 import 'babel-polyfill';
 import React, { Component } from 'react'
-import { Entity, Scene } from 'aframe-react';
+import { Entity } from 'aframe-react';
 import 'aframe-physics-system'
 import '../scripts'
 

@@ -39,5 +39,4 @@ const mapDispatchToProps = dispatch => ({
   setPlanets: planets => dispatch(setPlanets(planets))
 })
 
-
 export default connect(mapStateToProps, mapDispatchToProps)(Planets)
