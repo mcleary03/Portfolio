@@ -1,11 +1,12 @@
 body {
-  margin: 50px 0;
+  margin: 5vh 0 0 0;
   background-image: url(../images/footer_lodyas.png);
   color: #FFF;
 }
 
 .navbar {
   background-image: url(../images/footer_lodyas.png);
+  height: 5vh;
 }
 
 #Navbar ul :hover {
@@ -17,7 +18,7 @@ body {
 }
 
 #main-display {
-  margin: 5vh 0;
+  margin: 0;
   background-color: rgba(20, 20, 20, 0.2);
 }
 
@@ -41,7 +42,7 @@ body {
 }
 
 .about {
-  height: 100vh;
+  height: 95vh;
   background-color: rgba(240,240,240,0.9);
 }
 
@@ -50,7 +51,11 @@ body {
   border: 3px double #2B90AE;
 }
 
+ul {
+  list-style-type: none;
+}
+
 #VRScene {
-  height: 100%;
+  height: 95vh;
   width: 100vw;
 }

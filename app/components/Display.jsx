@@ -1,6 +1,5 @@
 import 'aframe';
 import 'aframe-animation-component';
-import 'aframe-particle-system-component';
 import 'babel-polyfill';
 import { Entity, Scene } from 'aframe-react';
 import React, { Component } from 'react'
@@ -19,16 +18,15 @@ export default class Display extends Component {
 
     if (this.props.vr && this.props.display.type.name == 'AFrame') {
       return (
-        <Scene id='VRScene' embedded light="defaultLightsEnabled: false">
-          <a-assets>
-            <img
-              id="milkyWayTexture"
-              src="https://cdn.glitch.com/342beffd-f89e-4737-b3a9-73216740a52d%2Fmilkywaypan_brunier_2048.jpg?1501293293814"
-              crossOrigin="anonymous"
-            />
-          </a-assets>
-          {this.props.display}
-        </Scene>
+        <div>
+          <Scene
+            id='VRScene'
+            embedded
+            light="defaultLightsEnabled: false"
+          >
+            {this.props.display}
+          </Scene>
+        </div>
       )
     } else {
       return (

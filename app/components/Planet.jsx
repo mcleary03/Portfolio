@@ -15,6 +15,7 @@ export default class Planet extends Component {
     const { x, y, z } = this.props.planet.position
     const { dur, loop, property, to, easing } = this.props.planet.animation
 
+
     return (
       <Entity
         position={ `${x} ${y} ${z}` }
