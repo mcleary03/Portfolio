@@ -23,25 +23,33 @@ class Button3D extends Component {
   render() {
     return (
       <Entity
-        position='0 2 1'
         geometry='
           primitive: box;
-          width: 1;
-          height: 0.5;
-          depth: 0.2'
+          width: 0.5;
+          height: 0.3;
+          depth: 0.15'
         material='
           color: #CCF;
           opacity: 0.5'
         change-scale-on-hover='scale: 1.1 1.1 1.1'
         orbit-controls
-        target="#Camera"
-        distance="2"
-        events={{click: this.changeDisplay}}
+        target='#Camera'
+        distance='2'
+        events={{buttondown: this.changeDisplay}}
       >
+      <Entity
+        text='
+          value: Go Home;
+          align: center;
+          zOffset: 0.001;
+          side: double'
+        rotation='0 180 0'
+      />
       </Entity>
     )
   }
 }
+
 
 const mapDispatchToProps = dispatch => (
   { setDisplay: display => dispatch(setDisplay(display)) }
