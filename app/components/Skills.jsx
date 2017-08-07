@@ -11,7 +11,7 @@ class Skills extends Component {
   renderList() {
     return (
       this.props.skills.map( skill =>
-        <li key={skill} className='col-xs-6 text-info'>{skill}</li>
+        <li key={skill} className='col-xs-6'>{skill}</li>
       )
     )
   }

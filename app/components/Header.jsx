@@ -30,7 +30,7 @@ class Header extends Component {
         <div className="container">
           <a className="navbar-brand" onClick={this.changeDisplay}>Michael Cleary</a>
           <div className="navbar-header">
-            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#Navbar">
+            <button type="button" className="navbar-toggle collapsed" data-toggle=".collapse" data-target="#Navbar">
               <i className='fa fa-bars' />
             </button>
           </div>
