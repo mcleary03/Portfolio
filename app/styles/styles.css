@@ -24,13 +24,15 @@ body {
 }
 
 #Card {
-  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #Card img {
   height: 25rem;
   border: 10px solid rgba(0,0,0,0);
-  border-radius: 5vh 5vw;
+  border-radius: 5%;
 }
 
 #Card :hover {
@@ -74,8 +76,8 @@ i {
 }
 
 .projectsListButton:hover {
-    cursor: pointer;
-    color: #CCF;
+  cursor: pointer;
+  color: #CCF;
 }
 
 .main-text {

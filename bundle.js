@@ -102055,6 +102055,10 @@ var _Skills = __webpack_require__(482);
 
 var _Skills2 = _interopRequireDefault(_Skills);
 
+var _Button3D = __webpack_require__(715);
+
+var _Button3D2 = _interopRequireDefault(_Button3D);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -102157,6 +102161,10 @@ var _Card3D = __webpack_require__(707);
 
 var _Card3D2 = _interopRequireDefault(_Card3D);
 
+var _Button3D = __webpack_require__(715);
+
+var _Button3D2 = _interopRequireDefault(_Button3D);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -102189,7 +102197,7 @@ var AFrame = function (_Component) {
             light: ' type: point; cast-shadow: true; distance: 900',
             position: '0 0 0'
           }),
-          _react2.default.createElement(_Card3D2.default, null),
+          _react2.default.createElement(_Button3D2.default, null),
           _react2.default.createElement(_Sun2.default, null),
           _react2.default.createElement(_Planets2.default, null)
         )
@@ -119966,7 +119974,7 @@ var newDisplay = function newDisplay(action) {
       return _react2.default.createElement(_About2.default, null);
     case 'Projects':
       return _react2.default.createElement(_Projects2.default, null);
-    case 'AFrame':
+    case 'A-Frame':
       return _react2.default.createElement(_AFrame2.default, null);
     default:
       return _react2.default.createElement(_About2.default, null);
@@ -135423,7 +135431,6 @@ var Card3D = function (_Component) {
         {
           id: 'Card3D',
           position: '-16 10 60',
-          animation: ' dur: 10000; property: rotation; to: 0 360 0; easing: linear; loop: true',
           'change-scale-on-hover': 'scale: 2 2 2',
           'orbit-controls': true,
           target: '#Camera',
@@ -135762,7 +135769,7 @@ var Card = function (_Component) {
         { id: 'Card', className: 'text-center vcenter', onClick: this.click },
         _react2.default.createElement(
           'div',
-          { className: 'col-xs-6' },
+          { className: 'col-sm-6' },
           _react2.default.createElement(
             'div',
             null,
@@ -135780,10 +135787,10 @@ var Card = function (_Component) {
         ),
         _react2.default.createElement(
           'div',
-          { className: 'col-xs-6' },
+          { className: 'col-sm-6' },
           _react2.default.createElement(
             'p',
-            { className: 'main-text justify-content-space-between' },
+            { className: 'main-text' },
             this.description
           )
         )
@@ -136193,7 +136200,7 @@ var Header = function (_Component) {
                   _react2.default.createElement(
                     'strong',
                     null,
-                    'AFrame'
+                    'A-Frame'
                   )
                 )
               )
@@ -136314,6 +136321,96 @@ var Display = function (_Component) {
 }(_react.Component);
 
 exports.default = Display;
+
+/***/ }),
+/* 715 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(15);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(72);
+
+var _reducers = __webpack_require__(57);
+
+var _reducers2 = _interopRequireDefault(_reducers);
+
+var _actions = __webpack_require__(111);
+
+__webpack_require__(112);
+
+var _aframeReact = __webpack_require__(45);
+
+__webpack_require__(708);
+
+__webpack_require__(285);
+
+var _About = __webpack_require__(241);
+
+var _About2 = _interopRequireDefault(_About);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Button3D = function (_Component) {
+  _inherits(Button3D, _Component);
+
+  function Button3D() {
+    _classCallCheck(this, Button3D);
+
+    var _this = _possibleConstructorReturn(this, (Button3D.__proto__ || Object.getPrototypeOf(Button3D)).call(this));
+
+    _this.changeDisplay = _this.changeDisplay.bind(_this);
+    return _this;
+  }
+
+  _createClass(Button3D, [{
+    key: 'changeDisplay',
+    value: function changeDisplay(event) {
+      event.preventDefault();
+      this.props.setDisplay('About');
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(_aframeReact.Entity, {
+        position: '0 2 1',
+        geometry: ' primitive: box; width: 1; height: 0.5; depth: 0.2',
+        material: ' color: #CCF; opacity: 0.5',
+        'change-scale-on-hover': 'scale: 1.1 1.1 1.1',
+        'orbit-controls': true,
+        target: '#Camera',
+        distance: '2',
+        events: { click: this.changeDisplay }
+      });
+    }
+  }]);
+
+  return Button3D;
+}(_react.Component);
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return { setDisplay: function setDisplay(display) {
+      return dispatch((0, _actions.setDisplay)(display));
+    } };
+};
+
+exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(Button3D);
 
 /***/ })
 /******/ ]);

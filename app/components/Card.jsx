@@ -18,7 +18,7 @@ export default class Card extends Component {
   render() {
     return(
       <div id='Card' className='text-center vcenter' onClick={this.click}>
-        <div className='col-xs-6'>
+        <div className='col-sm-6'>
           <div>
             <img src={this.img}/>
           </div>
@@ -26,8 +26,8 @@ export default class Card extends Component {
             <h2>{this.name}</h2>
           </div>
         </div>
-        <div className='col-xs-6'>
-          <p className='main-text justify-content-space-between'>
+        <div className='col-sm-6'>
+          <p className='main-text'>
             {this.description}
           </p>
         </div>

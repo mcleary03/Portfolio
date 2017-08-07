@@ -51,7 +51,7 @@ class Header extends Component {
               </a></li>
             <li className="nav nav-item"><a className='nav-link'>
                 <i className="fa fa-code"/>
-                <strong>AFrame</strong>
+                <strong>A-Frame</strong>
               </a></li>
             </ul>
           </div>

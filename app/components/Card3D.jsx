@@ -14,12 +14,6 @@ export default class Card3D extends Component {
       <Entity
         id='Card3D'
         position='-16 10 60'
-        animation='
-          dur: 10000;
-          property: rotation;
-          to: 0 360 0;
-          easing: linear;
-          loop: true'
         change-scale-on-hover='scale: 2 2 2'
         orbit-controls
         target="#Camera"
@@ -35,7 +29,6 @@ export default class Card3D extends Component {
             shader: flat;
             side: double'
         >
-
         </Entity>
       </Entity>
     )

@@ -22,7 +22,7 @@ const newDisplay = (action) => {
       return <About/>
     case 'Projects' :
       return <Projects/>
-    case 'AFrame' :
+    case 'A-Frame' :
       return <AFrame/>
     default :
       return <About/>

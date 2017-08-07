@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { setSkills } from '../reducers'
 import Skills from './Skills'
+import Button3D from './Button3D'
 
 export default class About extends Component {
   constructor() {
