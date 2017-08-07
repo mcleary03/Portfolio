@@ -16,7 +16,7 @@ const displayReducer = (state = {display: <About/>}, action) => {
   }
 }
 
-const newDisplay = (action) => {
+const newDisplay = action => {
   switch(action.display) {
     case 'About' :
       return <About/>

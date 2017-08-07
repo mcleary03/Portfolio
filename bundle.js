@@ -102180,10 +102180,6 @@ __webpack_require__(244);
 
 __webpack_require__(156);
 
-var _About = __webpack_require__(155);
-
-var _About2 = _interopRequireDefault(_About);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -102208,6 +102204,8 @@ var Button3D = function (_Component) {
     key: 'changeDisplay',
     value: function changeDisplay(event) {
       event.preventDefault();
+      var scene = document.querySelector('Scene');
+      scene.setAttribute('exit-vr');
       this.props.setDisplay('About');
     }
   }, {
@@ -135621,10 +135619,8 @@ exports.default = function (props) {
       'kinematic-body': true,
       'look-controls': true,
       'wasd-controls': true,
-      'tracked-controls': true }),
-    _react2.default.createElement(_aframeReact.Entity, {
-      'laser-controls': 'hand: right',
-      position: '0.1 -0.6 -0.5' })
+      'universal-controls': true }),
+    _react2.default.createElement(_aframeReact.Entity, { 'laser-controls': 'hand: right' })
   );
 };
 

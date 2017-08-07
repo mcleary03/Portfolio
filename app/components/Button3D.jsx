@@ -3,10 +3,9 @@ import { connect } from 'react-redux'
 import displayReducer from '../reducers'
 import { setDisplay } from '../actions'
 import 'aframe'
-import {Entity, Scene} from 'aframe-react'
+import { Entity, Scene } from 'aframe-react'
 import 'aframe-orbit-controls-component'
 import '../scripts'
-import About from './About'
 
 class Button3D extends Component {
   constructor() {
@@ -17,6 +16,8 @@ class Button3D extends Component {
 
   changeDisplay(event) {
     event.preventDefault()
+    let scene = document.querySelector('Scene');
+    scene.setAttribute('exit-vr')
     this.props.setDisplay('About')
   }
 

@@ -13,9 +13,7 @@ export default props => (
       kinematic-body
       look-controls
       wasd-controls
-      tracked-controls/>
-    <Entity
-      laser-controls="hand: right"
-      position="0.1 -0.6 -0.5" />
+      universal-controls/>
+    <Entity laser-controls="hand: right" />
   </Entity>
 )
