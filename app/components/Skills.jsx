@@ -19,7 +19,7 @@ class Skills extends Component {
   render() {
     return (
       <div className="container col-xs-12">
-        <ul className="">
+        <ul className="main-text">
           {this.renderList()}
         </ul>
       </div>

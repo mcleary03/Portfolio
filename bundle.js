@@ -106331,23 +106331,35 @@ var Projects = function (_Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        null,
+        { className: 'row' },
         _react2.default.createElement(
-          'button',
-          { id: 'prev', onClick: this.changeProject },
-          'PREV'
+          'div',
+          {
+            id: 'next',
+            onClick: this.changeProject,
+            className: 'projectsListButton col-md-2'
+          },
+          _react2.default.createElement('i', { className: 'fa fa-3x fa-chevron-left' })
         ),
         _react2.default.createElement(
-          'button',
-          { id: 'next', onClick: this.changeProject },
-          'NEXT'
+          'div',
+          { className: 'col-md-8' },
+          _react2.default.createElement(
+            'h1',
+            { className: 'text-center' },
+            'Recent Projects'
+          ),
+          this.renderList()[this.listIndex]
         ),
         _react2.default.createElement(
-          'h1',
-          { className: 'text-center' },
-          'Recent Projects'
-        ),
-        this.renderList()[this.listIndex]
+          'div',
+          {
+            id: 'next',
+            onClick: this.changeProject,
+            className: 'projectsListButton col-md-2'
+          },
+          _react2.default.createElement('i', { className: 'fa fa-3x fa-chevron-right' })
+        )
       );
     }
   }]);
@@ -122131,7 +122143,7 @@ var Skills = function (_Component) {
         { className: 'container col-xs-12' },
         _react2.default.createElement(
           'ul',
-          { className: '' },
+          { className: 'main-text' },
           this.renderList()
         )
       );
@@ -135771,7 +135783,7 @@ var Card = function (_Component) {
           { className: 'col-xs-6' },
           _react2.default.createElement(
             'p',
-            { className: 'justify-content-space-between' },
+            { className: 'main-text justify-content-space-between' },
             this.description
           )
         )
@@ -135877,7 +135889,7 @@ var skillsReducer = function skillsReducer() {
 exports.default = skillsReducer;
 
 
-var SKILLS = ['JavaScript', 'React', 'Redux', 'Node', 'Express', 'Passport', 'Ruby', 'Rails', 'HTML', 'CSS', 'Bootstrap', 'SQL', 'PostgreSQL', 'MongoDB'];
+var SKILLS = ['JavaScript', 'React', 'Redux', 'Node', 'Express', 'Passport', 'A-Frame', 'Ruby', 'Rails', 'HTML', 'CSS', 'Bootstrap', 'SQL', 'MongoDB'];
 
 /***/ }),
 /* 712 */
@@ -136134,7 +136146,7 @@ var Header = function (_Component) {
                 { className: 'nav nav-item' },
                 _react2.default.createElement(
                   'a',
-                  { className: 'nav-link ' },
+                  { className: 'nav-link' },
                   _react2.default.createElement('i', { className: 'fa fa-info-circle' }),
                   _react2.default.createElement(
                     'strong',
@@ -136145,10 +136157,10 @@ var Header = function (_Component) {
               ),
               _react2.default.createElement(
                 'li',
-                { className: 'nav-item' },
+                { className: 'nav nav-item' },
                 _react2.default.createElement(
                   'a',
-                  { className: 'nav-link ' },
+                  { className: 'nav-link' },
                   _react2.default.createElement('i', { className: 'fa fa-folder-open' }),
                   _react2.default.createElement(
                     'strong',
@@ -136159,10 +136171,10 @@ var Header = function (_Component) {
               ),
               _react2.default.createElement(
                 'li',
-                { className: 'nav-item' },
+                { className: 'nav nav-item' },
                 _react2.default.createElement(
                   'a',
-                  { className: 'nav-link ' },
+                  { className: 'nav-link' },
                   _react2.default.createElement('i', { className: 'fa fa-envelope' }),
                   _react2.default.createElement(
                     'strong',
@@ -136173,10 +136185,10 @@ var Header = function (_Component) {
               ),
               _react2.default.createElement(
                 'li',
-                { className: 'nav-item' },
+                { className: 'nav nav-item' },
                 _react2.default.createElement(
                   'a',
-                  { className: 'nav-link ' },
+                  { className: 'nav-link' },
                   _react2.default.createElement('i', { className: 'fa fa-code' }),
                   _react2.default.createElement(
                     'strong',

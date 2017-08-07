@@ -37,19 +37,19 @@ class Header extends Component {
 
           <div id="Navbar" className="collapse navbar-collapse flex">
             <ul className="nav navbar-nav nav-pills nav-justify" onClick={this.changeDisplay}>
-              <li className="nav nav-item"><a className='nav-link '>
+              <li className="nav nav-item"><a className='nav-link'>
                 <i className="fa fa-info-circle"/>
                 <strong>About</strong>
               </a></li>
-            <li className="nav-item"><a className='nav-link '>
+            <li className="nav nav-item"><a className='nav-link'>
                 <i className="fa fa-folder-open"/>
                 <strong>Projects</strong>
               </a></li>
-              <li className="nav-item"><a className='nav-link '>
+            <li className="nav nav-item"><a className='nav-link'>
                 <i className="fa fa-envelope"/>
                 <strong>Contact</strong>
               </a></li>
-              <li className="nav-item"><a className='nav-link '>
+            <li className="nav nav-item"><a className='nav-link'>
                 <i className="fa fa-code"/>
                 <strong>AFrame</strong>
               </a></li>

@@ -21,12 +21,12 @@ const SKILLS = [
   'Node',
   'Express',
   'Passport',
+  'A-Frame',
   'Ruby',
   'Rails',
   'HTML',
   'CSS',
   'Bootstrap',
   'SQL',
-  'PostgreSQL',
   'MongoDB'
 ]

@@ -27,7 +27,9 @@ export default class Card extends Component {
           </div>
         </div>
         <div className='col-xs-6'>
-          <p className='justify-content-space-between'>{this.description}</p>
+          <p className='main-text justify-content-space-between'>
+            {this.description}
+          </p>
         </div>
       </div>
     )

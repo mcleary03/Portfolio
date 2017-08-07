@@ -1,4 +1,5 @@
 body {
+  font-family: 'Cinzel', serif;
   margin: 5vh 0 0 0;
   background-image: url(../images/footer_lodyas.png);
   color: #FFF;
@@ -29,7 +30,7 @@ body {
 #Card img {
   height: 25rem;
   border: 10px solid rgba(0,0,0,0);
-  border-radius: 5%;
+  border-radius: 5vh 5vw;
 }
 
 #Card :hover {
@@ -55,7 +56,28 @@ ul {
   list-style-type: none;
 }
 
+i {
+  padding-right: 5px;
+}
+
 #VRScene {
   height: 95vh;
   width: 100vw;
+}
+
+.projectsListButton {
+  background-color: rgba(0,0,0,0);
+  height: 95vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.projectsListButton:hover {
+    cursor: pointer;
+    color: #CCF;
+}
+
+.main-text {
+  font-family: 'Varela', sans-serif;
 }
