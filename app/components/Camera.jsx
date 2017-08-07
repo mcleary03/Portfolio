@@ -10,9 +10,10 @@ export default props => (
     <Entity
       camera
       look-controls
-      wasd-controls />
+      wasd-controls
+      gearvr-controls/>
     <Entity
       laser-controls="hand: right"
-      position="0.1 -0.6 -0.15" />
+      position="0.1 -0.6 -0.5" />
   </Entity>
 )
