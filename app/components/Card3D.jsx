@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Entity } from 'aframe-react';
-import 'aframe-orbit-controls-component'
+import 'aframe-orbit-controls-component-2'
 import '../scripts'
 
 export default class Card3D extends Component {

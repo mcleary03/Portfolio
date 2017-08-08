@@ -5,31 +5,32 @@ export default class Card extends Component {
     super(props)
 
     this.click = this.click.bind(this)
-    this.name = this.props.project.name
-    this.img = this.props.project.img
-    this.description = this.props.project.description
   }
 
   click(event) {
-    event.preventDefault()
+    // event.preventDefault()
     console.log(`Clicked ${this.name}`)
   }
 
   render() {
+    const { name, img, description, github } = this.props.project
+
     return(
-      <div id='Card' className='text-center vcenter' onClick={this.click}>
-        <div className='col-sm-6'>
+      <div id='Card' className='text-center' onClick={this.click}>
+        <div className='container-fluid'>
           <div>
-            <img src={this.img}/>
+            <img src={img}/>
           </div>
           <div>
-            <h2>{this.name}</h2>
+            <h2>{name}</h2>
           </div>
-        </div>
-        <div className='col-sm-6'>
           <p className='main-text'>
-            {this.description}
+            {description}
           </p>
+          <a href={github}>
+            <i className='fa fa-3x fa-github-alt'/>
+            Github
+          </a>
         </div>
       </div>
     )

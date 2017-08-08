@@ -4,7 +4,6 @@ import displayReducer from '../reducers'
 import { setDisplay } from '../actions'
 import 'aframe'
 import { Entity, Scene } from 'aframe-react'
-import 'aframe-orbit-controls-component'
 import '../scripts'
 
 class Button3D extends Component {
@@ -16,7 +15,7 @@ class Button3D extends Component {
 
   changeDisplay(event) {
     event.preventDefault()
-    let scene = document.querySelector('Scene');
+    const scene = document.querySelector('#VRScene');
     scene.setAttribute('exit-vr')
     this.props.setDisplay('About')
   }
@@ -24,28 +23,26 @@ class Button3D extends Component {
   render() {
     return (
       <Entity
-        geometry='
-          primitive: box;
-          width: 0.5;
-          height: 0.3;
-          depth: 0.15'
-        material='
-          color: #CCF;
-          opacity: 0.5'
-        change-scale-on-hover='scale: 1.1 1.1 1.1'
-        orbit-controls
-        target='#Camera'
-        distance='2'
-        events={{buttondown: this.changeDisplay}}
+        position='0 -0.6 -1'
       >
-      <Entity
-        text='
-          value: Go Home;
-          align: center;
-          zOffset: 0.001;
-          side: double'
-        rotation='0 180 0'
-      />
+        <Entity
+          events={{ click: this.changeDisplay }}
+          text='
+            value: Go Home;
+            align: center;
+            zOffset: 0.001;
+            side: double'
+          geometry='
+            primitive: box;
+            width: 0.5;
+            height: 0.3;
+            depth: 0.15'
+          material='
+            color: #CCF;
+            opacity: 0.5'
+          change-scale-on-hover='scale: 1.1 1.1 1.1'
+          rotation='-70 0 0'
+        />
       </Entity>
     )
   }

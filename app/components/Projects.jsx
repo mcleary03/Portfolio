@@ -40,7 +40,7 @@ class Projects extends Component {
           onClick={this.changeProject}
           className='projectsListButton col-md-2'
         >
-          <i className='fa fa-3x fa-chevron-left'/>
+          <i className='fa fa-3x fa-angle-left'/>
         </div>
         <div className='col-md-8'>
           <h1 className='text-center'>Recent Projects</h1>
@@ -51,7 +51,7 @@ class Projects extends Component {
           onClick={this.changeProject}
           className='projectsListButton col-md-2'
         >
-          <i className='fa fa-3x fa-chevron-right'/>
+          <i className='fa fa-3x fa-angle-right'/>
         </div>
       </div>
     )

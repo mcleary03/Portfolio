@@ -3,6 +3,7 @@ import 'babel-polyfill';
 import React, { Component } from 'react'
 import { Entity } from 'aframe-react';
 import 'aframe-physics-system'
+import 'aframe-orbit-controls-component-2'
 import '../scripts'
 
 export default class Planet extends Component {
@@ -11,22 +12,21 @@ export default class Planet extends Component {
   }
 
   render() {
-    const { id, radius, material, altScale } = this.props.planet
+    const { id, radius, material, altScale, autoRotateSpeed } = this.props.planet
     const { x, y, z } = this.props.planet.position
     const { dur, loop, property, to, easing } = this.props.planet.animation
 
 
     return (
       <Entity
+        orbit-controls={{
+          autoRotate: true,
+          target: '#Sun',
+          autoRotateSpeed,
+          distance: 54.5 + x
+        }}
         position={ `${x} ${y} ${z}` }
         static-body
-        animation={{
-          loop: true,
-          dur,
-          property,
-          to,
-          easing
-        }}
         change-scale-on-hover={{scale: altScale}}
       >
         <Entity
@@ -40,6 +40,13 @@ export default class Planet extends Component {
           material={{
             src: material.src,
             shader: material.shader
+          }}
+          animation={{
+            loop: true,
+            dur,
+            property,
+            to,
+            easing
           }}
         />
       </Entity>

@@ -21,6 +21,7 @@ const PLANETS = [
   {
     id: 'Mercury',
     radius: 0.19,
+    autoRotateSpeed: 4.787,
     material: {
       src: 'https://cdn.glitch.com/342beffd-f89e-4737-b3a9-73216740a52d%2Ftexture_mercury.jpg?1493695081322',
       shader: 'standard'
@@ -37,6 +38,7 @@ const PLANETS = [
   {
     id: 'Venus',
     radius: 0.475,
+    autoRotateSpeed: 3.502,
     material: {
       src: 'https://cdn.glitch.com/342beffd-f89e-4737-b3a9-73216740a52d%2Ftexture_venus_atmosphere.jpg?1493695304768',
       shader: 'standard'
@@ -53,6 +55,7 @@ const PLANETS = [
   {
     id: 'Earth',
     radius: 0.5,
+    autoRotateSpeed: 2.978,
     material: {
       src: 'https://cdn.glitch.com/342beffd-f89e-4737-b3a9-73216740a52d%2Ftexture_earth_clouds.jpg?1493695248913',
       shader: 'standard'
@@ -69,6 +72,7 @@ const PLANETS = [
   {
     id: 'Mars',
     radius: 0.265,
+    autoRotateSpeed: 2.408,
     material: {
       src: 'https://cdn.glitch.com/342beffd-f89e-4737-b3a9-73216740a52d%2Ftexture_mars.jpg?1493695397580',
       shader: 'standard'
@@ -85,6 +89,7 @@ const PLANETS = [
   {
     id: 'Jupiter',
     radius: 5.595,
+    autoRotateSpeed: 1.307,
     material: {
       src: 'https://cdn.glitch.com/342beffd-f89e-4737-b3a9-73216740a52d%2Ftexture_jupiter.jpg?1493695529355',
       shader: 'standard'
@@ -101,6 +106,7 @@ const PLANETS = [
   {
     id: 'Saturn',
     radius: 4.7,
+    autoRotateSpeed: 0.969,
     material: {
       src: 'https://cdn.glitch.com/342beffd-f89e-4737-b3a9-73216740a52d%2Ftexture_saturn.jpg?1493695550676',
       shader: 'standard'
@@ -117,6 +123,7 @@ const PLANETS = [
   {
     id: 'Uranus',
     radius: 2.02,
+    autoRotateSpeed: 0.681,
     material: {
       src: 'https://cdn.glitch.com/342beffd-f89e-4737-b3a9-73216740a52d%2Ftexture_uranus.jpg?1493695576218',
       shader: 'standard'
@@ -133,6 +140,7 @@ const PLANETS = [
   {
     id: 'Neptune',
     radius: 1.94,
+    autoRotateSpeed: 0.543,
     material: {
       src: 'https://cdn.glitch.com/342beffd-f89e-4737-b3a9-73216740a52d%2Ftexture_neptune.jpg?1493695599570',
       shader: 'standard'
