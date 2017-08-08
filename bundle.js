@@ -136474,8 +136474,20 @@ var Card = function (_Component) {
           name = _props$project.name,
           img = _props$project.img,
           description = _props$project.description,
-          github = _props$project.github;
+          github = _props$project.github,
+          live = _props$project.live;
 
+
+      var liveDemo = live !== undefined ? _react2.default.createElement(
+        'div',
+        { className: 'row' },
+        _react2.default.createElement(
+          'a',
+          { href: live },
+          _react2.default.createElement('i', { className: 'fa fa-3x fa-play-circle' }),
+          'Live Demo'
+        )
+      ) : _react2.default.createElement('div', null);
 
       return _react2.default.createElement(
         'div',
@@ -136492,7 +136504,7 @@ var Card = function (_Component) {
             'div',
             null,
             _react2.default.createElement(
-              'h2',
+              'h1',
               null,
               name
             )
@@ -136507,7 +136519,8 @@ var Card = function (_Component) {
             { href: github },
             _react2.default.createElement('i', { className: 'fa fa-3x fa-github-alt' }),
             'Github'
-          )
+          ),
+          liveDemo
         )
       );
     }
@@ -136562,7 +136575,7 @@ var PROJECTS = [{
   name: 'Hype or Type',
   github: 'https://github.com/between-the-lines/client',
   img: './app/images/hypeOrType.png',
-  description: 'Team project for the first hackathon I attended.  We won third place at the Cognitive Builder Faire.  Hype or Type takes real-time twitter data, runs it through IBM Watson Sentiment Analysis and maps the output in the form of emojis across a Google map display according to location that the tweet was sent from.  Data points cluster and show general feelings in areas as you zoom out.  With this app, users can see at a glance what people think about a topic right now and can get a high level view of the distribution of feedback.  I worked on the front-end dealing with planning, styling, rendering output from API calls.'
+  description: 'This was my first team project and first attempt at a hackathon.  Using IBM Watson Sentiment Analysis and a few other APIs, we display the general feeling about a topic using real-time Twitter data.  Emojis represent location and sentiment about the topic in a tweet or cluster of tweets depending on zoom level.  I was involved in planning, API integration, front-end development and design.'
 }, {
   name: 'YelpCamp',
   github: 'https://github.com/mcleary03/YelpCamp',

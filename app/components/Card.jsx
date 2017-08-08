@@ -13,7 +13,16 @@ export default class Card extends Component {
   }
 
   render() {
-    const { name, img, description, github } = this.props.project
+    const { name, img, description, github, live } = this.props.project
+
+    let liveDemo = live !== undefined ? (
+      <div className='row'>
+        <a href={live}>
+          <i className='fa fa-3x fa-play-circle'/>
+          Live Demo
+        </a>
+      </div>
+    ) : <div/>
 
     return(
       <div id='Card' className='text-center' onClick={this.click}>
@@ -22,7 +31,7 @@ export default class Card extends Component {
             <img src={img}/>
           </div>
           <div>
-            <h2>{name}</h2>
+            <h1>{name}</h1>
           </div>
           <p className='main-text'>
             {description}
@@ -31,6 +40,7 @@ export default class Card extends Component {
             <i className='fa fa-3x fa-github-alt'/>
             Github
           </a>
+          { liveDemo }
         </div>
       </div>
     )
