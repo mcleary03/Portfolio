@@ -34,22 +34,22 @@ class Projects extends Component {
 
   render() {
     return (
-      <div className='row'>
+      <div className='row text-center'>
         <div
           id='next'
           onClick={this.changeProject}
-          className='projectsListButton col-md-2'
+          className='projectsListButton col-md-2 col-xs-1'
         >
           <i className='fa fa-3x fa-angle-left'/>
         </div>
-        <div className='col-md-8'>
+        <div className='col-md-8 col-xs-10'>
           <h1 className='text-center'>Recent Projects</h1>
           {this.renderList()[this.listIndex]}
         </div>
         <div
           id='next'
           onClick={this.changeProject}
-          className='projectsListButton col-md-2'
+          className='projectsListButton col-md-2 col-xs-1'
         >
           <i className='fa fa-3x fa-angle-right'/>
         </div>

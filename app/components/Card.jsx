@@ -9,15 +9,15 @@ export default class Card extends Component {
 
   click(event) {
     // event.preventDefault()
-    console.log(`Clicked ${this.name}`)
+    // TODO add other functionality to projects when clicked
   }
 
   render() {
     const { name, img, description, github, live } = this.props.project
 
     let liveDemo = live !== undefined ? (
-      <div className='row'>
-        <a href={live}>
+      <div className='link'>
+        <a href={ live }>
           <i className='fa fa-3x fa-play-circle'/>
           Live Demo
         </a>
@@ -28,19 +28,21 @@ export default class Card extends Component {
       <div id='Card' className='text-center' onClick={this.click}>
         <div className='container-fluid'>
           <div>
-            <img src={img}/>
+            <a href={ live || github }><img src={img}/></a>
           </div>
           <div>
-            <h1>{name}</h1>
+            <a href={ live || github }><h1>{name}</h1></a>
           </div>
           <p className='main-text'>
             {description}
           </p>
-          <a href={github}>
-            <i className='fa fa-3x fa-github-alt'/>
-            Github
-          </a>
-          { liveDemo }
+          <div className='col-md-12'>
+            { liveDemo }
+            <a className='link' href={github}>
+              <i className='fa fa-3x fa-github-alt'/>
+              Github
+            </a>
+          </div>
         </div>
       </div>
     )

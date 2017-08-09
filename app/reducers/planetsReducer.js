@@ -1,8 +1,6 @@
 import merge from 'lodash/merge'
 
 const planetsReducer = (state = {planets: PLANETS}, action) => {
-  console.log('planets state:')
-  console.log(state)
   Object.freeze(state)
 
   switch(action.type) {

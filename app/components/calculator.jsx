@@ -20,8 +20,6 @@ export default class Calculator extends Component {
 
   setResult(e) {
     this.setState({result: Number(this.state.result) + Number(this.state.input)})
-    console.log('result: ' + this.state.result)
-    console.log('value: ' + e.target.value)
   }
 
   click(e) {
@@ -29,7 +27,6 @@ export default class Calculator extends Component {
     this.setState({operator: e.target.innerHTML})
     this.setState({result: Number(this.state.result) + Number(this.state.input)})
     this.setState({input: ''})
-    console.log(this.state.result, this.state.operator)
   }
 
   render() {

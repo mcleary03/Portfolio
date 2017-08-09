@@ -102055,10 +102055,6 @@ var _Skills = __webpack_require__(482);
 
 var _Skills2 = _interopRequireDefault(_Skills);
 
-var _Button3D = __webpack_require__(483);
-
-var _Button3D2 = _interopRequireDefault(_Button3D);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -102081,10 +102077,10 @@ var About = function (_Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: 'about row text-center' },
+        { className: 'about text-center' },
         _react2.default.createElement(
           'div',
-          { className: 'col-md-6 col-sm-12' },
+          { className: 'row' },
           _react2.default.createElement(
             'h1',
             null,
@@ -102094,12 +102090,44 @@ var About = function (_Component) {
             'h2',
             null,
             'Full-Stack Developer'
-          ),
-          _react2.default.createElement('img', { className: 'img-circle', src: './app/images/profile_pic.png' })
+          )
         ),
         _react2.default.createElement(
           'div',
-          { className: 'col-md-6 col-sm-12' },
+          { className: 'row' },
+          _react2.default.createElement(
+            'div',
+            { className: 'col-md-6 col-sm-12' },
+            _react2.default.createElement('img', { className: 'img-circle', src: './app/images/profile_pic_color.jpg' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'col-md-6 col-sm-12' },
+            _react2.default.createElement(
+              'div',
+              { className: 'row' },
+              _react2.default.createElement(
+                'a',
+                { href: 'https://github.com/mcleary03' },
+                'Github',
+                _react2.default.createElement('i', { className: 'link fa fa-github' })
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'row' },
+              _react2.default.createElement(
+                'a',
+                { href: 'https://www.linkedin.com/in/michaelgcleary/' },
+                'Linkedin',
+                _react2.default.createElement('i', { className: 'link fa fa-linkedin-square' })
+              )
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'row' },
           _react2.default.createElement(
             'h2',
             null,
@@ -106335,19 +106363,19 @@ var Projects = function (_Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: 'row' },
+        { className: 'row text-center' },
         _react2.default.createElement(
           'div',
           {
             id: 'next',
             onClick: this.changeProject,
-            className: 'projectsListButton col-md-2'
+            className: 'projectsListButton col-md-2 col-xs-1'
           },
           _react2.default.createElement('i', { className: 'fa fa-3x fa-angle-left' })
         ),
         _react2.default.createElement(
           'div',
-          { className: 'col-md-8' },
+          { className: 'col-md-8 col-xs-10' },
           _react2.default.createElement(
             'h1',
             { className: 'text-center' },
@@ -106360,7 +106388,7 @@ var Projects = function (_Component) {
           {
             id: 'next',
             onClick: this.changeProject,
-            className: 'projectsListButton col-md-2'
+            className: 'projectsListButton col-md-2 col-xs-1'
           },
           _react2.default.createElement('i', { className: 'fa fa-3x fa-angle-right' })
         )
@@ -119906,7 +119934,7 @@ var App = function (_Component) {
           { className: 'fullscreen-bg' },
           _react2.default.createElement(
             'video',
-            { loop: true, muted: true, autoPlay: true, poster: 'img/videoframe.jpg', className: 'fullscreen-bg__video' },
+            { loop: true, muted: true, autoPlay: true, className: 'fullscreen-bg__video' },
             _react2.default.createElement('source', {
               src: './app/images/City_at_night__SaveYouTube_com_.mp4',
               type: 'video/mp4' })
@@ -119954,6 +119982,10 @@ var _AFrame = __webpack_require__(243);
 
 var _AFrame2 = _interopRequireDefault(_AFrame);
 
+var _Contact = __webpack_require__(714);
+
+var _Contact2 = _interopRequireDefault(_Contact);
+
 var _Projects = __webpack_require__(286);
 
 var _Projects2 = _interopRequireDefault(_Projects);
@@ -119981,6 +120013,8 @@ var newDisplay = function newDisplay(action) {
       return _react2.default.createElement(_About2.default, null);
     case 'Projects':
       return _react2.default.createElement(_Projects2.default, null);
+    case 'Contact':
+      return _react2.default.createElement(_Contact2.default, null);
     case 'A-Frame':
       return _react2.default.createElement(_AFrame2.default, null);
     default:
@@ -122183,96 +122217,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Skills);
 
 /***/ }),
-/* 483 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(15);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = __webpack_require__(58);
-
-var _reducers = __webpack_require__(46);
-
-var _reducers2 = _interopRequireDefault(_reducers);
-
-var _actions = __webpack_require__(89);
-
-__webpack_require__(90);
-
-var _aframeReact = __webpack_require__(47);
-
-__webpack_require__(242);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Button3D = function (_Component) {
-  _inherits(Button3D, _Component);
-
-  function Button3D() {
-    _classCallCheck(this, Button3D);
-
-    var _this = _possibleConstructorReturn(this, (Button3D.__proto__ || Object.getPrototypeOf(Button3D)).call(this));
-
-    _this.changeDisplay = _this.changeDisplay.bind(_this);
-    return _this;
-  }
-
-  _createClass(Button3D, [{
-    key: 'changeDisplay',
-    value: function changeDisplay(event) {
-      event.preventDefault();
-      var scene = document.querySelector('#VRScene');
-      scene.setAttribute('exit-vr');
-      this.props.setDisplay('About');
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        _aframeReact.Entity,
-        {
-          position: '0 -0.6 -1'
-        },
-        _react2.default.createElement(_aframeReact.Entity, {
-          events: { click: this.changeDisplay },
-          text: ' value: Go Home; align: center; zOffset: 0.001; side: double',
-          geometry: ' primitive: box; width: 0.5; height: 0.3; depth: 0.15',
-          material: ' color: #CCF; opacity: 0.5',
-          'change-scale-on-hover': 'scale: 1.1 1.1 1.1',
-          rotation: '-70 0 0'
-        })
-      );
-    }
-  }]);
-
-  return Button3D;
-}(_react.Component);
-
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return { setDisplay: function setDisplay(display) {
-      return dispatch((0, _actions.setDisplay)(display));
-    } };
-};
-
-exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(Button3D);
-
-/***/ }),
+/* 483 */,
 /* 484 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -136465,7 +136410,7 @@ var Card = function (_Component) {
     key: 'click',
     value: function click(event) {
       // event.preventDefault()
-      console.log('Clicked ' + this.name);
+      // TODO add other functionality to projects when clicked
     }
   }, {
     key: 'render',
@@ -136480,7 +136425,7 @@ var Card = function (_Component) {
 
       var liveDemo = live !== undefined ? _react2.default.createElement(
         'div',
-        { className: 'row' },
+        { className: 'link' },
         _react2.default.createElement(
           'a',
           { href: live },
@@ -136498,15 +136443,23 @@ var Card = function (_Component) {
           _react2.default.createElement(
             'div',
             null,
-            _react2.default.createElement('img', { src: img })
+            _react2.default.createElement(
+              'a',
+              { href: live || github },
+              _react2.default.createElement('img', { src: img })
+            )
           ),
           _react2.default.createElement(
             'div',
             null,
             _react2.default.createElement(
-              'h1',
-              null,
-              name
+              'a',
+              { href: live || github },
+              _react2.default.createElement(
+                'h1',
+                null,
+                name
+              )
             )
           ),
           _react2.default.createElement(
@@ -136515,12 +136468,16 @@ var Card = function (_Component) {
             description
           ),
           _react2.default.createElement(
-            'a',
-            { href: github },
-            _react2.default.createElement('i', { className: 'fa fa-3x fa-github-alt' }),
-            'Github'
-          ),
-          liveDemo
+            'div',
+            { className: 'col-md-12' },
+            liveDemo,
+            _react2.default.createElement(
+              'a',
+              { className: 'link', href: github },
+              _react2.default.createElement('i', { className: 'fa fa-3x fa-github-alt' }),
+              'Github'
+            )
+          )
         )
       );
     }
@@ -136569,31 +136526,19 @@ exports.default = projectsReducer;
 var PROJECTS = [{
   name: 'Portfolio',
   github: 'https://github.com/mcleary03/Portfolio',
-  img: 'https://facebook.github.io/react/img/logo.svg',
+  img: './app/images/portfolio.gif',
   description: 'The app you are seeing right now is built with React using Redux, A-Frame VR, Bootstrap, and ES6 JavaScript.  Try clicking on the A-Frame button above to see my integration of React with A-Frame (everything in the scene is a React component).  I have Redux keeping track of the state of my app and currently, styling is done with Bootstrap.'
 }, {
   name: 'Hype or Type',
   github: 'https://github.com/between-the-lines/client',
-  img: './app/images/hypeOrType.png',
+  img: './app/images/hypeOrType.gif',
   description: 'This was my first team project and first attempt at a hackathon.  Using IBM Watson Sentiment Analysis and a few other APIs, we display the general feeling about a topic using real-time Twitter data.  Emojis represent location and sentiment about the topic in a tweet or cluster of tweets depending on zoom level.  I was involved in planning, API integration, front-end development and design.'
 }, {
   name: 'YelpCamp',
   github: 'https://github.com/mcleary03/YelpCamp',
   live: 'https://immense-thicket-93896.herokuapp.com/',
-  img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/2000px-Unofficial_JavaScript_logo_2.svg.png',
+  img: './app/images/yelpCamp.gif',
   description: 'Campground information and review app.  Written in HTML and JavaScript with Express for RESTful routing, MongoDB for the database and Passport for authentication.  Users can sign up, log in, add campgrounds or comment on others.  Users can then edit and delete campgrounds and comments that belong to them.'
-}, {
-  name: 'sdfghsdf',
-  github: 'https://github.com/mcleary03/Portfolio',
-  img: 'https://i1.wp.com/blog.kloud51.com/wp-content/uploads/2015/06/ruby-on-rails.jpg?resize=480%2C480&ssl=1'
-}, {
-  name: 'asdf',
-  github: 'https://github.com/mcleary03/Portfolio',
-  img: 'https://facebook.github.io/react/img/logo.svg'
-}, {
-  name: 'asdfasd',
-  github: 'https://github.com/mcleary03/Portfolio',
-  img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/2000px-Unofficial_JavaScript_logo_2.svg.png'
 }];
 
 /***/ }),
@@ -136654,8 +136599,6 @@ var planetsReducer = function planetsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { planets: PLANETS };
   var action = arguments[1];
 
-  console.log('planets state:');
-  console.log(state);
   Object.freeze(state);
 
   switch (action.type) {
@@ -137027,9 +136970,6 @@ var Display = function (_Component) {
   _createClass(Display, [{
     key: 'render',
     value: function render() {
-      console.log('state:');
-      console.log(this.props);
-
       if (this.props.vr && this.props.display.type.name == 'AFrame') {
         return _react2.default.createElement(
           'div',
@@ -137064,6 +137004,94 @@ var Display = function (_Component) {
 }(_react.Component);
 
 exports.default = Display;
+
+/***/ }),
+/* 714 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(15);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Contact = function (_Component) {
+  _inherits(Contact, _Component);
+
+  function Contact() {
+    _classCallCheck(this, Contact);
+
+    return _possibleConstructorReturn(this, (Contact.__proto__ || Object.getPrototypeOf(Contact)).call(this));
+  }
+
+  _createClass(Contact, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'text-center' },
+        _react2.default.createElement(
+          'div',
+          { className: 'main-text' },
+          _react2.default.createElement(
+            'h1',
+            null,
+            'Contact Me'
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            'I am seeking opportunities to grow as a developer.'
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'main-text' },
+          _react2.default.createElement(
+            'a',
+            { href: 'mailto:mcleary03@gmail.com' },
+            'mcleary03@gmail.com'
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'row' },
+          _react2.default.createElement(
+            'a',
+            { href: 'https://github.com/mcleary03' },
+            'Github',
+            _react2.default.createElement('i', { className: 'link fa fa-github' })
+          ),
+          _react2.default.createElement(
+            'a',
+            { href: 'https://www.linkedin.com/in/michaelgcleary/' },
+            'Linkedin',
+            _react2.default.createElement('i', { className: 'link fa fa-linkedin-square' })
+          )
+        )
+      );
+    }
+  }]);
+
+  return Contact;
+}(_react.Component);
+
+exports.default = Contact;
 
 /***/ })
 /******/ ]);

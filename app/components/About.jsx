@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { setSkills } from '../reducers'
 import Skills from './Skills'
-import Button3D from './Button3D'
 
 export default class About extends Component {
   constructor() {
@@ -10,15 +9,30 @@ export default class About extends Component {
 
   render() {
     return (
-      <div className='about row text-center'>
-        <div className='col-md-6 col-sm-12'>
+      <div className='about text-center'>
+
+        <div className='row'>
           <h1>Michael Cleary</h1>
           <h2>Full-Stack Developer</h2>
-          <img className='img-circle' src='./app/images/profile_pic.png'/>
         </div>
-        <div className='col-md-6 col-sm-12'>
+
+        <div className='row'>
+          <div className='col-md-6 col-sm-12'>
+            <img className='img-circle' src='./app/images/profile_pic_color.jpg'/>
+          </div>
+          <div className='col-md-6 col-sm-12'>
+            <div className='row'>
+              <a href='https://github.com/mcleary03'>Github<i className='link fa fa-github' /></a>
+            </div>
+            <div className='row'>
+              <a href='https://www.linkedin.com/in/michaelgcleary/'>Linkedin<i className='link fa fa-linkedin-square' /></a>
+            </div>
+          </div>
+        </div>
+
+        <div className='row'>
           <h2>Skills</h2>
-            <Skills />
+          <Skills />
         </div>
       </div>
     )

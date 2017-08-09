@@ -13,9 +13,6 @@ export default class Display extends Component {
   }
 
   render() {
-    console.log('state:')
-    console.log(this.props)
-
     if (this.props.vr && this.props.display.type.name == 'AFrame') {
       return (
         <div>

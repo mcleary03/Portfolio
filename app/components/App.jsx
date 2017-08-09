@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <div>
         <div className="fullscreen-bg">
-          <video loop muted autoPlay poster="img/videoframe.jpg" className="fullscreen-bg__video">
+          <video loop muted autoPlay className="fullscreen-bg__video">
             <source
               src="./app/images/City_at_night__SaveYouTube_com_.mp4"
               type="video/mp4" />
