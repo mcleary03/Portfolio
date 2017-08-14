@@ -36,7 +36,7 @@ class Projects extends Component {
     return (
       <div className='row text-center'>
         <div
-          id='next'
+          id='prev'
           onClick={this.changeProject}
           className='projectsListButton col-md-2 col-xs-1'
         >
@@ -44,7 +44,7 @@ class Projects extends Component {
         </div>
         <div className='col-md-8 col-xs-10'>
           <h1 className='text-center'>Recent Projects</h1>
-          {this.renderList()[this.listIndex]}
+          { this.renderList()[this.listIndex] }
         </div>
         <div
           id='next'

@@ -7,6 +7,7 @@ body {
 .navbar {
   background-color: rgba(0, 0, 0, 0.1);
   height: 5vh;
+  font-size: 1.5rem;
 }
 
 #Navbar ul :hover {
@@ -19,9 +20,10 @@ body {
 
 #main-display {
   margin: 5vh 0;
-  background-color: rgba(20, 20, 20, 0.6);
+  background-color: rgba(10, 10, 10, 0.6);
   border: solid 1px rgba(0, 0, 0, 0.4);
   border-radius: 3%;
+  padding-bottom: 5vh;
 }
 
 #Card {
@@ -35,7 +37,7 @@ body {
   border: 10px solid rgba(0,0,0,0);
 }
 
-#Card img:hover {
+#Card img :hover {
   cursor: pointer;
   border: 4px solid rgba(180,180,255,0.7);
   border-radius: 5px;
@@ -46,13 +48,9 @@ body {
   color: #BBF;
 }
 
-.about {
-  height: 85vh;
-}
-
 .link {
   margin: 10px;
-  font-size: 4em
+  font-size: 20px;
 }
 
 .about img {
@@ -104,7 +102,11 @@ i {
 
 .fullscreen-bg__video {
     position: absolute;
-    top: 0;
-    left: 0;
-    height: 100vmax;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%,-50%);
 }
