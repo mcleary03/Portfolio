@@ -1,11 +1,10 @@
 import 'aframe';
-import 'aframe-animation-component';
 import 'babel-polyfill';
 import { Entity, Scene } from 'aframe-react';
 import React, { Component } from 'react'
 import Projects from './Projects'
 import About from './About'
-import AFrame from './AFrame'
+import AFrame from './AFrameComponents/AFrame'
 
 export default class Display extends Component {
   constructor() {
@@ -13,28 +12,12 @@ export default class Display extends Component {
   }
 
   render() {
-    if (this.props.vr && this.props.display.type.name == 'AFrame') {
-      return (
-        <div>
-          <Scene
-            id='VRScene'
-            embedded
-            light="defaultLightsEnabled: false"
-          >
-            {this.props.display}
-          </Scene>
+    return (
+      <div id='main-display'>
+        <div className='container'>
+          {this.props.display}
         </div>
-      )
-    } else {
-      return (
-        <div>
-          <div className='sidebar col-md-2'></div>
-          <div id='main-display' className='col-md-8'>
-            {this.props.display}
-          </div>
-          <div className='sidebar col-md-2'></div>
-        </div>
-      )
-    }
+      </div>
+    )
   }
 }

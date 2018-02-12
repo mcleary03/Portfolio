@@ -16,6 +16,7 @@ export default skillsReducer
 
 const SKILLS = [
   'JavaScript',
+  'jQuery',
   'React',
   'Redux',
   'Node',

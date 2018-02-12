@@ -1,14 +1,34 @@
 {
-  "name": "portfolio",
+  "name": "Portfolio",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build-css": "node-sass-chokidar app/styles/  -o app/styles/",
+    "watch-css": "npm run build-css && node-sass-chokidar app/styles/ -o app/styles/ --watch --recursive",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --watch"
+    "start": "webpack --watch",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "michael cleary",
+    "mike cleary",
+    "web",
+    "front-end",
+    "front end",
+    "full-stack",
+    "full stack",
+    "development",
+    "javascript",
+    "es6",
+    "node",
+    "node.js",
+    "software",
+    "app",
+    "application"
+  ],
+  "author": "Michael Cleary",
   "license": "ISC",
   "dependencies": {
     "aframe": "^0.6.1",
@@ -22,11 +42,19 @@
     "babel-polyfill": "^6.3.14",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
-    "bootstrap": "^3.3.7",
-    "jquery": "^3.2.1",
+    "gh-pages": "^1.0.0",
     "lodash": "^4.17.4",
-    "react": "^15.6.1",
+    "node-sass-chokidar": "0.0.3",
+    "normalize-scss": "^7.0.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "react-redux": "^5.0.5",
     "redux": "^3.7.2"
+  },
+  "devDependencies": {
+    "@storybook/react": "^3.3.12",
+    "@storybook/addon-actions": "^3.3.12",
+    "@storybook/addon-links": "^3.3.12",
+    "@storybook/addons": "^3.3.12"
   }
 }

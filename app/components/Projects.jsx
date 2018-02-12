@@ -3,13 +3,25 @@ import { connect } from 'react-redux'
 import { projectsReducer } from '../reducers'
 import { setProjects } from '../actions'
 import Card from './Card'
+import 'material-design-icons'
 
 class Projects extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
+    this.state = {
+      listIndex: 0,
+    }
 
-    this.listIndex = 0
-    this.changeProject = this.changeProject.bind(this)
+  }
+
+  changeProject(dir) {
+    let max = this.props.projects.length
+    let i = this.state.listIndex
+
+    if (dir === 'next') i = (i + 1) % max
+    if (dir === 'prev') i = i > 0 ? i - 1 : max - 1
+
+    this.setState({ listIndex: i })
   }
 
   renderList() {
@@ -20,48 +32,37 @@ class Projects extends Component {
     )
   }
 
-  changeProject(event) {
-    let length = this.props.projects.length
-
-    if (event.target.id === 'next') {
-      this.listIndex = (this.listIndex + 1) % length
-    } else {
-      this.listIndex = this.listIndex > 0 ? this.listIndex - 1 : length - 1
-    }
-
-    this.forceUpdate()
-  }
-
   render() {
     return (
-      <div className='row text-center'>
+      <div className='projectsView grid'>
+
         <div
-          id='prev'
-          onClick={this.changeProject}
-          className='projectsListButton col-md-2 col-xs-1'
+          className='navArrow'
+          onClick={ () => this.changeProject('prev') }
         >
-          <i className='fa fa-3x fa-angle-left'/>
+          <i className="material-icons link">arrow_back</i>
         </div>
-        <div className='col-md-8 col-xs-10'>
-          <h1 className='text-center'>Recent Projects</h1>
-          { this.renderList()[this.listIndex] }
+
+        <div>
+          <h1>Recent Projects</h1>
+          { this.renderList()[this.state.listIndex] }
         </div>
+
         <div
-          id='next'
-          onClick={this.changeProject}
-          className='projectsListButton col-md-2 col-xs-1'
+          className='navArrow'
+          onClick={ () => this.changeProject('next') }
         >
-          <i className='fa fa-3x fa-angle-right'/>
+          <i className="material-icons link">arrow_forward</i>
         </div>
+
       </div>
     )
   }
 }
 
-const mapStateToProps = (state) => {
-  // CAN I ACCESS PROJECTS THROUGH PROPS FROM STORE INSTEAD?
-  return {projects: state.projectsReducer.projects}
-}
+const mapStateToProps = state => ({
+  projects: state.projectsReducer.projects
+})
 
 const mapDispatchToProps = dispatch => ({
   setProjects: projects => dispatch(setProjects(projects))

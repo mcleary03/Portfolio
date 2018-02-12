@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import displayReducer from '../reducers'
+import { displayReducer } from '../reducers'
 import Header from './Header'
+import Footer from './Footer'
 import Display from './Display'
 
 class App extends Component {
@@ -9,25 +10,19 @@ class App extends Component {
     super()
   }
 
-  render () {
+  render() {
     return (
-      <div>
-        <div className="fullscreen-bg">
-          <video loop muted autoPlay className="fullscreen-bg__video">
-            <source
-              src="./app/images/City_at_night__SaveYouTube_com_.mp4"
-              type="video/mp4" />
-          </video>
-        </div>
+      <div id='App'>
         <Header />
-        <Display display={this.props.display} vr={true} />
+        <Display className='main-display' display={this.props.display} />
+        <Footer />
       </div>
     )
   }
 }
 
-const mapStateToProps = (state) => {
-  return {display: state.displayReducer.display}
-}
+const mapStateToProps = state => (
+  { display: state.displayReducer.display }
+)
 
 export default connect(mapStateToProps)(App);

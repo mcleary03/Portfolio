@@ -11,15 +11,15 @@ class Skills extends Component {
   renderList() {
     return (
       this.props.skills.map( skill =>
-        <li key={skill} className='col-xs-6'>{skill}</li>
+        <li key={skill} className=''>{skill}</li>
       )
     )
   }
 
   render() {
     return (
-      <div className="container col-xs-12">
-        <ul className="main-text">
+      <div className="">
+        <ul className="">
           {this.renderList()}
         </ul>
       </div>
@@ -27,7 +27,7 @@ class Skills extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {skills: state.skillsReducer.skills}
 }
 

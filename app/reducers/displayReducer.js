@@ -1,7 +1,7 @@
 import React from 'react'
 import merge from 'lodash/merge'
 import About from '../components/About'
-import AFrame from '../components/AFrame'
+import AFrame from '../components/AFrameComponents/AFrame'
 import Contact from '../components/Contact'
 import Projects from '../components/Projects'
 
