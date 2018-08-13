@@ -4,17 +4,25 @@ import { displayReducer } from '../reducers'
 import Header from './Header'
 import Footer from './Footer'
 import Display from './Display'
+import Laptop from './Laptop'
+import Popup from './Popup'
 
 class App extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
+
   }
 
   render() {
     return (
       <div id='App'>
         <Header />
-        <Display className='main-display' display={this.props.display} />
+        <div id="main">
+            <Laptop></Laptop>
+          <div id="popup1">
+            <Popup></Popup>
+          </div>
+        </div>
         <Footer />
       </div>
     )
