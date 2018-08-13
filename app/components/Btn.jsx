@@ -1,161 +1,132 @@
 import React, { Component } from 'react'
-
-const colors = {
-  default: { background: '#dadada', border: '#b4b4b4', shadow: '#747474', inset: '#f4f4f4', text: '#111111' },
-  red: { background: '#f76642', border: '#e3350a', shadow: '#691804', inset: '#f98e73', text: '#ffffff' },
-  green: { background: '#42f453', border: '#0ddd21', shadow: '#06640f', inset: '#72f77f', text: '#ffffff' },
-  lightBlue: { background: '#38E4F7', border: '#09c5da', shadow: '#04565f', inset: '#69ebf9', text: '#ffffff' },
-  blue: { background: '#4286f4', border: '#0d5cdd', shadow: '#062a64', inset: '#72a5f7', text: '#ffffff' },
-  yellow: { background: '#f4f441', border: '#dcdc0d', shadow: '#636306', inset: '#f7f771', text: '#ffffff' },
-  orange: { background: '#eaad3a', border: '#c38615', shadow: '#503708', inset: '#efc068', text: '#ffffff' }
-}
+import colors from '../colors'
 
 export default class Btn extends Component {
-  constructor({ hover=false, focus=false, click=false, color='default', ...props }) {
-    super(hover, focus, click, color, ...props)
-    console.log(props)
+  constructor(props) {
+    super(props)
     
     this.state = {
-      hover,
-      focus,
-      click
+      hover: props.hover || false,
+      focus: props.focus || false,
+      click: props.click || false
     }
-    this.colorScheme = colors[color]
 
+    // pull out color variables        from         an inline style custom color scheme object  -OR-  chosen scheme  -OR-  default scheme
+    const { background, border, shadow, inset, text } = typeof props.color==='object' ? props.color : colors[props.color || 'default']
+
+    // optional props
+    const { style, bold, caps } = props
+    // any of these defaults can be overridden by passing an inline style object as a prop
     this.defaultStyle = {
       position: 'relative',
-      top: '0', /* anchors button during transitions */
+      top: '0',
+      right: '0',
       bottom: '0',
-      display: 'inline',
+      left: '0',
       border: 'none',
-      userSelect: 'none',
       outline: 'none',
       cursor: 'pointer',
-      padding: '10px',
-      borderBottom: `5px solid ${this.colorScheme.border}`,
-      borderRadius: '15px',
-      backgroundColor: `${this.colorScheme.background}`,
-      color: `${this.colorScheme.text}`,
-      boxShadow: `inset 0 0 5px ${this.colorScheme.inset}`,
-      filter: `drop-shadow(0 7px 3px ${this.colorScheme.shadow})`,
-      textAlign: 'center',
+      margin: '2px',
+      padding: '8px',
+      borderBottom: `5px solid ${border}`,
+      borderRadius: '16px',
+      backgroundColor: `${background}`,
+      color: `${text}`,
+      boxShadow: `inset 0 0 5px ${inset}`,
+      filter: `drop-shadow(0 7px 3px ${shadow})`,
       lineHeight: '1.8',
-      fontWeight: 'bolder',
-      textTransform: 'uppercase',
+      fontFamily: 'Arial',
+      fontWeight: bold ? 'bold' : 'normal',
+      textShadow: bold ? '0 1px 1px rgba(30,30,30,0.5)' : 'none',
+      textTransform: caps ? 'uppercase' : 'none', // `caps` is an optional boolean prop
       transition: '0.3s',
+      ...style // override defaults with inline style object
     }
+
     this.hoverStyle = {
       ...this.defaultStyle,
-      color: `${this.colorScheme.text}`,
-      borderBottom: `3px solid ${this.colorScheme.border}`,
-      filter: `drop-shadow(0 5px 2px  ${this.colorScheme.shadow})`,
-      cursor: 'pointer',
-      top: '2px'
+      color: `${text}`,
+      borderBottom: `3px solid ${border}`,
+      filter: `drop-shadow(0 5px 2px  ${shadow})`,
+      top: '2px',
+      marginBottom: '2px'
     }
+
     this.clickStyle = {
       ...this.hoverStyle,
-      borderBottom: `0 ${this.colorScheme.border}`,
-      filter: `drop-shadow(0 0 0 ${this.colorScheme.shadow})`,
-      boxShadow: `1px 2px 2px ${this.colorScheme.shadow} inset`,
-      top: '5px'
-    }
-    
-    // this.togglehover = () => {
-    //   this.setState({ hover: !this.state.hover })
-    // }
-    // this.toggleFocused = () => {
-    //   this.setState({ focused: !this.state.focused })
-    // }
-    // this.toggleClicked = () => {
-    //   this.setState({ clicked: !this.state.clicked })
-    // }
-
-    if (this.props.onclick) {
-
+      borderBottom: `0 ${border}`,
+      filter: `drop-shadow(0 0 0 ${shadow})`,
+      boxShadow: `1px 2px 2px ${shadow} inset`,
+      top: '5px',
+      marginBottom: '3px'
     }
 
-    this.handleEvent = () => {
-      
+    this.handleEvent = e => {
+      this[`handle${e.type}`](e)
+      if (this.props[`on${e.type}`]) this.props[`on${e.type}`](e)
     }
 
-    this.hoverOn = () => {
-      this.setState({ hover: true })
-    }
-    this.hoverOff = () => {
-      this.setState({ click: false })
-      this.setState({ hover: false })
-    }
-    this.focusOn = () => {
-      this.setState({ focus: true })
-    }
-    this.focusOff = () => {
-      this.setState({ focus: false })
-    }
-    this.clickOn = () => {
-      console.log('clickOn working!')
-      if (!this.state.hover) this.hoverOn()
-      this.setState({ click: true })
-    }
-    this.clickOff = () => {
-      if (!this.state.hover) this.hoverOn()
-      this.setState({ click: false })
+    this.handlemouseenter = e => {
+      this.setState( (state, props) => ({ hover: true }))
     }
 
-    this.keyDown = (e) => {
-      if (this.state.focus) {
-        console.log(e.keyCode)
-        if (e.keyCode == 32 || e.keyCode == 13) {
-          this.clickOn()
-        }
-      }
+    this.handlemouseleave = e => {
+      this.setState( () => ({ click: false, hover: false }))
     }
-    this.keyUp = (e) => {
-      if (this.state.focus) {
-        console.log(e.keyCode)
-        if (e.keyCode == 32 || e.keyCode == 13) {
-          this.clickOff()
-        }
-      }
+
+    this.handlefocus = e => {
+      this.setState( () => ({ focus: true }))
     }
+
+    this.handleblur = e => {
+      this.setState( () => ({ focus: false }))
+    }
+
+    this.handlemousedown = e => {
+      this.setState( () => ({ click: true }))
+    }
+
+    this.handlemouseup = e => {
+      this.setState( () => ({ click: false }))
+      if (this.props.onclick) this.props.onclick(e)
+    }
+
+    this.handlekeydown = e => {
+      if (this.isClick(e)) this.handlemousedown(e)
+    }
+
+    this.handlekeyup = e => {
+      if (this.isClick(e)) this.handlemouseup(e)
+    }
+
+    // return true if button is focused and space or enter key is pressed
+    this.isClick = e => this.state.focus && (e.keyCode === 32 || e.keyCode === 13)
+
   } // end constructor
   
   render() {
     const { 
       state: { hover, focus, click },
-      props: { children, color },
+      props: { children },
       defaultStyle,
       hoverStyle,
       clickStyle,
-      hoverOn,
-      hoverOff,
-      focusOn,
-      focusOff,
-      clickOn,
-      clickOff,
-      keyDown,
-      keyUp
+      handleEvent
     } = this
-    let style = this.defaultStyle
 
-    if (hover || focus) {
-      if (click) {
-        style = clickStyle
-      } else {
-        style = hoverStyle
-      }
-    }
+    const style = (hover || focus) ? (click ? clickStyle : hoverStyle) : defaultStyle
 
     return (
       <button
         style={ style }
-        onMouseEnter={ hoverOn }
-        onMouseLeave={ hoverOff }
-        onFocus={ focusOn }
-        onBlur={ focusOff }
-        onMouseDown={ clickOn }
-        onMouseUp={ clickOff }
-        onKeyDown={ keyDown }
-        onKeyUp={ keyUp }
+        onMouseEnter={ handleEvent }
+        onMouseLeave={ handleEvent }
+        onFocus={ handleEvent }
+        onBlur={ handleEvent }
+        onMouseDown={ handleEvent }
+        onMouseUp={ handleEvent }
+        onKeyDown={ handleEvent }
+        onKeyUp={ handleEvent }
       >
         { children }
       </button>

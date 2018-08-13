@@ -117,7 +117,7 @@ module.exports = $export;
 
 module.exports = Vec3;
 
-var Mat3 = __webpack_require__(37);
+var Mat3 = __webpack_require__(38);
 
 /**
  * 3-dimensional vector
@@ -1002,7 +1002,7 @@ Shape.types = {
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.15 ToLength
-var toInteger = __webpack_require__(35)
+var toInteger = __webpack_require__(36)
   , min       = Math.min;
 module.exports = function(it){
   return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
@@ -1526,7 +1526,7 @@ module.exports = function(it, key){
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP         = __webpack_require__(10)
-  , createDesc = __webpack_require__(33);
+  , createDesc = __webpack_require__(34);
 module.exports = __webpack_require__(9) ? function(object, key, value){
   return dP.f(object, key, createDesc(1, value));
 } : function(object, key, value){
@@ -1620,7 +1620,7 @@ module.exports = function(NAME, exec){
 /***/ (function(module, exports, __webpack_require__) {
 
 var pIE            = __webpack_require__(68)
-  , createDesc     = __webpack_require__(33)
+  , createDesc     = __webpack_require__(34)
   , toIObject      = __webpack_require__(19)
   , toPrimitive    = __webpack_require__(26)
   , has            = __webpack_require__(15)
@@ -1814,10 +1814,10 @@ if(__webpack_require__(9)){
     , $buffer             = __webpack_require__(138)
     , ctx                 = __webpack_require__(30)
     , anInstance          = __webpack_require__(50)
-    , propertyDesc        = __webpack_require__(33)
+    , propertyDesc        = __webpack_require__(34)
     , hide                = __webpack_require__(16)
     , redefineAll         = __webpack_require__(51)
-    , toInteger           = __webpack_require__(35)
+    , toInteger           = __webpack_require__(36)
     , toLength            = __webpack_require__(12)
     , toIndex             = __webpack_require__(46)
     , toPrimitive         = __webpack_require__(26)
@@ -2344,6 +2344,33 @@ module.exports = {
 /* 33 */
 /***/ (function(module, exports) {
 
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports) {
+
 module.exports = function(bitmap, value){
   return {
     enumerable  : !(bitmap & 1),
@@ -2354,7 +2381,7 @@ module.exports = function(bitmap, value){
 };
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var META     = __webpack_require__(43)('meta')
@@ -2412,7 +2439,7 @@ var meta = module.exports = {
 };
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports) {
 
 // 7.1.4 ToInteger
@@ -2423,7 +2450,7 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Vec3 = __webpack_require__(1);
@@ -2750,7 +2777,7 @@ AABB.prototype.overlapsRay = function(ray){
 };
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = Mat3;
@@ -3178,7 +3205,7 @@ Mat3.prototype.transpose = function( target ) {
 
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = Body;
@@ -3186,10 +3213,10 @@ module.exports = Body;
 var EventTarget = __webpack_require__(139);
 var Shape = __webpack_require__(11);
 var Vec3 = __webpack_require__(1);
-var Mat3 = __webpack_require__(37);
+var Mat3 = __webpack_require__(38);
 var Quaternion = __webpack_require__(14);
 var Material = __webpack_require__(71);
-var AABB = __webpack_require__(36);
+var AABB = __webpack_require__(37);
 var Box = __webpack_require__(95);
 
 /**
@@ -4098,14 +4125,14 @@ Body.prototype.integrate = function(dt, quatNormalize, quatNormalizeFast){
 
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = ContactEquation;
 
 var Equation = __webpack_require__(64);
 var Vec3 = __webpack_require__(1);
-var Mat3 = __webpack_require__(37);
+var Mat3 = __webpack_require__(38);
 
 /**
  * Contact/non-penetration constraint equation
@@ -4239,33 +4266,6 @@ ContactEquation.prototype.getImpactVelocityAlongNormal = function(){
 
 
 /***/ }),
-/* 40 */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
 /* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4282,19 +4282,19 @@ var _displayReducer = __webpack_require__(268);
 
 var _displayReducer2 = _interopRequireDefault(_displayReducer);
 
-var _projectsReducer = __webpack_require__(565);
+var _projectsReducer = __webpack_require__(564);
 
 var _projectsReducer2 = _interopRequireDefault(_projectsReducer);
 
-var _skillsReducer = __webpack_require__(566);
+var _skillsReducer = __webpack_require__(565);
 
 var _skillsReducer2 = _interopRequireDefault(_skillsReducer);
 
-var _planetsReducer = __webpack_require__(567);
+var _planetsReducer = __webpack_require__(566);
 
 var _planetsReducer2 = _interopRequireDefault(_planetsReducer);
 
-var _locationReducer = __webpack_require__(568);
+var _locationReducer = __webpack_require__(567);
 
 var _locationReducer2 = _interopRequireDefault(_locationReducer);
 
@@ -4379,7 +4379,7 @@ module.exports = Object.keys || function keys(O){
 /* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(35)
+var toInteger = __webpack_require__(36)
   , max       = Math.max
   , min       = Math.min;
 module.exports = function(index, length){
@@ -4915,13 +4915,13 @@ exports.RETURN = RETURN;
 module.exports = {
     version :                       __webpack_require__(524).version,
 
-    AABB :                          __webpack_require__(36),
+    AABB :                          __webpack_require__(37),
     ArrayCollisionMatrix :          __webpack_require__(210),
-    Body :                          __webpack_require__(38),
+    Body :                          __webpack_require__(39),
     Box :                           __webpack_require__(95),
     Broadphase :                    __webpack_require__(96),
     Constraint :                    __webpack_require__(63),
-    ContactEquation :               __webpack_require__(39),
+    ContactEquation :               __webpack_require__(40),
     Narrowphase :                   __webpack_require__(212),
     ConeTwistConstraint :           __webpack_require__(526),
     ContactMaterial :               __webpack_require__(215),
@@ -4936,7 +4936,7 @@ module.exports = {
     Heightfield :                   __webpack_require__(531),
     HingeConstraint :               __webpack_require__(217),
     LockConstraint :                __webpack_require__(532),
-    Mat3 :                          __webpack_require__(37),
+    Mat3 :                          __webpack_require__(38),
     Material :                      __webpack_require__(71),
     NaiveBroadphase :               __webpack_require__(218),
     ObjectCollisionMatrix :         __webpack_require__(533),
@@ -87788,7 +87788,7 @@ module.exports = getWakeLock();
 });
 //# sourceMappingURL=aframe-master.js.map
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(40), __webpack_require__(336).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33), __webpack_require__(336).setImmediate))
 
 /***/ }),
 /* 84 */
@@ -87956,7 +87956,7 @@ var global            = __webpack_require__(3)
   , $export           = __webpack_require__(0)
   , redefine          = __webpack_require__(17)
   , redefineAll       = __webpack_require__(51)
-  , meta              = __webpack_require__(34)
+  , meta              = __webpack_require__(35)
   , forOf             = __webpack_require__(59)
   , anInstance        = __webpack_require__(50)
   , isObject          = __webpack_require__(6)
@@ -88325,7 +88325,7 @@ Box.prototype.calculateWorldAABB = function(pos,quat,min,max){
 /* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Body = __webpack_require__(38);
+var Body = __webpack_require__(39);
 var Vec3 = __webpack_require__(1);
 var Quaternion = __webpack_require__(14);
 var Shape = __webpack_require__(11);
@@ -88546,7 +88546,7 @@ var ConvexPolyhedron = __webpack_require__(61);
 var Box = __webpack_require__(95);
 var RaycastResult = __webpack_require__(72);
 var Shape = __webpack_require__(11);
-var AABB = __webpack_require__(36);
+var AABB = __webpack_require__(37);
 
 /**
  * A line in 3D space that intersects bodies and return points.
@@ -89435,7 +89435,7 @@ Solver.prototype.removeAllEquations = function(){
 module.exports = PointToPointConstraint;
 
 var Constraint = __webpack_require__(63);
-var ContactEquation = __webpack_require__(39);
+var ContactEquation = __webpack_require__(40);
 var Vec3 = __webpack_require__(1);
 
 /**
@@ -89532,7 +89532,7 @@ PointToPointConstraint.prototype.update = function(){
 module.exports = RotationalEquation;
 
 var Vec3 = __webpack_require__(1);
-var Mat3 = __webpack_require__(37);
+var Mat3 = __webpack_require__(38);
 var Equation = __webpack_require__(64);
 
 /**
@@ -90075,7 +90075,7 @@ define(String.prototype, "padRight", "".padEnd);
 "pop,reverse,shift,keys,values,entries,indexOf,every,some,forEach,map,filter,find,findIndex,includes,join,slice,concat,push,splice,unshift,sort,lastIndexOf,reduce,reduceRight,copyWithin,fill".split(",").forEach(function (key) {
   [][key] && define(Array, key, Function.call.bind([][key]));
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(40)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
 /* 113 */
@@ -90194,7 +90194,7 @@ module.exports = function(that, target, C){
 
 "use strict";
 
-var toInteger = __webpack_require__(35)
+var toInteger = __webpack_require__(36)
   , defined   = __webpack_require__(24);
 
 module.exports = function repeat(count){
@@ -90234,7 +90234,7 @@ module.exports = (!$expm1
 /* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(35)
+var toInteger = __webpack_require__(36)
   , defined   = __webpack_require__(24);
 // true  -> String#at
 // false -> String#codePointAt
@@ -90335,7 +90335,7 @@ module.exports = function(Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCED
 "use strict";
 
 var create         = __webpack_require__(47)
-  , descriptor     = __webpack_require__(33)
+  , descriptor     = __webpack_require__(34)
   , setToStringTag = __webpack_require__(55)
   , IteratorPrototype = {};
 
@@ -90397,7 +90397,7 @@ module.exports = function(it){
 "use strict";
 
 var $defineProperty = __webpack_require__(10)
-  , createDesc      = __webpack_require__(33);
+  , createDesc      = __webpack_require__(34);
 
 module.exports = function(object, index, value){
   if(index in object)$defineProperty.f(object, index, createDesc(0, value));
@@ -90658,7 +90658,7 @@ var global         = __webpack_require__(3)
   , redefineAll    = __webpack_require__(51)
   , fails          = __webpack_require__(4)
   , anInstance     = __webpack_require__(50)
-  , toInteger      = __webpack_require__(35)
+  , toInteger      = __webpack_require__(36)
   , toLength       = __webpack_require__(12)
   , gOPN           = __webpack_require__(48).f
   , dP             = __webpack_require__(10).f
@@ -91036,7 +91036,7 @@ module.exports = FrictionEquation;
 
 var Equation = __webpack_require__(64);
 var Vec3 = __webpack_require__(1);
-var Mat3 = __webpack_require__(37);
+var Mat3 = __webpack_require__(38);
 
 /**
  * Constrains the slipping in a contact along a tangent
@@ -91100,7 +91100,7 @@ FrictionEquation.prototype.computeB = function(h){
 module.exports = RotationalMotorEquation;
 
 var Vec3 = __webpack_require__(1);
-var Mat3 = __webpack_require__(37);
+var Mat3 = __webpack_require__(38);
 var Equation = __webpack_require__(64);
 
 /**
@@ -92672,7 +92672,7 @@ var freeGlobal = typeof global == 'object' && global && global.Object === Object
 
 module.exports = freeGlobal;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(40)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
 /* 167 */
@@ -93084,15 +93084,10 @@ var About = function (_Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { id: 'About' },
+        { id: 'About', className: 'grid' },
         _react2.default.createElement(
           'div',
           { className: '' },
-          _react2.default.createElement(
-            'h1',
-            null,
-            'Michael Cleary'
-          ),
           _react2.default.createElement(
             'h2',
             null,
@@ -93111,7 +93106,7 @@ var About = function (_Component) {
             'div',
             { className: 'aboutLinks' },
             _react2.default.createElement(
-              'div',
+              'span',
               { className: 'link' },
               _react2.default.createElement(
                 'a',
@@ -93121,7 +93116,7 @@ var About = function (_Component) {
               )
             ),
             _react2.default.createElement(
-              'div',
+              'span',
               { className: 'link' },
               _react2.default.createElement(
                 'a',
@@ -93611,7 +93606,7 @@ var dP          = __webpack_require__(10).f
   , step        = __webpack_require__(197)
   , setSpecies  = __webpack_require__(49)
   , DESCRIPTORS = __webpack_require__(9)
-  , fastKey     = __webpack_require__(34).fastKey
+  , fastKey     = __webpack_require__(35).fastKey
   , SIZE        = DESCRIPTORS ? '_s' : 'size';
 
 var getEntry = function(that, key){
@@ -93768,7 +93763,7 @@ module.exports = __webpack_require__(92)('Set', function(get){
 
 var each         = __webpack_require__(28)(0)
   , redefine     = __webpack_require__(17)
-  , meta         = __webpack_require__(34)
+  , meta         = __webpack_require__(35)
   , assign       = __webpack_require__(186)
   , weak         = __webpack_require__(203)
   , isObject     = __webpack_require__(6)
@@ -93829,7 +93824,7 @@ if(new $WeakMap().set((Object.freeze || Object)(tmp), 7).get(tmp) != 7){
 "use strict";
 
 var redefineAll       = __webpack_require__(51)
-  , getWeak           = __webpack_require__(34).getWeak
+  , getWeak           = __webpack_require__(35).getWeak
   , anObject          = __webpack_require__(2)
   , isObject          = __webpack_require__(6)
   , anInstance        = __webpack_require__(50)
@@ -94255,8 +94250,8 @@ Plane.prototype.updateBoundingSphereRadius = function(){
 
 module.exports = Narrowphase;
 
-var AABB = __webpack_require__(36);
-var Body = __webpack_require__(38);
+var AABB = __webpack_require__(37);
+var Body = __webpack_require__(39);
 var Shape = __webpack_require__(11);
 var Ray = __webpack_require__(97);
 var Vec3 = __webpack_require__(1);
@@ -94265,7 +94260,7 @@ var ConvexPolyhedron = __webpack_require__(61);
 var Quaternion = __webpack_require__(14);
 var Solver = __webpack_require__(98);
 var Vec3Pool = __webpack_require__(213);
-var ContactEquation = __webpack_require__(39);
+var ContactEquation = __webpack_require__(40);
 var FrictionEquation = __webpack_require__(140);
 
 /**
@@ -96467,7 +96462,7 @@ var Constraint = __webpack_require__(63);
 var PointToPointConstraint = __webpack_require__(99);
 var RotationalEquation = __webpack_require__(100);
 var RotationalMotorEquation = __webpack_require__(141);
-var ContactEquation = __webpack_require__(39);
+var ContactEquation = __webpack_require__(40);
 var Vec3 = __webpack_require__(1);
 
 /**
@@ -96604,7 +96599,7 @@ HingeConstraint.prototype.update = function(){
 module.exports = NaiveBroadphase;
 
 var Broadphase = __webpack_require__(96);
-var AABB = __webpack_require__(36);
+var AABB = __webpack_require__(37);
 
 /**
  * Naive broadphase implementation, used in lack of better ones.
@@ -97077,8 +97072,6 @@ var _Card = __webpack_require__(563);
 
 var _Card2 = _interopRequireDefault(_Card);
 
-__webpack_require__(564);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -97137,14 +97130,14 @@ var Projects = function (_Component) {
             }
           },
           _react2.default.createElement(
-            'i',
-            { className: 'material-icons link' },
-            'arrow_back'
+            'span',
+            { className: 'left' },
+            '\u3008'
           )
         ),
         _react2.default.createElement(
           'div',
-          null,
+          { className: 'center' },
           _react2.default.createElement(
             'h1',
             null,
@@ -97161,9 +97154,9 @@ var Projects = function (_Component) {
             }
           },
           _react2.default.createElement(
-            'i',
-            { className: 'material-icons link' },
-            'arrow_forward'
+            'span',
+            { className: 'right' },
+            '\u3009'
           )
         )
       );
@@ -114759,7 +114752,7 @@ var freeGlobal = typeof global == 'object' && global && global.Object === Object
 
 /* harmony default export */ __webpack_exports__["a"] = (freeGlobal);
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(40)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(33)))
 
 /***/ }),
 /* 242 */
@@ -114957,7 +114950,7 @@ if (typeof self !== 'undefined') {
 
 var result = (0, _ponyfill2['default'])(root);
 exports['default'] = result;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(40), __webpack_require__(75)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33), __webpack_require__(75)(module)))
 
 /***/ }),
 /* 249 */
@@ -116615,15 +116608,15 @@ var _reactRedux = __webpack_require__(53);
 
 var _reducers = __webpack_require__(41);
 
-var _Header = __webpack_require__(569);
+var _Header = __webpack_require__(568);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _Footer = __webpack_require__(570);
+var _Footer = __webpack_require__(569);
 
 var _Footer2 = _interopRequireDefault(_Footer);
 
-var _Display = __webpack_require__(571);
+var _Display = __webpack_require__(570);
 
 var _Display2 = _interopRequireDefault(_Display);
 
@@ -118896,16 +118889,32 @@ var Skills = function (_Component) {
       });
     }
   }, {
+    key: 'rand',
+    value: function rand() {
+      return Math.floor(Math.random() * window.innerWidth);
+    }
+  }, {
+    key: 'animateList',
+    value: function animateList() {
+      var _this2 = this;
+
+      return this.props.skills.map(function (skill) {
+        _react2.default.createElement(
+          'span',
+          { key: skill,
+            className: 'skill',
+            style: 'left: ' + _this2.rand() },
+          skill
+        );
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: '' },
-        _react2.default.createElement(
-          'ul',
-          { className: '' },
-          this.renderList()
-        )
+        { className: 'list' },
+        this.animateList()
       );
     }
   }]);
@@ -118927,11 +118936,16 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Skills);
 
+
+{/* <ul className="">
+  {this.renderList()}
+  </ul> */}
+
 /***/ }),
 /* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var apply = Function.prototype.apply;
+/* WEBPACK VAR INJECTION */(function(global) {var apply = Function.prototype.apply;
 
 // DOM APIs, for completeness
 
@@ -118982,9 +118996,17 @@ exports._unrefActive = exports.active = function(item) {
 
 // setimmediate attaches itself to the global object
 __webpack_require__(337);
-exports.setImmediate = setImmediate;
-exports.clearImmediate = clearImmediate;
+// On some exotic environments, it's not clear which object `setimmeidate` was
+// able to install onto.  Search each possibility in the same order as the
+// `setimmediate` library.
+exports.setImmediate = (typeof self !== "undefined" && self.setImmediate) ||
+                       (typeof global !== "undefined" && global.setImmediate) ||
+                       (this && this.setImmediate);
+exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
+                         (typeof global !== "undefined" && global.clearImmediate) ||
+                         (this && this.clearImmediate);
 
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
 /* 337 */
@@ -119177,7 +119199,7 @@ exports.clearImmediate = clearImmediate;
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(40), __webpack_require__(5)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33), __webpack_require__(5)))
 
 /***/ }),
 /* 338 */
@@ -120261,7 +120283,7 @@ var global         = __webpack_require__(3)
   , DESCRIPTORS    = __webpack_require__(9)
   , $export        = __webpack_require__(0)
   , redefine       = __webpack_require__(17)
-  , META           = __webpack_require__(34).KEY
+  , META           = __webpack_require__(35).KEY
   , $fails         = __webpack_require__(4)
   , shared         = __webpack_require__(84)
   , setToStringTag = __webpack_require__(55)
@@ -120275,7 +120297,7 @@ var global         = __webpack_require__(3)
   , anObject       = __webpack_require__(2)
   , toIObject      = __webpack_require__(19)
   , toPrimitive    = __webpack_require__(26)
-  , createDesc     = __webpack_require__(33)
+  , createDesc     = __webpack_require__(34)
   , _create        = __webpack_require__(47)
   , gOPNExt        = __webpack_require__(185)
   , $GOPD          = __webpack_require__(21)
@@ -120606,7 +120628,7 @@ __webpack_require__(27)('getOwnPropertyNames', function(){
 
 // 19.1.2.5 Object.freeze(O)
 var isObject = __webpack_require__(6)
-  , meta     = __webpack_require__(34).onFreeze;
+  , meta     = __webpack_require__(35).onFreeze;
 
 __webpack_require__(27)('freeze', function($freeze){
   return function freeze(it){
@@ -120620,7 +120642,7 @@ __webpack_require__(27)('freeze', function($freeze){
 
 // 19.1.2.17 Object.seal(O)
 var isObject = __webpack_require__(6)
-  , meta     = __webpack_require__(34).onFreeze;
+  , meta     = __webpack_require__(35).onFreeze;
 
 __webpack_require__(27)('seal', function($seal){
   return function seal(it){
@@ -120634,7 +120656,7 @@ __webpack_require__(27)('seal', function($seal){
 
 // 19.1.2.15 Object.preventExtensions(O)
 var isObject = __webpack_require__(6)
-  , meta     = __webpack_require__(34).onFreeze;
+  , meta     = __webpack_require__(35).onFreeze;
 
 __webpack_require__(27)('preventExtensions', function($preventExtensions){
   return function preventExtensions(it){
@@ -120736,7 +120758,7 @@ $export($export.P, 'Function', {bind: __webpack_require__(188)});
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP         = __webpack_require__(10).f
-  , createDesc = __webpack_require__(33)
+  , createDesc = __webpack_require__(34)
   , has        = __webpack_require__(15)
   , FProto     = Function.prototype
   , nameRE     = /^\s*function ([^ (]*)/
@@ -120880,7 +120902,7 @@ if(!$Number(' 0o1') || !$Number('0b1') || $Number('+0x1')){
 "use strict";
 
 var $export      = __webpack_require__(0)
-  , toInteger    = __webpack_require__(35)
+  , toInteger    = __webpack_require__(36)
   , aNumberValue = __webpack_require__(191)
   , repeat       = __webpack_require__(122)
   , $toFixed     = 1..toFixed
@@ -122179,7 +122201,7 @@ $export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(25)($nati
 
 var $export       = __webpack_require__(0)
   , toIObject     = __webpack_require__(19)
-  , toInteger     = __webpack_require__(35)
+  , toInteger     = __webpack_require__(36)
   , toLength      = __webpack_require__(12)
   , $native       = [].lastIndexOf
   , NEGATIVE_ZERO = !!$native && 1 / [1].lastIndexOf(1, -0) < 0;
@@ -123215,7 +123237,7 @@ var dP             = __webpack_require__(10)
   , getPrototypeOf = __webpack_require__(22)
   , has            = __webpack_require__(15)
   , $export        = __webpack_require__(0)
-  , createDesc     = __webpack_require__(33)
+  , createDesc     = __webpack_require__(34)
   , anObject       = __webpack_require__(2)
   , isObject       = __webpack_require__(6);
 
@@ -124874,7 +124896,7 @@ for(var collections = ['NodeList', 'DOMTokenList', 'MediaList', 'StyleSheetList'
   typeof self === "object" ? self : this
 );
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(40)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
 /* 519 */
@@ -125027,111 +125049,7 @@ window.CANNON = window.CANNON || CANNON;
 /* 524 */
 /***/ (function(module, exports) {
 
-module.exports = {
-	"_args": [
-		[
-			{
-				"hosted": {
-					"directUrl": "https://raw.githubusercontent.com/donmccurdy/cannon.js/v0.6.2-dev1/package.json",
-					"gitUrl": "git://github.com/donmccurdy/cannon.js.git#v0.6.2-dev1",
-					"httpsUrl": "git+https://github.com/donmccurdy/cannon.js.git#v0.6.2-dev1",
-					"shortcut": "github:donmccurdy/cannon.js#v0.6.2-dev1",
-					"ssh": "git@github.com:donmccurdy/cannon.js.git#v0.6.2-dev1",
-					"sshUrl": "git+ssh://git@github.com/donmccurdy/cannon.js.git#v0.6.2-dev1",
-					"type": "github"
-				},
-				"name": "cannon",
-				"raw": "cannon@github:donmccurdy/cannon.js#v0.6.2-dev1",
-				"rawSpec": "github:donmccurdy/cannon.js#v0.6.2-dev1",
-				"scope": null,
-				"spec": "github:donmccurdy/cannon.js#v0.6.2-dev1",
-				"type": "hosted"
-			},
-			"/Users/mcleary/Desktop/portfolio/node_modules/aframe-physics-system"
-		]
-	],
-	"_from": "donmccurdy/cannon.js#v0.6.2-dev1",
-	"_id": "cannon@0.6.2",
-	"_inCache": true,
-	"_installable": true,
-	"_location": "/cannon",
-	"_phantomChildren": {},
-	"_requested": {
-		"hosted": {
-			"directUrl": "https://raw.githubusercontent.com/donmccurdy/cannon.js/v0.6.2-dev1/package.json",
-			"gitUrl": "git://github.com/donmccurdy/cannon.js.git#v0.6.2-dev1",
-			"httpsUrl": "git+https://github.com/donmccurdy/cannon.js.git#v0.6.2-dev1",
-			"shortcut": "github:donmccurdy/cannon.js#v0.6.2-dev1",
-			"ssh": "git@github.com:donmccurdy/cannon.js.git#v0.6.2-dev1",
-			"sshUrl": "git+ssh://git@github.com/donmccurdy/cannon.js.git#v0.6.2-dev1",
-			"type": "github"
-		},
-		"name": "cannon",
-		"raw": "cannon@github:donmccurdy/cannon.js#v0.6.2-dev1",
-		"rawSpec": "github:donmccurdy/cannon.js#v0.6.2-dev1",
-		"scope": null,
-		"spec": "github:donmccurdy/cannon.js#v0.6.2-dev1",
-		"type": "hosted"
-	},
-	"_requiredBy": [
-		"/aframe-physics-system"
-	],
-	"_resolved": "git://github.com/donmccurdy/cannon.js.git#022e8ba53fa83abf0ad8a0e4fd08623123838a17",
-	"_shasum": "2e5ff521ae42dc9133d6dca67666d9d01c03055f",
-	"_shrinkwrap": null,
-	"_spec": "cannon@github:donmccurdy/cannon.js#v0.6.2-dev1",
-	"_where": "/Users/mcleary/Desktop/portfolio/node_modules/aframe-physics-system",
-	"author": {
-		"email": "schteppe@gmail.com",
-		"name": "Stefan Hedman",
-		"url": "http://steffe.se"
-	},
-	"bugs": {
-		"url": "https://github.com/schteppe/cannon.js/issues"
-	},
-	"dependencies": {},
-	"description": "A lightweight 3D physics engine written in JavaScript.",
-	"devDependencies": {
-		"browserify": "*",
-		"grunt": "~0.4.0",
-		"grunt-browserify": "^2.1.4",
-		"grunt-contrib-concat": "~0.1.3",
-		"grunt-contrib-jshint": "~0.1.1",
-		"grunt-contrib-nodeunit": "^0.4.1",
-		"grunt-contrib-uglify": "^0.5.1",
-		"grunt-contrib-yuidoc": "^0.5.2",
-		"jshint": "latest",
-		"nodeunit": "^0.9.0",
-		"uglify-js": "latest"
-	},
-	"engines": {
-		"node": "*"
-	},
-	"gitHead": "022e8ba53fa83abf0ad8a0e4fd08623123838a17",
-	"homepage": "https://github.com/schteppe/cannon.js",
-	"keywords": [
-		"cannon.js",
-		"cannon",
-		"physics",
-		"engine",
-		"3d"
-	],
-	"licenses": [
-		{
-			"type": "MIT"
-		}
-	],
-	"main": "./src/Cannon.js",
-	"name": "cannon",
-	"optionalDependencies": {},
-	"readme": "# cannon.js\n\n### Lightweight 3D physics for the web\nInspired by [three.js](https://github.com/mrdoob/three.js) and [ammo.js](https://github.com/kripken/ammo.js), and driven by the fact that the web lacks a physics engine, here comes cannon.js.\nThe rigid body physics engine includes simple collision detection, various body shapes, contacts, friction and constraints.\n\n[Demos](http://schteppe.github.com/cannon.js) - [Documentation](http://schteppe.github.com/cannon.js/docs) - [Rendering hints](https://github.com/schteppe/cannon.js/tree/master/examples) - [NPM package](https://npmjs.org/package/cannon) - [CDN](https://cdnjs.com/libraries/cannon.js)\n\n### Browser install\n\nJust include [cannon.js](https://github.com/schteppe/cannon.js/releases/download/v0.6.2/cannon.js) or [cannon.min.js](https://github.com/schteppe/cannon.js/releases/download/v0.6.2/cannon.min.js) in your html and you're done:\n\n```html\n<script src=\"cannon.min.js\"></script>\n```\n\n### Node.js install\n\nInstall the cannon package via NPM:\n\n```bash\nnpm install --save cannon\n```\n\nAlternatively, point to the Github repo directly to get the very latest version:\n\n```bash\nnpm install --save schteppe/cannon.js\n```\n\n### Example\n\nThe sample code below creates a sphere on a plane, steps the simulation, and prints the sphere simulation to the console. Note that Cannon.js uses [SI units](http://en.wikipedia.org/wiki/International_System_of_Units) (metre, kilogram, second, etc.).\n\n```javascript\n// Setup our world\nvar world = new CANNON.World();\nworld.gravity.set(0, 0, -9.82); // m/s²\n\n// Create a sphere\nvar radius = 1; // m\nvar sphereBody = new CANNON.Body({\n   mass: 5, // kg\n   position: new CANNON.Vec3(0, 0, 10), // m\n   shape: new CANNON.Sphere(radius)\n});\nworld.addBody(sphereBody);\n\n// Create a plane\nvar groundBody = new CANNON.Body({\n    mass: 0 // mass == 0 makes the body static\n});\nvar groundShape = new CANNON.Plane();\ngroundBody.addShape(groundShape);\nworld.addBody(groundBody);\n\nvar fixedTimeStep = 1.0 / 60.0; // seconds\nvar maxSubSteps = 3;\n\n// Start the simulation loop\nvar lastTime;\n(function simloop(time){\n  requestAnimationFrame(simloop);\n  if(lastTime !== undefined){\n     var dt = (time - lastTime) / 1000;\n     world.step(fixedTimeStep, dt, maxSubSteps);\n  }\n  console.log(\"Sphere z position: \" + sphereBody.position.z);\n  lastTime = time;\n})();\n```\n\nIf you want to know how to use cannon.js with a rendering engine, for example Three.js, see the [Examples](examples).\n\n### Features\n* Rigid body dynamics\n* Discrete collision detection\n* Contacts, friction and restitution\n* Constraints\n   * PointToPoint (a.k.a. ball/socket joint)\n   * Distance\n   * Hinge (with optional motor)\n   * Lock\n   * ConeTwist\n* Gauss-Seidel constraint solver and an island split algorithm\n* Collision filters\n* Body sleeping\n* Experimental SPH / fluid support\n* Various shapes and collision algorithms (see table below)\n\n|             | [Sphere](http://schteppe.github.io/cannon.js/docs/classes/Sphere.html) | [Plane](http://schteppe.github.io/cannon.js/docs/classes/Plane.html) | [Box](http://schteppe.github.io/cannon.js/docs/classes/Box.html) | [Convex](http://schteppe.github.io/cannon.js/docs/classes/ConvexPolyhedron.html) | [Particle](http://schteppe.github.io/cannon.js/docs/classes/Particle.html) | [Heightfield](http://schteppe.github.io/cannon.js/docs/classes/Heightfield.html) | [Trimesh](http://schteppe.github.io/cannon.js/docs/classes/Trimesh.html) |\n| :-----------|:------:|:-----:|:---:|:------:|:--------:|:-----------:|:-------:|\n| Sphere      | Yes    | Yes   | Yes | Yes    | Yes      | Yes         | Yes     |\n| Plane       | -      | -     | Yes | Yes    | Yes      | -           | Yes     |\n| Box         | -      | -     | Yes | Yes    | Yes      | Yes         | (todo)  |\n| Cylinder    | -      | -     | Yes | Yes    | Yes      | Yes         | (todo)  |\n| Convex      | -      | -     | -   | Yes    | Yes      | Yes         | (todo)  |\n| Particle    | -      | -     | -   | -      | -        | (todo)      | (todo)  |\n| Heightfield | -      | -     | -   | -      | -        | -           | (todo)  |\n| Trimesh     | -      | -     | -   | -      | -        | -           | -       |\n\n### Todo\nThe simpler todos are marked with ```@todo``` in the code. Github Issues can and should also be used for todos.\n\n### Help\nCreate an [issue](https://github.com/schteppe/cannon.js/issues) if you need help.\n",
-	"readmeFilename": "README.markdown",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/schteppe/cannon.js.git"
-	},
-	"version": "0.6.2"
-};
+module.exports = {"_args":[[{"hosted":{"directUrl":"https://raw.githubusercontent.com/donmccurdy/cannon.js/v0.6.2-dev1/package.json","gitUrl":"git://github.com/donmccurdy/cannon.js.git#v0.6.2-dev1","httpsUrl":"git+https://github.com/donmccurdy/cannon.js.git#v0.6.2-dev1","shortcut":"github:donmccurdy/cannon.js#v0.6.2-dev1","ssh":"git@github.com:donmccurdy/cannon.js.git#v0.6.2-dev1","sshUrl":"git+ssh://git@github.com/donmccurdy/cannon.js.git#v0.6.2-dev1","type":"github"},"name":"cannon","raw":"cannon@github:donmccurdy/cannon.js#v0.6.2-dev1","rawSpec":"github:donmccurdy/cannon.js#v0.6.2-dev1","scope":null,"spec":"github:donmccurdy/cannon.js#v0.6.2-dev1","type":"hosted"},"/Users/mcleary/Desktop/portfolio/node_modules/aframe-physics-system"]],"_from":"donmccurdy/cannon.js#v0.6.2-dev1","_id":"cannon@0.6.2","_inCache":true,"_installable":true,"_location":"/cannon","_phantomChildren":{},"_requested":{"hosted":{"directUrl":"https://raw.githubusercontent.com/donmccurdy/cannon.js/v0.6.2-dev1/package.json","gitUrl":"git://github.com/donmccurdy/cannon.js.git#v0.6.2-dev1","httpsUrl":"git+https://github.com/donmccurdy/cannon.js.git#v0.6.2-dev1","shortcut":"github:donmccurdy/cannon.js#v0.6.2-dev1","ssh":"git@github.com:donmccurdy/cannon.js.git#v0.6.2-dev1","sshUrl":"git+ssh://git@github.com/donmccurdy/cannon.js.git#v0.6.2-dev1","type":"github"},"name":"cannon","raw":"cannon@github:donmccurdy/cannon.js#v0.6.2-dev1","rawSpec":"github:donmccurdy/cannon.js#v0.6.2-dev1","scope":null,"spec":"github:donmccurdy/cannon.js#v0.6.2-dev1","type":"hosted"},"_requiredBy":["/aframe-physics-system"],"_resolved":"git://github.com/donmccurdy/cannon.js.git#022e8ba53fa83abf0ad8a0e4fd08623123838a17","_shasum":"2e5ff521ae42dc9133d6dca67666d9d01c03055f","_shrinkwrap":null,"_spec":"cannon@github:donmccurdy/cannon.js#v0.6.2-dev1","_where":"/Users/mcleary/Desktop/portfolio/node_modules/aframe-physics-system","author":{"email":"schteppe@gmail.com","name":"Stefan Hedman","url":"http://steffe.se"},"bugs":{"url":"https://github.com/schteppe/cannon.js/issues"},"dependencies":{},"description":"A lightweight 3D physics engine written in JavaScript.","devDependencies":{"browserify":"*","grunt":"~0.4.0","grunt-browserify":"^2.1.4","grunt-contrib-concat":"~0.1.3","grunt-contrib-jshint":"~0.1.1","grunt-contrib-nodeunit":"^0.4.1","grunt-contrib-uglify":"^0.5.1","grunt-contrib-yuidoc":"^0.5.2","jshint":"latest","nodeunit":"^0.9.0","uglify-js":"latest"},"engines":{"node":"*"},"gitHead":"022e8ba53fa83abf0ad8a0e4fd08623123838a17","homepage":"https://github.com/schteppe/cannon.js","keywords":["cannon.js","cannon","physics","engine","3d"],"licenses":[{"type":"MIT"}],"main":"./src/Cannon.js","name":"cannon","optionalDependencies":{},"readme":"# cannon.js\n\n### Lightweight 3D physics for the web\nInspired by [three.js](https://github.com/mrdoob/three.js) and [ammo.js](https://github.com/kripken/ammo.js), and driven by the fact that the web lacks a physics engine, here comes cannon.js.\nThe rigid body physics engine includes simple collision detection, various body shapes, contacts, friction and constraints.\n\n[Demos](http://schteppe.github.com/cannon.js) - [Documentation](http://schteppe.github.com/cannon.js/docs) - [Rendering hints](https://github.com/schteppe/cannon.js/tree/master/examples) - [NPM package](https://npmjs.org/package/cannon) - [CDN](https://cdnjs.com/libraries/cannon.js)\n\n### Browser install\n\nJust include [cannon.js](https://github.com/schteppe/cannon.js/releases/download/v0.6.2/cannon.js) or [cannon.min.js](https://github.com/schteppe/cannon.js/releases/download/v0.6.2/cannon.min.js) in your html and you're done:\n\n```html\n<script src=\"cannon.min.js\"></script>\n```\n\n### Node.js install\n\nInstall the cannon package via NPM:\n\n```bash\nnpm install --save cannon\n```\n\nAlternatively, point to the Github repo directly to get the very latest version:\n\n```bash\nnpm install --save schteppe/cannon.js\n```\n\n### Example\n\nThe sample code below creates a sphere on a plane, steps the simulation, and prints the sphere simulation to the console. Note that Cannon.js uses [SI units](http://en.wikipedia.org/wiki/International_System_of_Units) (metre, kilogram, second, etc.).\n\n```javascript\n// Setup our world\nvar world = new CANNON.World();\nworld.gravity.set(0, 0, -9.82); // m/s²\n\n// Create a sphere\nvar radius = 1; // m\nvar sphereBody = new CANNON.Body({\n   mass: 5, // kg\n   position: new CANNON.Vec3(0, 0, 10), // m\n   shape: new CANNON.Sphere(radius)\n});\nworld.addBody(sphereBody);\n\n// Create a plane\nvar groundBody = new CANNON.Body({\n    mass: 0 // mass == 0 makes the body static\n});\nvar groundShape = new CANNON.Plane();\ngroundBody.addShape(groundShape);\nworld.addBody(groundBody);\n\nvar fixedTimeStep = 1.0 / 60.0; // seconds\nvar maxSubSteps = 3;\n\n// Start the simulation loop\nvar lastTime;\n(function simloop(time){\n  requestAnimationFrame(simloop);\n  if(lastTime !== undefined){\n     var dt = (time - lastTime) / 1000;\n     world.step(fixedTimeStep, dt, maxSubSteps);\n  }\n  console.log(\"Sphere z position: \" + sphereBody.position.z);\n  lastTime = time;\n})();\n```\n\nIf you want to know how to use cannon.js with a rendering engine, for example Three.js, see the [Examples](examples).\n\n### Features\n* Rigid body dynamics\n* Discrete collision detection\n* Contacts, friction and restitution\n* Constraints\n   * PointToPoint (a.k.a. ball/socket joint)\n   * Distance\n   * Hinge (with optional motor)\n   * Lock\n   * ConeTwist\n* Gauss-Seidel constraint solver and an island split algorithm\n* Collision filters\n* Body sleeping\n* Experimental SPH / fluid support\n* Various shapes and collision algorithms (see table below)\n\n|             | [Sphere](http://schteppe.github.io/cannon.js/docs/classes/Sphere.html) | [Plane](http://schteppe.github.io/cannon.js/docs/classes/Plane.html) | [Box](http://schteppe.github.io/cannon.js/docs/classes/Box.html) | [Convex](http://schteppe.github.io/cannon.js/docs/classes/ConvexPolyhedron.html) | [Particle](http://schteppe.github.io/cannon.js/docs/classes/Particle.html) | [Heightfield](http://schteppe.github.io/cannon.js/docs/classes/Heightfield.html) | [Trimesh](http://schteppe.github.io/cannon.js/docs/classes/Trimesh.html) |\n| :-----------|:------:|:-----:|:---:|:------:|:--------:|:-----------:|:-------:|\n| Sphere      | Yes    | Yes   | Yes | Yes    | Yes      | Yes         | Yes     |\n| Plane       | -      | -     | Yes | Yes    | Yes      | -           | Yes     |\n| Box         | -      | -     | Yes | Yes    | Yes      | Yes         | (todo)  |\n| Cylinder    | -      | -     | Yes | Yes    | Yes      | Yes         | (todo)  |\n| Convex      | -      | -     | -   | Yes    | Yes      | Yes         | (todo)  |\n| Particle    | -      | -     | -   | -      | -        | (todo)      | (todo)  |\n| Heightfield | -      | -     | -   | -      | -        | -           | (todo)  |\n| Trimesh     | -      | -     | -   | -      | -        | -           | -       |\n\n### Todo\nThe simpler todos are marked with ```@todo``` in the code. Github Issues can and should also be used for todos.\n\n### Help\nCreate an [issue](https://github.com/schteppe/cannon.js/issues) if you need help.\n","readmeFilename":"README.markdown","repository":{"type":"git","url":"git+https://github.com/schteppe/cannon.js.git"},"version":"0.6.2"}
 
 /***/ }),
 /* 525 */
@@ -125191,7 +125109,7 @@ var Constraint = __webpack_require__(63);
 var PointToPointConstraint = __webpack_require__(99);
 var ConeEquation = __webpack_require__(527);
 var RotationalEquation = __webpack_require__(100);
-var ContactEquation = __webpack_require__(39);
+var ContactEquation = __webpack_require__(40);
 var Vec3 = __webpack_require__(1);
 
 /**
@@ -125283,7 +125201,7 @@ ConeTwistConstraint.prototype.update = function(){
 module.exports = ConeEquation;
 
 var Vec3 = __webpack_require__(1);
-var Mat3 = __webpack_require__(37);
+var Mat3 = __webpack_require__(38);
 var Equation = __webpack_require__(64);
 
 /**
@@ -125452,7 +125370,7 @@ Cylinder.prototype = new ConvexPolyhedron();
 module.exports = DistanceConstraint;
 
 var Constraint = __webpack_require__(63);
-var ContactEquation = __webpack_require__(39);
+var ContactEquation = __webpack_require__(40);
 
 /**
  * Constrains two bodies to be at a constant distance from each others center of mass.
@@ -126439,7 +126357,7 @@ var Constraint = __webpack_require__(63);
 var PointToPointConstraint = __webpack_require__(99);
 var RotationalEquation = __webpack_require__(100);
 var RotationalMotorEquation = __webpack_require__(141);
-var ContactEquation = __webpack_require__(39);
+var ContactEquation = __webpack_require__(40);
 var Vec3 = __webpack_require__(1);
 
 /**
@@ -126608,7 +126526,7 @@ ObjectCollisionMatrix.prototype.setNumObjects = function(n) {
 /* 534 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Body = __webpack_require__(38);
+var Body = __webpack_require__(39);
 var Vec3 = __webpack_require__(1);
 var Quaternion = __webpack_require__(14);
 var RaycastResult = __webpack_require__(72);
@@ -127603,7 +127521,7 @@ WheelInfo.prototype.updateWheel = function(chassis){
 /* 536 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Body = __webpack_require__(38);
+var Body = __webpack_require__(39);
 var Sphere = __webpack_require__(220);
 var Box = __webpack_require__(95);
 var Vec3 = __webpack_require__(1);
@@ -128163,7 +128081,7 @@ var Shape = __webpack_require__(11);
 var Vec3 = __webpack_require__(1);
 var Quaternion = __webpack_require__(14);
 var Particle = __webpack_require__(219);
-var Body = __webpack_require__(38);
+var Body = __webpack_require__(39);
 var Material = __webpack_require__(71);
 
 /**
@@ -128381,7 +128299,7 @@ module.exports = SplitSolver;
 var Vec3 = __webpack_require__(1);
 var Quaternion = __webpack_require__(14);
 var Solver = __webpack_require__(98);
-var Body = __webpack_require__(38);
+var Body = __webpack_require__(39);
 
 /**
  * Splits the equations into islands and solves them independently. Can improve performance.
@@ -128740,7 +128658,7 @@ var Shape = __webpack_require__(11);
 var Vec3 = __webpack_require__(1);
 var Quaternion = __webpack_require__(14);
 var Transform = __webpack_require__(62);
-var AABB = __webpack_require__(36);
+var AABB = __webpack_require__(37);
 var Octree = __webpack_require__(542);
 
 /**
@@ -129300,7 +129218,7 @@ Trimesh.createTorus = function (radius, tube, radialSegments, tubularSegments, a
 /* 542 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var AABB = __webpack_require__(36);
+var AABB = __webpack_require__(37);
 var Vec3 = __webpack_require__(1);
 
 module.exports = Octree;
@@ -129547,7 +129465,7 @@ var Shape = __webpack_require__(11);
 var Vec3 = __webpack_require__(1);
 var Quaternion = __webpack_require__(14);
 var GSSolver = __webpack_require__(216);
-var ContactEquation = __webpack_require__(39);
+var ContactEquation = __webpack_require__(40);
 var FrictionEquation = __webpack_require__(140);
 var Narrowphase = __webpack_require__(212);
 var EventTarget = __webpack_require__(139);
@@ -129555,10 +129473,10 @@ var ArrayCollisionMatrix = __webpack_require__(210);
 var OverlapKeeper = __webpack_require__(544);
 var Material = __webpack_require__(71);
 var ContactMaterial = __webpack_require__(215);
-var Body = __webpack_require__(38);
+var Body = __webpack_require__(39);
 var TupleDictionary = __webpack_require__(545);
 var RaycastResult = __webpack_require__(72);
-var AABB = __webpack_require__(36);
+var AABB = __webpack_require__(37);
 var Ray = __webpack_require__(97);
 var NaiveBroadphase = __webpack_require__(218);
 
@@ -133559,16 +133477,6 @@ exports.default = Card;
 
 /***/ }),
 /* 564 */
-/***/ (function(module, exports) {
-
-/* WEBPACK VAR INJECTION */(function(__dirname) {module.exports = {
-  STATIC_PATH: __dirname,
-};
-
-/* WEBPACK VAR INJECTION */}.call(exports, "/"))
-
-/***/ }),
-/* 565 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -133624,7 +133532,7 @@ var PROJECTS = [{
 }];
 
 /***/ }),
-/* 566 */
+/* 565 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -133658,10 +133566,10 @@ var skillsReducer = function skillsReducer() {
 exports.default = skillsReducer;
 
 
-var SKILLS = ['JavaScript', 'jQuery', 'React', 'Redux', 'Node', 'Express', 'Passport', 'A-Frame', 'Ruby', 'Rails', 'HTML', 'CSS', 'Bootstrap', 'SQL', 'MongoDB'];
+var SKILLS = ['JavaScript', 'jQuery', 'ESQuery', 'React', 'Redux', 'Node', 'Express', 'Passport', 'A-Frame', 'Ruby', 'Rails', 'HTML', 'CSS', 'Bootstrap', 'SQL', 'MongoDB', 'Babel', 'CSS3', 'Semantic', 'API', 'OOP', 'Functional'];
 
 /***/ }),
-/* 567 */
+/* 566 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -133827,7 +133735,7 @@ var PLANETS = [{
 }];
 
 /***/ }),
-/* 568 */
+/* 567 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -133873,7 +133781,7 @@ var locationReducer = function locationReducer() {
 exports.default = locationReducer;
 
 /***/ }),
-/* 569 */
+/* 568 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -133978,7 +133886,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Header);
 
 /***/ }),
-/* 570 */
+/* 569 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -134006,7 +133914,7 @@ var Footer = function Footer(props) {
 exports.default = Footer;
 
 /***/ }),
-/* 571 */
+/* 570 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

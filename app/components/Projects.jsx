@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { projectsReducer } from '../reducers'
 import { setProjects } from '../actions'
 import Card from './Card'
-import 'material-design-icons'
 
 class Projects extends Component {
   constructor(props) {
@@ -40,10 +39,10 @@ class Projects extends Component {
           className='navArrow'
           onClick={ () => this.changeProject('prev') }
         >
-          <i className="material-icons link">arrow_back</i>
+          <span className="left">&#12296;</span>
         </div>
 
-        <div>
+        <div className='center'>
           <h1>Recent Projects</h1>
           { this.renderList()[this.state.listIndex] }
         </div>
@@ -52,7 +51,7 @@ class Projects extends Component {
           className='navArrow'
           onClick={ () => this.changeProject('next') }
         >
-          <i className="material-icons link">arrow_forward</i>
+          <span className="right">&#12297;</span>
         </div>
 
       </div>

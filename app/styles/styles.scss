@@ -17,7 +17,7 @@ $navHeight: 5vh;
 $displayHeight: 95%;
 
 body {
-  // position: relative;
+  position: relative;
   font-family: $mainFont;
   margin: 0;
   padding: $navHeight 0 1.2em;
@@ -40,28 +40,27 @@ h1, h2, h3, h4, h5, h6 {
   top: 0;
   left: 0;
   z-index: 2;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  align-items: center;
+  justify-content: space-around;
   height: $navHeight;
   width: 100vw;
   background-color: $bgColor;
-  display: flex;
-  align-items: center;
   font-family: $navFont;
   color: $navColor;
 
   .logo {
-    padding-left: 15px;
-    flex: 1 1 15%;
-    .link{font-size: 2em;}
+    .link{
+      margin-left: 10px;
+      font-size: 2em;
+    }
   }
 
   .nav-links {
-    display: flex;
-    flex: 1 1 20%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     justify-content: space-around;
-
-    .link:hover {
-      border-bottom: 2px solid $navColor;
-    }
   }
 }
 
@@ -69,24 +68,32 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
 }
 
-.aboutLinks {
-
-}
-
 .link {
+  justify-self: center;
+  position: relative;
   font-size: 1.3rem;
   font-weight: bold;
-  margin: 10px 0;
   cursor: pointer;
-  transition: 0.2s;
-  border-bottom: 2px solid transparent;
-
-  &:hover {
-    color: lighten($navColor, 25%);
+  transition: 0.3s;
+  &:after {
+    content: '';
+    position: absolute;
+    background-color: $navColor;
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    left: 0;
+    margin-left: 50%;
+    transition: 0.4s linear;
   }
-
-  i {
-    padding: 0 5px;
+  &:hover {
+    &::after {
+      width: 100%;
+      margin: 0;
+    }
+  }
+  a {
+    text-decoration: none;
   }
 }
 
@@ -101,9 +108,34 @@ h1, h2, h3, h4, h5, h6 {
 ************************/
 
 #About {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-auto-rows: 100%;
+  // display: grid;
+  // grid-template-areas: ''
+  // grid-template-columns: 2fr 1fr;
+}
+
+@keyframes drop {
+  to {
+    transform: translateY(100vh)
+  }
+}
+
+.skill {
+  position: absolute;
+  top: 0;
+  // left: 0;
+  z-index: 10;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-family: $mainFont;
+  color: $mainColor;
+  animation: drop 6s 1s;
+}
+.list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
 }
 
 .main-text {
@@ -125,21 +157,28 @@ h1, h2, h3, h4, h5, h6 {
 
 .projectsView {
   margin-top: 25px;
-  grid-template-columns: 1fr 4fr 1fr;
-  grid-auto-rows: minmax(100px, auto);
+  grid-template-areas: 'left center right';
   align-items: center;
 }
 
 .navArrow {
   cursor: pointer;
-  position: relative;
-  top: 25vh;
 
-  .link {
+  .left, .right {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     transition: 0.3s;
     font-size: 4em;
     font-weight: bold;
     color: $navColor;
+  }
+  .left {
+    grid-area: left;
+  }
+  .center {
+    grid-area: center;
+  }
+  .right {
+    grid-area: right;
   }
 
   &:hover {
@@ -156,7 +195,6 @@ h1, h2, h3, h4, h5, h6 {
   border: 2px solid rgba($navColor, 0.2);
   border-radius: 20px;
   padding: 10px;
-
 }
 
 .projectImg {

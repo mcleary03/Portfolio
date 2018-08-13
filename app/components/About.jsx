@@ -9,10 +9,9 @@ export default class About extends Component {
 
   render() {
     return (
-      <div id='About'>
+      <div id='About' className='grid'>
 
         <div className=''>
-          <h1>Michael Cleary</h1>
           <h2>Full-Stack Developer</h2>
         </div>
 
@@ -22,12 +21,12 @@ export default class About extends Component {
           </div>
 
           <div className='aboutLinks'>
-            <div className='link'>
+            <span className='link'>
               <a href='https://github.com/mcleary03'>Github<i className='fa fa-github' /></a>
-            </div>
-            <div className='link'>
+            </span>
+            <span className='link'>
               <a href='https://www.linkedin.com/in/michaelgcleary/'>Linkedin<i className='fa fa-linkedin-square' /></a>
-            </div>
+            </span>
           </div>
         </div>
 
