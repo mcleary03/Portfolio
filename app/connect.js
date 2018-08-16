@@ -5,7 +5,7 @@ const MyComponent = ({ name }) => (
 );
 
 const mapStateToProps = state => ({
-	name: state.name;
+	name: state.name
 });
 
 const ConnectedComponent = connect(mapStateToProps)(MyComponent);

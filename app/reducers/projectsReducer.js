@@ -1,10 +1,8 @@
-import merge from 'lodash/merge'
-
 const projectsReducer = (state = {projects: PROJECTS}, action) => {
   Object.freeze(state)
   switch(action.type) {
     case 'SET_PROJECTS' :
-      let newState = merge({}, state)
+      let newState = { ...state }
       newState.projects = action.projects
       return newState
     default :
@@ -18,23 +16,29 @@ const PROJECTS = [
   {
     name: 'Portfolio',
     github: 'https://github.com/mcleary03/Portfolio',
-    img: './app/images/portfolio.gif',
-    technologies: ['JavaScript(ES6/2015)', 'React', 'Redux', 'SASS'],
-    description: 'I have Redux keeping track of the state of my app and the styling is all custom.  The A-Frame button at the top links to my integration of React with A-Frame.'
+    url: 'https://mcleary03.github.io/Portfolio/',
+    technologies: ['JavaScript', 'React', 'Redux', 'SASS'],
+    description: 'This page was built with React, Redux, SASS, and a whole lotta JavaScript. Click this terminal to close the laptop.'
   },
   {
-    name: 'Hype or Type',
-    github: 'https://github.com/between-the-lines/client',
-    img: './app/images/hypeOrType.gif',
-    technologies: ['JavaScript(ES6/2015)', 'Sentiment Analysis API', 'Twitter API', 'Google Maps', 'CSS'],
-    description: 'This was my first team project and first attempt at a hackathon.  Using IBM Watson Sentiment Analysis and a few other APIs, we display the general feeling about a topic using real-time Twitter data.  Emojis represent location and sentiment about the topic in a tweet or cluster of tweets depending on zoom level.  I was involved in planning, API integration, front-end development and design.'
+    name: ".e('dotty')",
+    github: 'https://github.com/mcleary03/dotty',
+    url: 'https://mcleary03.github.io/dotty/',
+    technologies: ['JavaScript', 'D3.js', 'SVG', 'CSS'],
+    description: "A casual game, built with D3.js, that rewards a fast reflex with a high score. Tap PLAY to start. You have 1 second to tap each dot. Scores are based on reflex speed and are saved locally. Try CASUAL or NORMAL modes, which end after 10 dots or ENDURANCE, which doesn't end, for a higher score."
   },
   {
-    name: 'YelpCamp',
-    github: 'https://github.com/mcleary03/YelpCamp',
-    live: 'https://immense-thicket-93896.herokuapp.com/',
-    img: './app/images/yelpCamp.gif',
-    technologies: ['JavaScript', 'MongoDB', 'Mongoose', 'Express', 'Bootstrap', 'Passport'],
-    description: 'Campground information and review app.  Written in HTML and JavaScript with Express for RESTful routing, MongoDB for the database and Passport for authentication.  Users can sign up, log in, add campgrounds or comment on others.  Users can then edit and delete campgrounds and comments that belong to them.'
+    name: 'Animated UI Components',
+    github: 'https://github.com/mcleary03/Custom-React-Buttons',
+    url: 'https://mcleary03.github.io/Nameless/?selectedKind=Btn&selectedStory=All%20color%20schemes&full=0&addons=1&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel',
+    technologies: ['JavaScript', 'React'],
+    description: 'These button components have dynamic styling done entirely in JavaScript. State is used to control each step of the animation. Props like `caps` or  `bold` will affect the text. A `color` prop will set the theme of the button and any attribute may be overridden by passing a style object.'
+  },
+  {
+    name: 'ESQuery REPL',
+    github: 'https://github.com/mcleary03/esqueryREPL',
+    url: 'https://mcleary03.github.io/esqueryREPL/',
+    technologies: ['JavaScript', 'CSS'],
+    description: 'Improved UI and UX of an existing open source tool that querys against the JavaScript AST (abstract syntax tree). Added ability to write multi line queries, responsive grid layout, a copy button that formats multi-line queries into valid syntax for external use and adds it to the clipboard, and a dark theme with color coded sections.'
   }
 ]

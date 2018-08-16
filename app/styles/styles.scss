@@ -1,11 +1,14 @@
 @import "reset.scss";
 @import url('https://fonts.googleapis.com/css?family=Dancing+Script|Lato|Yeseva+One');
+@import url('https://fonts.googleapis.com/css?family=Share+Tech+Mono|VT323');
 
 $navFont: 'Dancing Script', cursive, serif;
 $mainFont: 'Lato', sans-serif;
 $headerFont: 'Yeseva One';
+// $laptopFont: 'Share Tech Mono', monospace;
+$laptopFont: 'Lato';
 $pink: #f4429b;
-$green: rgb(12, 109, 31);
+$green: rgb(17, 148, 43);
 $gold: #f4e542;
 $white: #ddd;
 $red: #FF0011;
@@ -99,11 +102,19 @@ h1, h2, h3, h4, h5, h6 {
   display: grid;
   grid-template-areas: 'popup1 laptop popup2'
                        'popup3 laptop popup4';
-  grid-template-columns: 30vw 40vw 30vw;
-  grid-template-rows: 50% 50%;
-  // justify-content: center;
+  grid-template-columns: 29vw 38vw 29vw;
+  grid-template-rows: 43% 43%;
+  justify-content: space-around;
   height: 95vh;
   width: 100vw;
+}
+.popup {
+  width: 100%;
+  height: 100%;
+  iframe {
+    width: 100%;
+    height: 100%;
+  }
 }
 #popup1 {
   grid-area: popup1;
@@ -122,6 +133,32 @@ h1, h2, h3, h4, h5, h6 {
   height: 60vh;
   width: 90vw;
   margin: 0 auto;
+}
+
+#btns {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  align-content: space-around; 
+  text-align: center;
+  height: 100%;
+}
+
+#btns > * {
+  width: 100%;
+}
+
+.fadeIn {
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out 0.3s forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /***************************
@@ -144,12 +181,13 @@ h1, h2, h3, h4, h5, h6 {
 ***************************/
 
 #Footer {
-  position: absolute;
+  position: sticky;
   bottom: 0;
   left: 0;
   right: 0;
   font-size: 0.6em;
   color: $navColor;
+  background-color: rgba(0,0,0,0);
   text-align: center;
 }
 
@@ -158,7 +196,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #laptop {
   height: 100%;
-  width: 100%;
+  width: auto;
   cursor: pointer;
 }
 #laptop *,
@@ -217,6 +255,9 @@ h1, h2, h3, h4, h5, h6 {
   transform-origin: bottom;
   transform: rotateY(180deg);
   background-color: #c0c0c0;
+
+  perspective-origin: center bottom;
+  perspective: 10px;
   z-index: -1;
   backface-visibility: hidden;
 }
@@ -260,14 +301,14 @@ h1, h2, h3, h4, h5, h6 {
   content: '';
   position: absolute;
   bottom: -70%;
-  height: 150%;
+  height: 75%;
   width: 100%;
-  border-radius: 40%;
-  background-color: #b8b8b8;
+  border-radius: 0 0 40% 40%;
+  background: linear-gradient(#c0c0c0, #656565);
   z-index: -1;
 }
 .glow {
-  animation: glow 4s 3s infinite ease-in-out;
+  animation: glow 1.4s 3s infinite ease-in;
 }
 
 #screen.power .text {
@@ -278,19 +319,12 @@ h1, h2, h3, h4, h5, h6 {
   margin: 12px;
   height: auto;
   color: $green;
-  font-family: monospace;
-  font-size: 1.3em;
+  font-family: $laptopFont;
+  font-size: 1.1em;
   text-indent: 5px;
 }
 .text p {
   margin: 0.5em 0 0.5em 2px;
-}
-
-.popup {
-  // position: relative;
-  width: 100%;
-  height: 100%;
-  border: 1px solid #c0c0c0;
 }
 
 @keyframes showCamera {
@@ -360,12 +394,27 @@ h1, h2, h3, h4, h5, h6 {
 
 @keyframes glow {
   0% {
-    filter: drop-shadow(0 -4px 10px rgba(168, 250, 249, 0.1))
+    filter: drop-shadow(0 -4px 10px rgba(33, 196, 193, 0.1))
   }
   50% {
-    filter: drop-shadow(0 -4px 30px rgb(162, 255, 173))
+    filter: drop-shadow(0 -4px 10px rgba(83, 206, 98, 0.9))
   }
   100% {
-    filter: drop-shadow(0 -4px 10px rgba(168, 250, 249, 0.1))
+    filter: drop-shadow(0 -4px 80px rgba(33, 196, 193, 0.4))
+  }
+}
+
+@media screen and ( max-width: 950px ) {
+  #main {
+    // grid-template-areas: 'popup1 laptop popup2'
+    //                      'popup3 laptop popup4';
+    grid-template-areas: 'laptop'
+                         'popup1'
+                         'popup2'
+                         'popup3'
+                         'popup4';
+    grid-template-columns: 90vw;
+    grid-template-rows: 42.5vh 42.5vh;
+    height: auto;
   }
 }

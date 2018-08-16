@@ -31,12 +31,7 @@
   "author": "Michael Cleary",
   "license": "ISC",
   "dependencies": {
-    "aframe": "^0.6.1",
-    "aframe-animation-component": "^3.2.5",
-    "aframe-layout-component": "^4.2.0",
-    "aframe-orbit-controls-component-2": "^0.1.12",
-    "aframe-physics-system": "^1.4.3",
-    "aframe-react": "^4.3.0",
+    "animated-react-button": "^1.0.3",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
     "babel-polyfill": "^6.3.14",
@@ -45,16 +40,15 @@
     "gh-pages": "^1.0.0",
     "lodash": "^4.17.4",
     "node-sass-chokidar": "0.0.3",
-    "normalize-scss": "^7.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.5",
     "redux": "^3.7.2"
   },
   "devDependencies": {
-    "@storybook/react": "^3.3.12",
     "@storybook/addon-actions": "^3.3.12",
     "@storybook/addon-links": "^3.3.12",
-    "@storybook/addons": "^3.3.12"
+    "@storybook/addons": "^3.3.12",
+    "@storybook/react": "^3.3.12"
   }
 }

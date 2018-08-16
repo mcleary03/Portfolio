@@ -1,7 +1,6 @@
 import React from 'react'
 import merge from 'lodash/merge'
 import About from '../components/About'
-import AFrame from '../components/AFrameComponents/AFrame'
 import Contact from '../components/Contact'
 import Projects from '../components/Projects'
 
@@ -21,12 +20,6 @@ const newDisplay = action => {
   switch(action.display) {
     case 'About' :
       return <About/>
-    case 'Projects' :
-      return <Projects/>
-    case 'Contact' :
-      return <Contact/>
-    case 'A-Frame' :
-      return <AFrame/>
     default :
       return <About/>
   }
