@@ -1,14 +1,11 @@
 import React from 'react'
-import merge from 'lodash/merge'
-import About from '../components/About'
-import Contact from '../components/Contact'
-import Projects from '../components/Projects'
+import Popup from '../components/Popup'
 
-const displayReducer = (state = {display: <About/>}, action) => {
+const displayReducer = (state = {display: <Popup/>}, action) => {
   Object.freeze(state)
   switch(action.type) {
     case 'SET_DISPLAY' :
-      let newState = merge({}, state)
+      let newState = { ...state }
       newState.display = newDisplay(action)
       return newState
     default :
@@ -18,10 +15,10 @@ const displayReducer = (state = {display: <About/>}, action) => {
 
 const newDisplay = action => {
   switch(action.display) {
-    case 'About' :
-      return <About/>
+    case 'Portfolio' :
+      return <Popup/>
     default :
-      return <About/>
+      return <Popup/>
   }
 }
 

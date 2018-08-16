@@ -1,6 +1,4 @@
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 const colors = {
   default: { background: '#38E4F7', border: '#09c5da', shadow: '#04565f', inset: '#69ebf9', text: '#ffffff' },
@@ -12,59 +10,59 @@ const colors = {
   yellow: { background: '#f4f441', border: '#dcdc0d', shadow: '#636306', inset: '#f7f771', text: '#ffffff' },
   orange: { background: '#eaad3a', border: '#c38615', shadow: '#503708', inset: '#efc068', text: '#ffffff' },
   pink: { background: '#f4429b', border: '#dd0d75', shadow: '#640635', inset: '#f772b5', text: '#ffffff' }
-};
+}
 export default class Btn extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.handlemouseenter = e => {
-      this.setState((state, props) => ({ hover: true }));
-    };
+      this.setState((state, props) => ({ hover: true }))
+    }
 
     this.handlemouseleave = e => {
-      this.setState(() => ({ click: false, hover: false }));
-    };
+      this.setState(() => ({ click: false, hover: false }))
+    }
 
     this.handlefocus = e => {
-      this.setState(() => ({ focus: true }));
-    };
+      this.setState(() => ({ focus: true }))
+    }
 
     this.handleblur = e => {
-      this.setState(() => ({ focus: false }));
-    };
+      this.setState(() => ({ focus: false }))
+    }
 
     this.handlemousedown = e => {
-      this.setState(() => ({ click: true }));
-    };
+      this.setState(() => ({ click: true }))
+    }
 
     this.handlemouseup = e => {
       this.setState(() => ({ click: false }));
-      if (this.props.onclick) this.props.onclick(e);
-    };
+      if (this.props.onclick) this.props.onclick(e)
+    }
 
     this.handlekeydown = e => {
-      if (this.isClick(e)) this.handlemousedown(e);
-    };
+      if (this.isClick(e)) this.handlemousedown(e)
+    }
 
     this.handlekeyup = e => {
-      if (this.isClick(e)) this.handlemouseup(e);
-    };
+      if (this.isClick(e)) this.handlemouseup(e)
+    }
 
-    this.isClick = e => this.state.focus && (e.keyCode === 32 || e.keyCode === 13);
+    this.isClick = e => this.state.focus && (e.keyCode === 32 || e.keyCode === 13)
 
     this.handleEvent = e => {
       this[`handle${e.type}`](e); // handle animations
       if (this.props[`on${e.type}`]) this.props[`on${e.type}`](e); // handle actions
-    };
+    }
 
     this.handleResize = () => {
-      this.setState(this.state);
-    };
+      this.setState(this.state)
+    }
 
     this.getContentHeight = () => {
       // after first render, we change the span height to match the contents
-      return this.state.hasHeight ? this.content.clientHeight : `auto`;
-    };
+      return this.state.hasHeight ? this.content.clientHeight : `auto`
+    }
 
     this.state = {
       hasHeight: false,
@@ -73,7 +71,8 @@ export default class Btn extends Component {
       click: props.fade ? true : props.click || false
 
       // pull out color variables from                   an inline style custom color scheme object  -OR-  chosen scheme  -OR-  default scheme
-    };const { background, border, shadow, inset, text } = typeof props.color === `object` ? props.color : colors[props.color || `default`];
+    }
+    const { background, border, shadow, inset, text } = typeof props.color === `object` ? props.color : colors[props.color || `default`]
 
     // optional props
     const { style, bold, caps } = props;
@@ -82,11 +81,14 @@ export default class Btn extends Component {
       position: `relative`,
       boxSizing: `border-box`,
       margin: `0 0 5px 0`
-
-    };this.defaultStyle = _extends({
+      
+    }
+    this.defaultStyle = {
+      ...style,
       boxSizing: `border-box`,
       touchAction: `manipulation`,
       userSelect: `none`,
+      WebkitTapHighlightColor:  `rgba(255, 255, 255, 0)`,
       border: `none`,
       outline: `none`,
       cursor: `pointer`,
@@ -106,20 +108,22 @@ export default class Btn extends Component {
       textTransform: caps ? `uppercase` : `none`,
       transition: `0.3s ease-in-out`,
       willChange: `transform, filter, border-bottom, box-shadow`
-    }, style);
+    }
 
-    this.hoverStyle = _extends({}, this.defaultStyle, {
+    this.hoverStyle =  {
+      ...this.defaultStyle,
       borderBottom: `3px solid ${border}`,
       filter: `drop-shadow(0 5px 3px ${shadow})`,
       transform: `translateY(2px)`
-    });
+    }
 
-    this.clickStyle = _extends({}, this.hoverStyle, {
+    this.clickStyle = {
       borderBottom: `0 solid ${border}`,
       filter: `drop-shadow(0 0 0 ${shadow})`,
       boxShadow: `1px 2px 2px ${shadow} inset`,
-      transform: `translateY(5px)`
-    });
+      transform: `translateY(5px)`,
+      ...this.hoverStyle
+    }
   }
 
   componentDidMount() {
@@ -147,32 +151,30 @@ export default class Btn extends Component {
       clickStyle,
       handleEvent,
       getContentHeight
-    } = this;
+    } = this
 
-    const style = hover || focus ? click ? clickStyle : hoverStyle : defaultStyle;
+    const style = (hover || focus) ? (click ? clickStyle : hoverStyle) : defaultStyle
+    const className = fade ? 'fadeIn' : ''
 
-    return React.createElement(
-      'div',
-      { 
-        style: _extends({}, btnContainerStyle, {height: getContentHeight()}),
-        className: fade ? 'fadeIn' : ''
-      },
-      React.createElement(
-        'button',
-        {
-          ref: el => this.content = el,
-          style: style,
-          onMouseEnter: handleEvent,
-          onMouseLeave: handleEvent,
-          onFocus: handleEvent,
-          onBlur: handleEvent,
-          onMouseDown: handleEvent,
-          onMouseUp: handleEvent,
-          onKeyDown: handleEvent,
-          onKeyUp: handleEvent,
-        },
-        children
-      )
-    );
+    return (
+      <div 
+        style={{ ...btnContainerStyle, height: getContentHeight() }} 
+        className={ className }>
+        <button
+          ref={ el => this.content = el }
+          style={ style }
+          onMouseEnter={ handleEvent }
+          onMouseLeave={ handleEvent }
+          onFocus={ handleEvent }
+          onBlur={ handleEvent }
+          onMouseDown={ handleEvent }
+          onMouseUp={ handleEvent }
+          onKeyDown={ handleEvent }
+          onKeyUp={ handleEvent }
+        >
+          { children }
+        </button>
+      </div>
+    )
   }
-}
+} 

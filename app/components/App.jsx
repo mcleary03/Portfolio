@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { showProject } from '../actions'
 import { projectsReducer } from '../reducers'
 import Header from './Header'
 import Footer from './Footer'
 import Display from './Display'
-import Laptop from './Laptop'
-import Popup from './Popup'
-import Btns from './Btns'
 class App extends Component {
   constructor(props) {
     super(props)
@@ -17,14 +15,7 @@ class App extends Component {
     return (
       <div id='App'>
         <Header />
-        <div id="main">
-          <Laptop/>
-          <Popup pos='1'
-            url="https://mcleary03.github.io/dotty/"/>
-          <Popup pos='2'>
-            <Btns />
-          </Popup>
-        </div>
+        <Display />
         <Footer />
       </div>
     )
@@ -32,7 +23,11 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  // laptopDisplay: state.projectsReducer.project,
+  laptopDisplay: state.projectsReducer.projectInfo,
 })
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => ({
+  getInfo: id => dispatch(setProjects(id))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

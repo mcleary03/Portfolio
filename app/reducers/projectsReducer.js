@@ -1,9 +1,13 @@
-const projectsReducer = (state = {projects: PROJECTS}, action) => {
+const projectsReducer = (state = {displayedProjects:[], projectInfo: PROJECTS[0]}, action) => {
   Object.freeze(state)
+  let newState = { ...state }
+  
   switch(action.type) {
-    case 'SET_PROJECTS' :
-      let newState = { ...state }
-      newState.projects = action.projects
+    case 'SHOW_PROJECT' :
+      newState.displayedProjects.push(id)
+      return newState
+    case 'PROJECT_INFO' :
+      newState.projectInfo = PROJECTS[id]
       return newState
     default :
       return state

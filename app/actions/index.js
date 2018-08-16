@@ -1,13 +1,13 @@
-export const setlaptopDisplay = project => {
+export const setlaptopDisplay = projectID => {
   return ({
     type: 'SET_DISPLAY',
-    project
+    id: projectID
   })
 }
 
-export const setProjects = projects => {
+export const showProject = projectID => {
   return ({
-    type: 'SET_PROJECTS',
-    projects
+    type: 'SHOW_PROJECT',
+    id: projectID
   })
 }

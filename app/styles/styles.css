@@ -87,6 +87,11 @@ hr {
 input, select {
   vertical-align: middle; }
 
+*,
+*::before,
+*::after {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0); }
+
 body {
   position: relative;
   font-family: "Lato", sans-serif;
@@ -196,12 +201,6 @@ h1, h2, h3, h4, h5, h6 {
 .fadeIn {
   opacity: 0;
   animation: fadeIn 1s ease-in-out 0.3s forwards; }
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0; }
-  100% {
-    opacity: 1; } }
 
 /***************************
       CARD COMPONTENT
@@ -348,6 +347,12 @@ h1, h2, h3, h4, h5, h6 {
 .text p {
   margin: 0.5em 0 0.5em 2px; }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
 @keyframes showCamera {
   1% {
     opacity: 1; } }
@@ -404,5 +409,18 @@ h1, h2, h3, h4, h5, h6 {
   #main {
     grid-template-areas: 'laptop' 'popup1' 'popup2' 'popup3' 'popup4';
     grid-template-columns: 90vw;
-    grid-template-rows: 42.5vh 42.5vh;
-    height: auto; } }
+    grid-template-rows: 35vh 40vh auto auto auto;
+    height: auto;
+    grid-row-gap: 3vh; }
+  #laptop .text {
+    font-size: 1em; } }
+
+@media screen and (max-device-width: 700px) {
+  #main {
+    grid-template-areas: 'laptop' 'popup1' 'popup2' 'popup3' 'popup4';
+    grid-template-columns: 90vw;
+    grid-template-rows: 35vh 40vh auto auto auto;
+    height: auto;
+    grid-row-gap: 3vh; }
+  #laptop .text {
+    font-size: 0.85em; } }

@@ -1,7 +1,7 @@
-import 'babel-polyfill';
 import React, { Component } from 'react'
-import Projects from './Projects'
-import About from './About'
+import Laptop from './Laptop'
+import Popup from './Popup'
+import Btns from './Btns'
 
 export default class Display extends Component {
   constructor() {
@@ -10,10 +10,12 @@ export default class Display extends Component {
 
   render() {
     return (
-      <div id='main-display'>
-        <div className='container'>
-          {this.props.display}
-        </div>
+      <div id='main'>
+        <Laptop />
+          <Popup pos='1' url="https://mcleary03.github.io/dotty/"/>
+          <Popup pos='2'>
+            <Btns />
+          </Popup>
       </div>
     )
   }
