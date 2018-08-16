@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "version": "1.0.0",
-  "description": "",
+  "description": "Michael Cleary's Web Development Portfolio. Demos of a few apps built with lots of JavaScript ( ES6+ ), React, CSS, SASS, HTML5, Redux, and D3.",
   "main": "index.js",
   "scripts": {
     "build-css": "node-sass-chokidar app/styles/  -o app/styles/",
@@ -26,7 +26,15 @@
     "node.js",
     "software",
     "app",
-    "application"
+    "application",
+    "react",
+    "d3",
+    "redux",
+    "css",
+    "sass",
+    "scss",
+    "engineer",
+    "developer"
   ],
   "author": "Michael Cleary",
   "license": "ISC",

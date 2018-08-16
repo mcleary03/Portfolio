@@ -8,8 +8,8 @@ class Header extends Component {
   render() {
     return (
       <div id='header'>
-        <div className='myName link'>
-          <a href='https://github.com/mcleary03'>Michael Cleary</a>
+        <div className='link'>
+          <a href='https://github.com/mcleary03'><h1>Michael Cleary</h1></a>
         </div>
       </div>
     )

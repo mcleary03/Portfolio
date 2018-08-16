@@ -8,13 +8,15 @@ $headerFont: 'Yeseva One';
 // $laptopFont: 'Share Tech Mono', monospace;
 $laptopFont: 'Lato';
 $pink: #f4429b;
-$green: rgb(17, 148, 43);
+$green: #4bf256;
+$teal: #62c6ab;
 $gold: #f4e542;
 $white: #ddd;
 $red: #FF0011;
-$navColor: $green;
+$navColor: rgb(87, 92, 249);
+$linkAltColor: rgb(42, 180, 238);
 $bgColor: #000;
-$mainColor: complement($navColor);
+$mainColor: complement($green);
 $headerColor: lighten($mainColor, 10%);
 $navHeight: 5vh;
 $displayHeight: 95%;
@@ -34,16 +36,12 @@ body {
   background: $bgColor;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: $headerFont;
-  color: $headerColor;
-}
-
 #App {
   display: grid;
   grid-template-areas: 'header'
                        'main'
-                       'footer'
+                       'footer';
+  grid-template-rows: 2em calc(100% - 2.6em) 0.6em;
 }
 
 #header {
@@ -52,27 +50,22 @@ h1, h2, h3, h4, h5, h6 {
   grid-template-columns: 3fr 1fr;
   align-items: center;
   justify-content: space-around;
-  height: $navHeight;
+  height: 100%;
   width: 100vw;
-  background-color: $bgColor;
+  padding: 0 10px;
   font-family: $navFont;
   color: $navColor;
-}
-
-#header {
-  padding: 0 10px;
-}
-
-.myName {
-  width: max-content;
+  .link h1 {
+    font-size: 1.3em;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .link {
   position: relative;
-  font-size: 2rem;
-  font-weight: bold;
+  width: max-content;
   cursor: pointer;
-  transition: 0.3s;
   &:after {
     content: '';
     position: absolute;
@@ -82,21 +75,27 @@ h1, h2, h3, h4, h5, h6 {
     bottom: 0;
     left: 0;
     margin-left: 50%;
-    transition: 0.4s ease-out;
+    transition: background-color 0.3s ease-in,
+                width            0.4s ease-out,
+                margin           0.4s ease-out;
   }
-  a {
-    transition: 0.4s ease-out;
+  a, a>* {
+    transition: color 0.3s ease-in;
     text-decoration: none;
     &:visited, &:active {
       color: $navColor;
     }
   }
   &:hover {
-    a {
-      color: $pink;
+    a, a>* {
+      transition: color 0.3s ease-in;
+      color: $linkAltColor;
     }
     &::after {
-      background-color: $pink;
+      transition: background-color 0.3s ease-in-out,
+                  width            0.3s ease-out,
+                  margin           0.3s ease-out;
+      background-color: $linkAltColor;
       width: 100%;
       margin: 0;
     }
@@ -178,16 +177,17 @@ h1, h2, h3, h4, h5, h6 {
 ***************************/
 
 #Footer {
-  position: sticky;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  grid-area: footer;
+  // position: sticky;
+  // bottom: 0;
+  // left: 0;
+  // right: 0;
   font-size: 0.6em;
+  height: 100%;
   color: $navColor;
   background-color: rgba(0,0,0,0);
   text-align: center;
 }
-
 
 // Laptop Component
 
@@ -318,7 +318,6 @@ h1, h2, h3, h4, h5, h6 {
   color: $green;
   font-family: $laptopFont;
   font-size: 1.1em;
-  text-indent: 5px;
 }
 .text p {
   margin: 0.5em 0 0.5em 2px;

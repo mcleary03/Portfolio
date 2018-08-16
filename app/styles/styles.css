@@ -96,17 +96,14 @@ body {
   position: relative;
   font-family: "Lato", sans-serif;
   margin: 0;
-  color: #94117a;
+  color: #f24be7;
   height: 100%;
   background: #000; }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Yeseva One";
-  color: #c216a0; }
-
 #App {
   display: grid;
-  grid-template-areas: 'header' 'main' 'footer'; }
+  grid-template-areas: 'header' 'main' 'footer';
+  grid-template-rows: 2em calc(100% - 2.6em) 0.6em; }
 
 #header {
   grid-area: header;
@@ -114,43 +111,41 @@ h1, h2, h3, h4, h5, h6 {
   grid-template-columns: 3fr 1fr;
   align-items: center;
   justify-content: space-around;
-  height: 5vh;
+  height: 100%;
   width: 100vw;
-  background-color: #000;
+  padding: 0 10px;
   font-family: "Dancing Script", cursive, serif;
-  color: #11942b; }
-
-#header {
-  padding: 0 10px; }
-
-.myName {
-  width: max-content; }
+  color: #575cf9; }
+  #header .link h1 {
+    font-size: 1.3em;
+    margin: 0;
+    padding: 0; }
 
 .link {
   position: relative;
-  font-size: 2rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s; }
+  width: max-content;
+  cursor: pointer; }
   .link:after {
     content: '';
     position: absolute;
-    background-color: #11942b;
+    background-color: #575cf9;
     height: 2px;
     width: 0;
     bottom: 0;
     left: 0;
     margin-left: 50%;
-    transition: 0.4s ease-out; }
-  .link a {
-    transition: 0.4s ease-out;
+    transition: background-color 0.3s ease-in, width            0.4s ease-out, margin           0.4s ease-out; }
+  .link a, .link a > * {
+    transition: color 0.3s ease-in;
     text-decoration: none; }
-    .link a:visited, .link a:active {
-      color: #11942b; }
-  .link:hover a {
-    color: #f4429b; }
+    .link a:visited, .link a:active, .link a > *:visited, .link a > *:active {
+      color: #575cf9; }
+  .link:hover a, .link:hover a > * {
+    transition: color 0.3s ease-in;
+    color: #2ab4ee; }
   .link:hover::after {
-    background-color: #f4429b;
+    transition: background-color 0.3s ease-in-out, width            0.3s ease-out, margin           0.3s ease-out;
+    background-color: #2ab4ee;
     width: 100%;
     margin: 0; }
 
@@ -206,7 +201,7 @@ h1, h2, h3, h4, h5, h6 {
       CARD COMPONTENT
 ***************************/
 #Card {
-  border: 2px solid rgba(17, 148, 43, 0.2);
+  border: 2px solid rgba(87, 92, 249, 0.2);
   border-radius: 20px;
   padding: 10px; }
 
@@ -217,12 +212,10 @@ h1, h2, h3, h4, h5, h6 {
       FOOTER COMPONTENT
 ***************************/
 #Footer {
-  position: sticky;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  grid-area: footer;
   font-size: 0.6em;
-  color: #11942b;
+  height: 100%;
+  color: #575cf9;
   background-color: transparent;
   text-align: center; }
 
@@ -339,10 +332,9 @@ h1, h2, h3, h4, h5, h6 {
 .text {
   margin: 12px;
   height: auto;
-  color: #11942b;
+  color: #4bf256;
   font-family: "Lato";
-  font-size: 1.1em;
-  text-indent: 5px; }
+  font-size: 1.1em; }
 
 .text p {
   margin: 0.5em 0 0.5em 2px; }
