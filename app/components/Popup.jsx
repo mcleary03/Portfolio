@@ -10,7 +10,6 @@ class Popup extends Component {
       output: props.url ? iframe(props.url) : props.children,
       position: props.pos
     }
-    console.log('state', this.state)
   }
 
   displayInfo() {

@@ -13,7 +13,11 @@ module.exports = {
         query: {
           presets: ['react', 'es2015', 'stage-2']
         }
-      }
+      },
+      {
+        test: /(\.css$|\.scss$)/,
+        loaders: ["style-loader", "css-loader", "sass-loader"]
+      },
     ]
   },
   devtool: 'source-map',

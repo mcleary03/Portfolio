@@ -1,0 +1,220 @@
+$green: #4bf256;
+$laptopFont: 'Lato';
+
+#laptop {
+  height: 100%;
+  width: auto;
+  cursor: pointer;
+}
+#laptop *,
+#laptop ::before,
+#laptop ::after {
+  box-sizing: border-box;
+}
+
+#screen {
+  position: relative;
+  margin: 0 auto;
+  height: 100%;
+  width: 99.4%;
+  background-color: #000000;
+  border: 12px solid #111111;
+  border-top: 15px solid #111111;
+  border-bottom: 15px solid #111111;
+  box-shadow: 0 0 0 12px #111111 inset,
+              0 0 0 2px #000000,
+              0 0 0 4px #c0c0c0;
+  border-radius: 8px;
+  transform-style: preserve-3d;
+  transform-origin: bottom;
+  transform: rotateX(-15deg);
+  perspective: 100px;
+}
+#screen.close {
+  animation: close 2s forwards cubic-bezier(1,0,.82,.63);
+}
+#screen.open {
+  animation: open 2s forwards cubic-bezier(.21,1.05,.69,1);
+}
+#screen:before {
+  content: '';
+  position: absolute;
+  top: -1.5%;
+  margin: 0 50%;
+  background-color: #000000;
+  height: 8px;
+  width: 8px;
+  border: 2px solid #222222;
+  border-right: 2px solid #2a2a2a;
+  border-left: 2px solid #2a2a2a;
+  border-radius: 50%;
+  transform: rotateZ(-45deg);
+}
+#screen:after {
+  content: '';
+  position: absolute;
+  top: -18px;
+  bottom: -18px;
+  left: -14px;
+  right: -15px;
+  border-radius: 8px;
+  transform-style: preserve-3d;
+  transform-origin: bottom;
+  transform: rotateY(180deg);
+  background-color: #c0c0c0;
+
+  perspective-origin: center bottom;
+  perspective: 10px;
+  z-index: -1;
+  backface-visibility: hidden;
+}
+#screen.close{
+  &:before {
+    animation: hideCamera 2s forwards cubic-bezier(1,-0.15,.82,.63);
+  }
+  &:after {
+    animation: showBack 2s forwards cubic-bezier(1,-0.15,.82,.63);
+  }
+}
+#screen.open{
+  &:before {
+   animation: showCamera 2s forwards cubic-bezier(1,-0.15,.82,.63);
+  }
+  &:after {
+    animation: hideBack 2s forwards cubic-bezier(1,-0.15,.82,.63);
+  }
+}
+
+#keyboard {
+  position: relative;
+  top: 2px;
+  width: 100%;
+  height: 2%;
+  background-color: #c0c0c0;
+  margin: 0 auto;
+  border-radius: 2px 2px 0 0;
+}
+#keyboard:before {
+  content: '';
+  position: absolute;
+  background-color: #969696;
+  height: 75%;
+  width: 10%;
+  left: 45%;
+  top: -2px;
+  border-radius: 30%;
+}
+#keyboard:after {
+  content: '';
+  position: absolute;
+  bottom: -70%;
+  height: 75%;
+  width: 100%;
+  border-radius: 0 0 40% 40%;
+  background: linear-gradient(#c0c0c0, #656565);
+  z-index: -1;
+}
+.glow {
+  animation: glow 1.4s 3s infinite ease-in;
+}
+
+#screen.power .text {
+  animation: power 0.4s 2s forwards ease-out;
+}
+
+.text {
+  margin: 12px;
+  height: auto;
+  color: $green;
+  font-family: $laptopFont;
+  font-size: 1.1em;
+}
+.text p {
+  margin: 0.5em 0 0.5em 2px;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes showCamera {
+  1% {
+    opacity: 1;
+  }
+}
+@keyframes hideCamera {
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes power {
+  0% {
+    background-color: #000000;
+  }
+  20% {
+    background-color: #070707;
+  }
+  30% {
+    background-color: #070707;
+  }
+  100% {
+    background-color: #000000;
+  }
+}
+
+@keyframes close {
+  0% {
+    transform: rotateX(-15deg);
+  }
+  100% {
+    transform: rotateX(89deg);
+  }
+}
+
+@keyframes open {
+  0% {
+    transform: rotateX(89deg);
+  }
+  100% {
+    transform: rotateX(-15deg);
+  }
+}
+
+@keyframes showBack {
+  99% {
+    backface-visibility: hidden;
+  }
+  100% {
+    backface-visibility: visible;
+  }
+}
+
+@keyframes hideBack {
+  0% {
+    backface-visibility: visible;
+  }
+  1% {
+    backface-visibility: hidden;
+  }
+}
+
+@keyframes glow {
+  0% {
+    filter: drop-shadow(0 -4px 10px rgba(33, 196, 193, 0.1))
+  }
+  50% {
+    filter: drop-shadow(0 -4px 10px rgba(83, 206, 98, 0.9))
+  }
+  100% {
+    filter: drop-shadow(0 -4px 80px rgba(33, 196, 193, 0.4))
+  }
+}
