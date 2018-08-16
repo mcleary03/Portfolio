@@ -22339,6 +22339,13 @@ var Btn = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (Btn.__proto__ || Object.getPrototypeOf(Btn)).call(this, props));
 
+    _this.state = {
+      hasHeight: false,
+      hover: props.hover || false,
+      focus: props.fade ? true : props.focus || false,
+      click: props.fade ? true : props.click || false
+    };
+
     _this.handlemouseenter = function (e) {
       return _this.setState(function (state, props) {
         return { hover: true };
@@ -22393,22 +22400,8 @@ var Btn = function (_Component) {
       if (_this.props['on' + e.type]) _this.props['on' + e.type](e); // handle actions
     };
 
-    _this.handleResize = function () {
-      return _this.setState(_this.state);
-    };
+    // pull out color variables from an inline style custom color scheme object, chosen scheme, or default scheme
 
-    _this.getContentHeight = function () {
-      // after first render, we change the span height to match the contents
-      return _this.state.hasHeight ? _this.content.clientHeight : 'auto';
-    };
-
-    _this.state = {
-      hasHeight: false,
-      hover: props.hover || false,
-      focus: props.fade ? true : props.focus || false,
-      click: props.fade ? true : props.click || false
-      // pull out color variables from an inline style custom color scheme object, chosen scheme, or default scheme
-    };
     var _ref = typeof props.color === 'object' ? props.color : _colors2.default[props.color || 'default'],
         background = _ref.background,
         border = _ref.border,
@@ -22428,8 +22421,8 @@ var Btn = function (_Component) {
     _this.btnContainerStyle = {
       position: 'relative',
       boxSizing: 'border-box',
-      margin: '0 0 5px 0'
-
+      margin: '0 0 5px 0',
+      height: 'calc(5em + 5px)'
     };
     _this.defaultStyle = _extends({}, style, {
       boxSizing: 'border-box',
@@ -22453,7 +22446,7 @@ var Btn = function (_Component) {
       fontWeight: bold ? 'bold' : 'normal',
       textShadow: bold ? '0 1px 1px rgba(30,30,30,0.5)' : 'none',
       textTransform: caps ? 'uppercase' : 'none',
-      transition: !animate ? 'border-bottom 0.3s ease-in-out,\n                              filter 0.3s ease-in-out,\n                              transform 0.3s ease-in-out,\n                              box-shadow 0.3s ease-in-out' : ''
+      transition: animate ? 'border-bottom 0.3s ease-in-out,\n                   filter 0.3s ease-in-out,\n                   transform 0.3s ease-in-out,\n                   box-shadow 0.3s ease-in-out' : ''
     });
 
     _this.hoverStyle = _extends({}, _this.defaultStyle, {
@@ -22476,7 +22469,6 @@ var Btn = function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      window.addEventListener('resize', this.handleResize);
       this.setState(function (state, props) {
         return { hasHeight: true };
       });
@@ -22489,14 +22481,11 @@ var Btn = function (_Component) {
   }, {
     key: 'componentWillUnmount',
     value: function componentWillUnmount() {
-      window.removeEventListener('resize', this.handleResize);
       if (this.fadeTimer) clearTimeout(this.fadeTimer);
     }
   }, {
     key: 'render',
     value: function render() {
-      var _this3 = this;
-
       var _state = this.state,
           hover = _state.hover,
           focus = _state.focus,
@@ -22518,14 +22507,11 @@ var Btn = function (_Component) {
       return _react2.default.createElement(
         'div',
         {
-          style: _extends({}, btnContainerStyle, { height: getContentHeight() }),
+          style: _extends({}, btnContainerStyle),
           className: className },
         _react2.default.createElement(
           'button',
           {
-            ref: function ref(el) {
-              return _this3.content = el;
-            },
             style: style,
             onMouseEnter: handleEvent,
             onMouseLeave: handleEvent,
