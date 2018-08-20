@@ -5,16 +5,13 @@ const iframe = url => <iframe src={ url } frameBorder="0"></iframe>
 class Popup extends Component {
   constructor(props) {
     super(props)
+    const { children, project } = props
+    const { id, url } = project
     
     this.state = {
-      output: props.url ? iframe(props.url) : props.children,
-      position: props.pos
+      output: url ? iframe(url) : children,
+      position: id
     }
-  }
-
-  displayInfo() {
-    // take text from redux object regarding the project from the props
-    // display text inside laptop screen text component
   }
 
   render() {

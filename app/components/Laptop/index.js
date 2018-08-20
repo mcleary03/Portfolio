@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import style from './Laptop.scss'
 
-class Laptop extends Component {
+export default class Laptop extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
 
     }
+
   }
 
   componentDidMount() {
@@ -21,29 +22,21 @@ class Laptop extends Component {
       screen.classList.remove('close')
       keyboard.classList.remove('glow')
       if (!screen.classList.contains('power')) screen.classList.add('power')
-      printLines(lines, 1000, 2400)
+      printLines(this.props.display, 1000, 2000)
     }
 
     const closeLid = () => {
+      screen.classList.remove('power')
       screen.classList.add('close')
       screen.classList.remove('open')
       keyboard.classList.add('glow')
     }
 
-    const screenClosed = () => screen.classList.contains('close')
+    const lidClosed = () => screen.classList.contains('close')
 
     laptop.addEventListener('click', () => {
-      screenClosed() ? openLid() : closeLid()
+      lidClosed() ? openLid() : closeLid()
     })
-    
-    const lines = [
-      "Hi, I'm a full stack web developer.",
-      "I build user interfaces like this",
-      "This one was made with pure CSS and JavaScript",
-      "and games like this one using D3.js",
-      "I can turn a UI from this",
-      "into this, with useful features like multi-line queries and responsive design"
-    ]
 
     const printLines = (lines, interval, delay) => {
       clearText(text)
@@ -75,7 +68,7 @@ class Laptop extends Component {
 
   render() {
     return (
-      <div id='laptop'>
+      <div id='laptop' onClick={ this.props.init }>
         <div id="screen" className='close'>
           <div className="text"></div>
         </div>
@@ -84,5 +77,3 @@ class Laptop extends Component {
     )
   }
 }
-
-export default Laptop
