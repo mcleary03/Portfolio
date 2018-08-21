@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { showProject, setlaptopDisplay } from '../actions'
+import { showProject, hideProjects, setlaptopDisplay } from '../actions'
 import { projectsReducer } from '../reducers'
 import Laptop from './Laptop'
 import Project from './Project'
@@ -25,13 +25,15 @@ class Display extends Component {
     const { displayedProjects } = this.props
     if (displayedProjects) {
       return displayedProjects.map( project => (
-        <Project key={ project.id } project={ project }/>
+        <Project 
+          key={ project.id } 
+          project={ project }/>
       ))
     }
   }
 
+
   init() {
-    console.log('calling init()')
     let i=1
     let timer = setInterval( () => {
       this.props.showProject(i++)
@@ -49,7 +51,8 @@ class Display extends Component {
       <div id='main'>
         <Laptop 
           init={ () => this.init() }
-          display={ this.props.laptopDisplay.description }
+          hideProjects={()=>this.props.hideProjects()}
+          display={ this.props.laptopDisplay }
         />
         <div id='projects'>
           { this.displayProjects() }
@@ -66,7 +69,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  showProject: id => dispatch(showProject(id)), // add to displayedProjects array
+  showProject: id => dispatch(showProject(id)),
+  hideProjects: id => dispatch(hideProjects(id)),
   setlaptopDisplay: id => dispatch(setlaptopDisplay(id))
 })
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { showProject, setlaptopDisplay } from '../../actions'
+import { setlaptopDisplay } from '../../actions'
 import { projectsReducer } from '../../reducers'
 
 
@@ -13,6 +13,11 @@ class Project extends Component {
     }
   }
 
+  handleHover() {
+    console.log(this.props.project.id)
+    this.props.setlaptopDisplay(this.props.project.id)
+  }
+
   navigate() {
     window.location.href=this.props.project.url
   }
@@ -20,7 +25,10 @@ class Project extends Component {
   render() {
     const { id, name, github, img } = this.props.project
     return (
-      <div className='project fadeIn' onClick={ ()=>this.navigate() }>
+      <div 
+        className='project fadeIn' 
+        onClick={ ()=>this.navigate() }
+        onMouseOver={ () => this.handleHover() }>
         <img 
           src={img} 
           crossOrigin='true'
@@ -32,12 +40,10 @@ class Project extends Component {
 }
 
 const mapStateToProps = state => ({
-  displayedProjects: state.projectsReducer.displayedProjects,
   laptopDisplay: state.projectsReducer.projectInfo
 })
 
 const mapDispatchToProps = dispatch => ({
-  showProject: id => dispatch(showProject(id)), // add to displayedProjects array
   setlaptopDisplay: id => dispatch(setlaptopDisplay(id))
 })
 

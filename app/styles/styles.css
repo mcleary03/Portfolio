@@ -25,8 +25,7 @@ html {
 
 body {
   min-height: 100%;
-  position: relative;
-  line-height: 1; }
+  position: relative; }
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -157,7 +156,8 @@ body {
   align-content: space-around;
   justify-content: space-around;
   height: 90vh;
-  width: 100vw; }
+  width: 98vw;
+  justify-self: center; }
   #main #laptop {
     grid-area: laptop;
     align-self: center;
@@ -165,15 +165,15 @@ body {
   #main #projects {
     grid-area: projects;
     display: grid;
+    justify-self: center;
     grid-auto-rows: 1fr;
-    grid-row-gap: 20px;
     align-items: center;
     justify-items: center;
     height: 90vh; }
     #main #projects .project {
       justify-self: center;
       cursor: pointer;
-      width: 30vw;
+      width: 100%;
       max-width: 35vh; }
       #main #projects .project img {
         width: 100%;
@@ -228,6 +228,8 @@ body {
 @media screen and (max-width: 950px) {
   #main {
     grid-template-areas: 'laptop' 'projects';
+    grid-template-columns: 90vw;
+    align-items: center;
     justify-items: center;
     grid-row-gap: 3vw; }
     #main #laptop {
@@ -240,18 +242,17 @@ body {
     #main #projects {
       grid-area: projects;
       display: grid;
-      grid-template-columns: repeat(3, 80vw);
+      grid-template-columns: auto;
+      grid-template-columns: 50vh 50vh 50vh;
       align-content: space-around;
       height: 50vh;
       width: 100vw;
-      padding: 0 20px;
       overflow-x: scroll; }
       #main #projects .project {
         display: grid;
         justify-items: center;
         align-items: center;
-        height: 45vh;
-        width: 50vw;
+        width: 90%;
         max-width: 50vh; }
         #main #projects .project img {
           border-radius: 5px;
@@ -266,6 +267,8 @@ body {
 @media screen and (max-device-width: 700px) {
   #main {
     grid-template-areas: 'laptop' 'projects';
+    grid-template-columns: 90vw;
+    align-items: center;
     justify-items: center;
     grid-row-gap: 3vw; }
     #main #laptop {
@@ -278,18 +281,17 @@ body {
     #main #projects {
       grid-area: projects;
       display: grid;
-      grid-template-columns: repeat(3, 80vw);
+      grid-template-columns: auto;
+      grid-template-columns: 50vh 50vh 50vh;
       align-content: space-around;
       height: 50vh;
       width: 100vw;
-      padding: 0 20px;
       overflow-x: scroll; }
       #main #projects .project {
         display: grid;
         justify-items: center;
         align-items: center;
-        height: 45vh;
-        width: 50vw;
+        width: 90%;
         max-width: 50vh; }
         #main #projects .project img {
           border-radius: 5px;

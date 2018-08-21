@@ -6,73 +6,83 @@ export default class Laptop extends Component {
     super(props)
 
     this.state = {
-
+      open: false,
+      displayText: ''
     }
+  }
 
+  openLid = () => {
+    this.setState({open: true})
+    this.props.init()
+    this.updateDisplay()
+  }
+
+  closeLid = () => {
+    this.clearText()
+    this.props.hideProjects()
+    this.setState({open: false})
+  }
+
+  handleClick = () => {
+    this.state.open ? this.closeLid() : this.openLid()
+  }
+
+  updateDisplay = () => {
+    console.log('update display')
+    if (this.props.display.name==='Intro') {
+      this.printLines(this.props.display.description, 1000, 2000)
+    } 
+
+    const { id, name, technologies, description } = this.props.display
+
+    // return (
+    //   <div className='text'>
+    //     <h2>{ name }</h2>
+    //     <h3>{ technologies.join(', ') }</h3>
+    //     { description.map( (s,i) => <p key={id+i}>> {s}</p> ) }
+    //   </div>
+    // )
+    // this.printLines(this.props.display, 100, 2000)
+  }
+
+  printLines = (arr, dur, del) => {
+    debugger
+    setTimeout( () => {
+      arr.forEach( (line, i) => {
+        let len = line.length
+        setTimeout( () => this.printChars(line, dur/len), dur*i+del*i )
+      })
+    }, del)
+  }
+
+  printChars = (str, dur) => {
+    str.split('').forEach( (char, i) => {
+      setTimeout( () => {
+        this.setState({ displayText: this.state.displayText+char })
+      }, dur*i )
+    })
+  }
+
+  clearText = () => {
+    this.setState({ displayText: '' })
   }
 
   componentDidMount() {
-    const laptop = document.querySelector('#laptop')
-    const screen = document.querySelector('#screen')
-    const keyboard = document.querySelector('#keyboard')
-    const text = document.querySelector('.text')
     
-    const openLid = () => {
-      screen.classList.add('open')
-      screen.classList.remove('close')
-      keyboard.classList.remove('glow')
-      if (!screen.classList.contains('power')) screen.classList.add('power')
-      printLines(this.props.display, 1000, 2000)
-    }
-
-    const closeLid = () => {
-      screen.classList.remove('power')
-      screen.classList.add('close')
-      screen.classList.remove('open')
-      keyboard.classList.add('glow')
-    }
-
-    const lidClosed = () => screen.classList.contains('close')
-
-    laptop.addEventListener('click', () => {
-      lidClosed() ? openLid() : closeLid()
-    })
-
-    const printLines = (lines, interval, delay) => {
-      clearText(text)
-      setTimeout( () => {
-        lines.forEach( (line, i) => {
-          const len = line.length
-          setTimeout( printString(line, interval/len, i*interval+i*delay), interval)
-        }) 
-      }, delay)  
-    }
-    
-    const printString = (string, interval, delay=0) => {
-      setTimeout( () => {
-        const p = document.createElement('p')
-        text.appendChild(p)
-        p.innerHTML+=`> `
-        string.split('').forEach( (word, i) => {
-          setTimeout( () => p.innerHTML+=word, i*interval)
-        })
-      }, delay)
-    }
-    
-    const clearText = el => {
-      el.innerHTML = ''
-    }
-    
-    clearText(text)
   }
 
   render() {
+    const screenClass = this.state.open ? 'open' : 'close glow closed'
+    const keyboardClass = this.state.open ? '' : 'glow'
+
     return (
-      <div id='laptop' onClick={ this.props.init }>
-        <div id="screen" className='close'>
-          <div className="text"></div>
+      <div id='laptop' onClick={ this.handleClick }>
+        <div id="screen" className={ screenClass }>
+          <div className="text">
+            { this.state.displayText }
+          </div>
         </div>
-        <div id="keyboard" className='glow'></div>
+        <div id="keyboard" className={ keyboardClass }></div>
       </div>
     )
   }
