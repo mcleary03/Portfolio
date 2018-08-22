@@ -16,6 +16,8 @@ export default skillsReducer
 
 const SKILLS = [
   'JavaScript',
+  'jQuery',
+  'ESQuery',
   'React',
   'Redux',
   'Node',
@@ -28,5 +30,11 @@ const SKILLS = [
   'CSS',
   'Bootstrap',
   'SQL',
-  'MongoDB'
+  'MongoDB',
+  'Babel',
+  'CSS3',
+  'Semantic',
+  'API',
+  'OOP',
+  'Functional'
 ]

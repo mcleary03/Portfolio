@@ -11,23 +11,37 @@ class Skills extends Component {
   renderList() {
     return (
       this.props.skills.map( skill =>
-        <li key={skill} className='col-xs-6'>{skill}</li>
+        <li key={skill} className=''>{skill}</li>
       )
+    )
+  }
+
+  rand() {
+    return Math.floor(Math.random()*window.innerWidth)
+  }
+
+  animateList() {
+    return (
+      this.props.skills.map( skill => {
+        <span key={skill} 
+          className='skill' 
+          style={`left: ${this.rand()}`}>
+          {skill}
+        </span>
+      })
     )
   }
 
   render() {
     return (
-      <div className="container col-xs-12">
-        <ul className="main-text">
-          {this.renderList()}
-        </ul>
+      <div className="list">
+        {this.animateList()}
       </div>
     )
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {skills: state.skillsReducer.skills}
 }
 
@@ -36,3 +50,9 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Skills)
+
+
+
+{/* <ul className="">
+{this.renderList()}
+</ul> */}

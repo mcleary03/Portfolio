@@ -1,40 +1,76 @@
-import 'aframe';
-import 'aframe-animation-component';
-import 'babel-polyfill';
-import { Entity, Scene } from 'aframe-react';
 import React, { Component } from 'react'
-import Projects from './Projects'
-import About from './About'
-import AFrame from './AFrame'
+import { connect } from 'react-redux'
+import { showProject, hideProjects, setlaptopDisplay } from '../actions'
+import { projectsReducer } from '../reducers'
+import Laptop from './Laptop'
+import Project from './Project'
+import Btns from './Btns'
 
-export default class Display extends Component {
-  constructor() {
-    super()
+const displayInfo = pos => {
+  // take text from redux object regarding the project from the props
+  console.log('hovering ' + pos)
+  // display text inside laptop screen text component
+}
+
+class Display extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      
+    }
+  }
+
+  displayProjects() {
+    const { displayedProjects } = this.props
+    if (displayedProjects) {
+      return displayedProjects.map( project => (
+        <Project 
+          key={ project.id } 
+          project={ project }/>
+      ))
+    }
+  }
+
+  init() {
+    let i=1
+    let timer = setInterval( () => {
+      this.props.showProject(i++)
+      this.setState({ popups: this.props.displayedProjects })
+    }, 2000)
+    setTimeout( () => clearInterval(timer), 6000 )
+  }
+
+  componentDidMount() {
+    
   }
 
   render() {
-    if (this.props.vr && this.props.display.type.name == 'AFrame') {
-      return (
-        <div>
-          <Scene
-            id='VRScene'
-            embedded
-            light="defaultLightsEnabled: false"
-          >
-            {this.props.display}
-          </Scene>
+    return (
+      <div 
+        id='main' 
+        className='fadeIn'>
+        <Laptop
+          init={ () => this.init() }
+        />
+        <div id='projects'>
+          { this.displayProjects() }
         </div>
-      )
-    } else {
-      return (
-        <div>
-          <div className='sidebar col-md-2'></div>
-          <div id='main-display' className='col-md-8'>
-            {this.props.display}
-          </div>
-          <div className='sidebar col-md-2'></div>
-        </div>
-      )
-    }
+      </div>
+    )
   }
 }
+
+
+const mapStateToProps = state => ({
+  displayedProjects: state.projectsReducer.displayedProjects,
+  laptopDisplay: state.projectsReducer.laptopDisplay
+})
+
+const mapDispatchToProps = dispatch => ({
+  showProject: id => dispatch(showProject(id)),
+  hideProjects: id => dispatch(hideProjects(id)),
+  setlaptopDisplay: id => dispatch(setlaptopDisplay(id))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Display)

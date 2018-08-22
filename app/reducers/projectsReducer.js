@@ -1,11 +1,23 @@
-import merge from 'lodash/merge'
+import fire from '../src/fire'
 
-const projectsReducer = (state = {projects: PROJECTS}, action) => {
+const projectsReducer = (state = {
+                          projects: PROJECTS,
+                          displayedProjects: [], 
+                          laptopDisplay: INTRO
+                        }, action) => {
   Object.freeze(state)
+  let newState = { ...state }
+  
   switch(action.type) {
-    case 'SET_PROJECTS' :
-      let newState = merge({}, state)
-      newState.projects = action.projects
+    case 'SHOW_PROJECT' :
+      newState.displayedProjects = [ ...state.displayedProjects ]
+      newState.displayedProjects.push(PROJECTS[action.id])
+      return newState
+    case 'HIDE_PROJECTS' :
+      newState.displayedProjects = []
+      return newState
+    case 'SET_LAPTOP_DISPLAY' :
+      newState.laptopDisplay = PROJECTS[action.id]
       return newState
     default :
       return state
@@ -14,24 +26,47 @@ const projectsReducer = (state = {projects: PROJECTS}, action) => {
 
 export default projectsReducer
 
+const INTRO = {
+  name: 'My Portfolio',
+  technologies:'',
+  description: "Hi, I'm a web developer. Here are a few recent projects. Hover over a project for details. Click a project to try it out."
+}
+
 const PROJECTS = [
   {
+    id: 0,
     name: 'Portfolio',
     github: 'https://github.com/mcleary03/Portfolio',
-    img: './app/images/portfolio.gif',
-    description: 'The app you are seeing right now is built with React using Redux, A-Frame VR, Bootstrap, and ES6 JavaScript.  Try clicking on the A-Frame button above to see my integration of React with A-Frame (everything in the scene is a React component).  I have Redux keeping track of the state of my app and currently, styling is done with Bootstrap.'
+    url: 'https://mcleary03.github.io/Portfolio/',
+    img: '../images/headshot_med.jpg',
+    technologies: 'JavaScript, React, Redux, SASS',
+    description: 'This page was built with React, Redux, SASS, and a whole lotta JavaScript. Click this terminal to close the laptop.'
   },
   {
-    name: 'Hype or Type',
-    github: 'https://github.com/between-the-lines/client',
-    img: './app/images/hypeOrType.gif',
-    description: 'This was my first team project and first attempt at a hackathon.  Using IBM Watson Sentiment Analysis and a few other APIs, we display the general feeling about a topic using real-time Twitter data.  Emojis represent location and sentiment about the topic in a tweet or cluster of tweets depending on zoom level.  I was involved in planning, API integration, front-end development and design.'
+    id: 1,
+    name: ".e('dotty')",
+    github: 'https://github.com/mcleary03/dotty',
+    url: 'https://mcleary03.github.io/dotty/',
+    img: 'https://cdn.glitch.com/e66d812d-475c-4f51-a0ac-6dc63a7d203b%2Fdotty-screenshot.png?1534718068630',
+    technologies: 'JavaScript, D3.js, SVG, CSS',
+    description: "A casual game, built with D3.js, that rewards a fast reflex with a high score. Tap PLAY to start, you have 1 second to tap each dot. Scores are based on reflex speed and are saved locally. Try CASUAL or NORMAL modes, which end after 10 dots or ENDURANCE, which doesn't end, for a higher score."
   },
   {
-    name: 'YelpCamp',
-    github: 'https://github.com/mcleary03/YelpCamp',
-    live: 'https://immense-thicket-93896.herokuapp.com/',
-    img: './app/images/yelpCamp.gif',
-    description: 'Campground information and review app.  Written in HTML and JavaScript with Express for RESTful routing, MongoDB for the database and Passport for authentication.  Users can sign up, log in, add campgrounds or comment on others.  Users can then edit and delete campgrounds and comments that belong to them.'
+    id: 2,
+    name: 'ESQuery REPL',
+    github: 'https://github.com/mcleary03/esqueryREPL',
+    url: 'https://mcleary03.github.io/esqueryREPL/',
+    img: 'https://cdn.glitch.com/e66d812d-475c-4f51-a0ac-6dc63a7d203b%2Fesqueryrepl-screenshot.png?1534718071206',
+    technologies: 'JavaScript, CSS',
+    description: 'Improved UI/UX of an open source tool that querys against the JavaScript AST (abstract syntax tree). Added multi-line queries, responsive grid layout, copy button that formats queries for external use, dark theme with color coded sections.'
+  },
+  {
+    id: 3,
+    name: 'Animated UI Components',
+    github: 'https://github.com/mcleary03/Custom-React-Buttons',
+    url: 'https://mcleary03.github.io/Nameless/?selectedKind=Btn&selectedStory=All%20color%20schemes&full=0&addons=1&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel',
+    img: 'https://cdn.glitch.com/e66d812d-475c-4f51-a0ac-6dc63a7d203b%2Fbtns-screenshot.png?1534718063312',
+    technologies: 'JavaScript, React',
+    description: 'These button components have dynamic styling done entirely in JavaScript. State is used to control each step of the animation. Props like `caps` or  `bold` will affect the text. A `color` prop will set the theme of the button and any attribute may be overridden by passing a style object.'
   }
 ]

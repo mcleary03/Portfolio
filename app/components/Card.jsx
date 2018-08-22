@@ -25,18 +25,18 @@ export default class Card extends Component {
     ) : <div/>
 
     return(
-      <div id='Card' className='text-center' onClick={ this.click }>
-        <div className='container-fluid'>
-          <div>
+      <div id='Card' className='' onClick={ this.click }>
+        <div>
+          <div className='projectImg'>
             <a href={ live || github }><img src={ img }/></a>
           </div>
           <div>
-            <a href={ live || github }><h1>{ name }</h1></a>
+            <a className='link' href={ live || github }><h1>{ name }</h1></a>
           </div>
           <p className='main-text'>
             { description }
           </p>
-          <div className='link col-md-12'>
+          <div className='link'>
             { liveDemo }
             <a className='' href={ github }>
               <i className='fa fa-3x fa-github'/>

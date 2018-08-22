@@ -1,27 +1,24 @@
-export const setDisplay = display => {
+const SET_LAPTOP_DISPLAY = 'SET_LAPTOP_DISPLAY'
+const SHOW_PROJECT = 'SHOW_PROJECT'
+const HIDE_PROJECTS = 'HIDE_PROJECTS'
+
+
+export const setlaptopDisplay = projectID => {
   return ({
-    type: 'SET_DISPLAY',
-    display: display
+    type: SET_LAPTOP_DISPLAY,
+    id: projectID
   })
 }
 
-export const setProjects = projects => {
+export const showProject = projectID => {
   return ({
-    type: 'SET_PROJECTS',
-    projects: projects
+    type: SHOW_PROJECT,
+    id: projectID
   })
 }
 
-export const setSkills = skills => {
+export const hideProjects = projectID => {
   return ({
-    type: 'SET_SKILLS',
-    skills: skills
-  })
-}
-
-export const setPlanets = planets => {
-  return ({
-    type: 'SET_PLANETS',
-    planets: planets
+    type: HIDE_PROJECTS
   })
 }
