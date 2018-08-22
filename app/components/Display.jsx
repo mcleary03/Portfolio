@@ -32,7 +32,6 @@ class Display extends Component {
     }
   }
 
-
   init() {
     let i=1
     let timer = setInterval( () => {
@@ -43,16 +42,16 @@ class Display extends Component {
   }
 
   componentDidMount() {
-    // this.init() //// JUST FOR TESTING!!!!!
+    
   }
 
   render() {
     return (
-      <div id='main'>
-        <Laptop 
+      <div 
+        id='main' 
+        className='fadeIn'>
+        <Laptop
           init={ () => this.init() }
-          hideProjects={()=>this.props.hideProjects()}
-          display={ this.props.laptopDisplay }
         />
         <div id='projects'>
           { this.displayProjects() }

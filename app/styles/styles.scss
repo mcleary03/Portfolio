@@ -166,10 +166,10 @@ body {
 
 .fadeIn {
   opacity: 0;
-  animation: fadeIn 2s ease-in-out 0.5s forwards;
+  animation: fadeIn 4s ease-in-out 0.5s forwards;
 }
 
-@keyframes fadeIn { ///////NOT WORKING!!!!!!!!!
+@keyframes fadeIn {
   0%   { opacity: 0; }
   100% { opacity: 1; }
 }
@@ -232,6 +232,15 @@ body {
       }
     }
   }
+}
+
+.lighten {
+  transition: background-color 2s ease-in-out;
+  background-color: cornsilk;
+}
+.darken {
+  transition: background-color 2s ease-in-out;
+  background-color: #000;
 }
 
 @media screen and ( max-width: 950px ) {

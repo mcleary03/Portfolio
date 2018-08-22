@@ -156,9 +156,9 @@ $laptopFont: 'Lato';
 
 @keyframes power {
   0%   { background-color: #000000; }
-  20%  { background-color: #070707; }
-  30%  { background-color: #070707; }
-  100% { background-color: #000000; }
+  20%  { background-color: #ffffff; }
+  30%  { background-color: #ffffff; }
+  100% { background-color: #ffffff; }
 }
 
 @keyframes close {
@@ -197,5 +197,6 @@ $laptopFont: 'Lato';
 @keyframes glow {
   0%   { filter: drop-shadow(0 -4px 10px rgba(33, 196, 193, 0.1)) }
   50%  { filter: drop-shadow(0 -4px 10px rgba(83, 206, 98, 0.9)) }
-  100% { filter: drop-shadow(0 -4px 80px rgba(33, 196, 193, 0.4)) }
+  70%  { filter: drop-shadow(0 -4px 20px rgba(79, 230, 97, 0.9)) }
+  100% { filter: drop-shadow(0 -4px 100px rgba(33, 196, 193, 0.4)) }
 }

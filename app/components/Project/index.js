@@ -14,7 +14,6 @@ class Project extends Component {
   }
 
   handleHover() {
-    console.log(this.props.project.id)
     this.props.setlaptopDisplay(this.props.project.id)
   }
 

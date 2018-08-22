@@ -203,7 +203,7 @@ body {
 
 .fadeIn {
   opacity: 0;
-  animation: fadeIn 2s ease-in-out 0.5s forwards; }
+  animation: fadeIn 4s ease-in-out 0.5s forwards; }
 
 @keyframes fadeIn {
   0% {
@@ -224,6 +224,14 @@ body {
   color: #575cf9;
   background-color: transparent;
   text-align: center; }
+
+.lighten {
+  transition: background-color 2s ease-in-out;
+  background-color: cornsilk; }
+
+.darken {
+  transition: background-color 2s ease-in-out;
+  background-color: #000; }
 
 @media screen and (max-width: 950px) {
   #main {
