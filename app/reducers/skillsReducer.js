@@ -1,10 +1,8 @@
-import merge from 'lodash/merge'
-
 const skillsReducer = (state = {skills: SKILLS}, action) => {
   Object.freeze(state)
   switch(action.type) {
     case 'SET_SKILLS' :
-      let newState = merge({}, state)
+      let newState = {...state}
       newState.skills = action.skills
       return newState
     default :

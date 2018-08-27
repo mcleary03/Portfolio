@@ -24442,6 +24442,20 @@ var Header = function (_Component) {
               'Michael Cleary'
             )
           )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'social' },
+          _react2.default.createElement(
+            'a',
+            { className: 'github', href: 'https://github.com/mcleary03' },
+            _react2.default.createElement('img', { src: 'https://cdn.glitch.com/e66d812d-475c-4f51-a0ac-6dc63a7d203b%2FGitHub-Mark-Light-64px.png?1535389174449' })
+          ),
+          _react2.default.createElement(
+            'a',
+            { className: 'linkedin', href: 'https://www.linkedin.com/in/michaelgcleary/' },
+            _react2.default.createElement('img', { src: 'https://cdn.glitch.com/e66d812d-475c-4f51-a0ac-6dc63a7d203b%2FIn-White-66px-R.png?1535390529170' })
+          )
         )
       );
     }
