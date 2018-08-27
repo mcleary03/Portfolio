@@ -24563,10 +24563,10 @@ var Display = function (_Component) {
       var timer = setInterval(function () {
         _this2.props.showProject(i++);
         _this2.setState({ popups: _this2.props.displayedProjects });
-      }, 2000);
+      }, 1000);
       setTimeout(function () {
         return clearInterval(timer);
-      }, 6000);
+      }, 3000);
     }
   }, {
     key: 'componentDidMount',

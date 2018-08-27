@@ -37,8 +37,8 @@ class Display extends Component {
     let timer = setInterval( () => {
       this.props.showProject(i++)
       this.setState({ popups: this.props.displayedProjects })
-    }, 2000)
-    setTimeout( () => clearInterval(timer), 6000 )
+    }, 1000)
+    setTimeout( () => clearInterval(timer), 3000 )
   }
 
   componentDidMount() {
